@@ -194,13 +194,28 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Configuration\CategoryCourseConfiguration.cs" />
+    <Compile Include="Configuration\CategoryConfiguration.cs" />
+    <Compile Include="Configuration\CourseConfiguration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202003041829421_initial.cs" />
+    <Compile Include="Migrations\202003041829421_initial.Designer.cs">
+      <DependentUpon>202003041829421_initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202003041905479_UpdateCourse.cs" />
+    <Compile Include="Migrations\202003041905479_UpdateCourse.Designer.cs">
+      <DependentUpon>202003041905479_UpdateCourse.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Course.cs" />
+    <Compile Include="Models\Category.cs" />
+    <Compile Include="Models\CourseCategory.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -220,6 +235,30 @@
     <Content Include="Content\Images\border_bottom_white.png" />
     <Content Include="Content\Images\c.jpg" />
     <Content Include="Content\Images\devops-aws.jpg" />
+    <Content Include="Content\Images\FreeCourses\ado-net-360x270.jpg" />
+    <Content Include="Content\Images\FreeCourses\angularjs.jpg" />
+    <Content Include="Content\Images\FreeCourses\angular2-360x270.jpg" />
+    <Content Include="Content\Images\FreeCourses\angularjs6-360x270.jpg" />
+    <Content Include="Content\Images\FreeCourses\angularjsCLI-360x270.jpg" />
+    <Content Include="Content\Images\FreeCourses\angularjsCURD-360x270.jpg" />
+    <Content Include="Content\Images\FreeCourses\asp-mvc-360x270.jpg" />
+    <Content Include="Content\Images\FreeCourses\asp.net-core-razor-pages-tutorial-3-360x270.png" />
+    <Content Include="Content\Images\FreeCourses\ASP.NET-GridView.jpg" />
+    <Content Include="Content\Images\FreeCourses\ASP.NET-Web-api.jpg" />
+    <Content Include="Content\Images\FreeCourses\asp.net_.jpg" />
+    <Content Include="Content\Images\FreeCourses\bootstrap.jpg" />
+    <Content Include="Content\Images\FreeCourses\C-interview-questions-and-answers.jpg" />
+    <Content Include="Content\Images\FreeCourses\c.jpg" />
+    <Content Include="Content\Images\FreeCourses\design-patterns.jpg" />
+    <Content Include="Content\Images\FreeCourses\Entity-framework.jpg" />
+    <Content Include="Content\Images\FreeCourses\java-script.jpg" />
+    <Content Include="Content\Images\FreeCourses\jquery.jpg" />
+    <Content Include="Content\Images\FreeCourses\linq-1-360x270.jpg" />
+    <Content Include="Content\Images\FreeCourses\mvc-360x270.jpg" />
+    <Content Include="Content\Images\FreeCourses\sql-1.jpg" />
+    <Content Include="Content\Images\FreeCourses\sqlqa-360x270.jpg" />
+    <Content Include="Content\Images\FreeCourses\wcfimage.png" />
+    <Content Include="Content\Images\FreeCourses\webs-services.jpg" />
     <Content Include="Content\Images\mvc.jpg" />
     <Content Include="Content\Images\pargim-logo-1.png" />
     <Content Include="Content\Images\paython.jpg" />
@@ -301,6 +340,14 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202003041829421_initial.resx">
+      <DependentUpon>202003041829421_initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003041905479_UpdateCourse.resx">
+      <DependentUpon>202003041905479_UpdateCourse.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

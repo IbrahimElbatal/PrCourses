@@ -371,7 +371,7 @@ a.left.carousel-control {
 
 .course__wrap {
     box-shadow: 2px 2px 2px #ddd;
-    min-height: 360px;
+    min-height: 450px;
     margin-bottom: 25px;
     overflow: hidden; perspective: 400px;
 }
@@ -391,7 +391,10 @@ a.left.carousel-control {
     }
 
 .course__footer {
-    padding: 20px;
+    /* position: absolute; */
+    /* left: 0; */
+    /* bottom: 20px; */
+    padding: 60px 20px 20px;
 }
 
 .star__content {

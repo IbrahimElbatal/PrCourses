@@ -1,4 +1,6 @@
-﻿@{
+﻿@model IEnumerable<PragimCourses.Models.CourseCategory>
+
+@{
     ViewBag.Title = "Free Courses";
 }
 
@@ -11,109 +13,27 @@
 
 <div class="popular__courses">
     <div class="container">
-        @* <h1>Most Popular Online Courses</h1> *@
-        <div class="col-md-4 col-sm-6 col-xs-12">
-            <div class="course__wrap">
-                <div><img src="~/Content/Images/mvc.jpg" /></div>
-                <p>Asp.Net Mvc</p>
-                <div class="course__footer">
-                    <div class="star__content">
-                        <span class="glyphicon glyphicon-star"></span>
-                        <span class="glyphicon glyphicon-star"></span>
-                        <span class="glyphicon glyphicon-star"></span>
-                        <span class="glyphicon glyphicon-star"></span>
-                        <span class="glyphicon glyphicon-star"></span>
+        @foreach (var course in Model)
+        {
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <div class="course__wrap">
+                    <div><img src="@Url.Content(course.Course.ImagePath)" /></div>
+                    <p>@course.Course.Description</p>
+                    <div class="course__footer">
+                        <div class="star__content">
+                            <span class="glyphicon glyphicon-star"></span>
+                            <span class="glyphicon glyphicon-star"></span>
+                            <span class="glyphicon glyphicon-star"></span>
+                            <span class="glyphicon glyphicon-star"></span>
+                            <span class="glyphicon glyphicon-star"></span>
+                        </div>
+                        <span class="enrolled">165 Enrolled</span>
                     </div>
-                    <span class="enrolled">165 Enrolled</span>
                 </div>
-            </div>
 
-        </div>
-        <div class="col-md-4 col-sm-6 col-xs-12">
-            <div class="course__wrap">
-                <div><img src="~/Content/Images/paython.jpg" /></div>
-                <p>Python Course</p>
-                <div class="course__footer">
-                    <div class="star__content">
-                        <span class="glyphicon glyphicon-star"></span>
-                        <span class="glyphicon glyphicon-star"></span>
-                        <span class="glyphicon glyphicon-star"></span>
-                        <span class="glyphicon glyphicon-star"></span>
-                        <span class="glyphicon glyphicon-star"></span>
-                    </div>
-                    <span class="enrolled">165 Enrolled</span>
-                </div>
             </div>
-
-        </div>
-        <div class="col-md-4 col-sm-6 col-xs-12">
-            <div class="course__wrap">
-                <div><img src="~/Content/Images/angularjs8-360x270.jpg" /></div>
-                <p>Angular 8 Course</p>
-                <div class="course__footer">
-                    <div class="star__content">
-                        <span class="glyphicon glyphicon-star"></span>
-                        <span class="glyphicon glyphicon-star"></span>
-                        <span class="glyphicon glyphicon-star"></span>
-                        <span class="glyphicon glyphicon-star"></span>
-                        <span class="glyphicon glyphicon-star"></span>
-                    </div>
-                    <span class="enrolled">165 Enrolled</span>
-                </div>
-            </div>
-
-        </div>
-        <div class="col-md-4 col-sm-6 col-xs-12">
-            <div class="course__wrap">
-                <div><img src="~/Content/Images/c.jpg" /></div>
-                <p>C# Course</p>
-                <div class="course__footer">
-                    <div class="star__content">
-                        <span class="glyphicon glyphicon-star"></span>
-                        <span class="glyphicon glyphicon-star"></span>
-                        <span class="glyphicon glyphicon-star"></span>
-                        <span class="glyphicon glyphicon-star"></span>
-                        <span class="glyphicon glyphicon-star"></span>
-                    </div>
-                    <span class="enrolled">165 Enrolled</span>
-                </div>
-            </div>
-
-        </div>
-        <div class="col-md-4 col-sm-6 col-xs-12">
-            <div class="course__wrap">
-                <div><img src="~/Content/Images/ui-dev.jpg" /></div>
-                <p>UI Design Course</p>
-                <div class="course__footer">
-                    <div class="star__content">
-                        <span class="glyphicon glyphicon-star"></span>
-                        <span class="glyphicon glyphicon-star"></span>
-                        <span class="glyphicon glyphicon-star"></span>
-                        <span class="glyphicon glyphicon-star"></span>
-                        <span class="glyphicon glyphicon-star"></span>
-                    </div>
-                    <span class="enrolled">165 Enrolled</span>
-                </div>
-            </div>
-
-        </div>
-        <div class="col-md-4 col-sm-6 col-xs-12">
-            <div class="course__wrap">
-                <div><img src="~/Content/Images/devops-aws.jpg" /></div>
-                <p>DevOps Course</p>
-                <div class="course__footer">
-                    <div class="star__content">
-                        <span class="glyphicon glyphicon-star"></span>
-                        <span class="glyphicon glyphicon-star"></span>
-                        <span class="glyphicon glyphicon-star"></span>
-                        <span class="glyphicon glyphicon-star"></span>
-                        <span class="glyphicon glyphicon-star"></span>
-                    </div>
-                    <span class="enrolled">165 Enrolled</span>
-                </div>
-            </div>
-
-        </div>
+        }
+    
     </div>
 </div>
 

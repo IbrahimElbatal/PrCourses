@@ -1,13 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Data.Entity;
+using PragimCourses.Models;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace PragimCourses.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly ApplicationDbContext _context;
+        public HomeController()
+        {
+            _context = new ApplicationDbContext();
+        }
         public ActionResult Index()
         {
             return View();
@@ -30,7 +34,11 @@ namespace PragimCourses.Controllers
         }
         public ActionResult FreeCourses()
         {
-            return View();
+            var freeCoursesId = _context.Categories
+                .SingleOrDefault(c => c.Name.ToLower() == "free courses").Id;
+
+            var courses = _context.CourseCategories.Include(c => c.Course).Where(c => c.CategoryId == freeCoursesId).ToList();
+            return View(courses);
         }
         public ActionResult ClassRoomCourses()
         {
