@@ -1,13 +1,16 @@
-﻿body {
-    padding-top: 50px;
+﻿* {
+    box-sizing: border-box
+}
+
+body {
     padding-bottom: 20px;
 }
 
 /* Set padding to keep content from hitting the edges */
-.body-content {
-    padding-left: 15px;
-    padding-right: 15px;
-}
+/* .body-content { */
+/*     padding-left: 15px; */
+/*     padding-right: 15px; */
+/* } */
 
 /* Override the default bootstrap behavior where horizontal description lists 
    will truncate terms that are too long to fit in the left column 
@@ -22,3 +25,961 @@ select,
 textarea {
     max-width: 280px;
 }
+
+
+
+/**Header*/
+
+.site__header {
+}
+
+.header__meta {
+    background: #464445;
+    color: #fff;
+    font-family: Arial;
+    line-height: 2.8;
+}
+
+.site__description {
+    margin-bottom: 0;
+    padding-top: 4px
+}
+
+.meta__nav {
+}
+
+    .meta__nav ul {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+    }
+
+        .meta__nav ul li {
+            list-style: none;
+            margin-left: 10px;
+            padding: 4px 12px
+        }
+
+            .meta__nav ul li:not(:first-of-type) {
+                border-left: 1.2px solid white;
+            }
+
+                .meta__nav ul li:not(:first-of-type):hover {
+                    background: #ccc
+                }
+
+            .meta__nav ul li a {
+                text-decoration: none;
+                color: white;
+            }
+
+            .meta__nav ul li:not(:first-of-type) a {
+                font-weight: bold;
+                font-size: 14px
+            }
+
+@media(max-width : 991px) {
+    .meta__nav ul {
+        justify-content: flex-start;
+    }
+
+    .site__description {
+        margin-bottom: 15px;
+        padding-top: 10px;
+    }
+
+    .header__meta {
+        line-height: normal;
+    }
+}
+
+@media(max-width : 767px) {
+    .meta__nav {
+        display: none
+    }
+}
+
+.header__menu {
+    margin: 25px 15px;
+}
+
+.header__brand {
+}
+
+    .header__brand img {
+        width: 100%;
+        height: 66px;
+        max-width: 150px;
+    }
+
+
+
+/*--------------------------------*/
+
+nav.navbar.navbar-default {
+    margin: 15px 0;
+    border: none
+}
+
+div#bs-example-navbar-collapse-1 {
+    padding: 0;
+    background: white
+}
+
+.header__list ul li {
+    font-family: Arial;
+    font-size: 17px
+}
+
+    ul.dropdown-menu,
+    .header__list ul li.active,
+    .navbar-default .navbar-nav > .active > a,
+    .header__list ul li:active,
+    .header__list ul li:hover {
+        color: white;
+        background: #FF5722
+    }
+
+
+/**----------------------------------*/
+/* */
+a.right.carousel-control,
+a.left.carousel-control {
+    display: none;
+}
+
+.carousel-inner {
+    position: relative;
+}
+
+.carousel-image {
+    background-size: cover;
+    min-height: 660px;
+    width: 100%
+}
+
+.carousel-caption {
+    position: absolute;
+    top: 60px;
+    left: 50px;
+    text-align: left;
+}
+
+    .carousel-caption h1 {
+        font-family: Arial;
+        font-weight: bold;
+        font-size: 40px;
+        line-height: 2;
+    }
+
+    .carousel-caption p {
+        font-family: Arial;
+        font-size: 18px;
+        width: 500px;
+    }
+
+    .carousel-caption button {
+        background: #787878;
+        margin-top: 40px;
+        color: white
+    }
+
+        .carousel-caption button:hover, .carousel-caption button:active {
+            background: #0583E4;
+            color: white
+        }
+
+.free__courses {
+    margin-top: 50px;
+    width: 300px;
+}
+
+    .free__courses ul {
+        margin: 0;
+        padding: 0;
+        display: inline-block;
+    }
+
+        .free__courses ul li {
+            list-style: none;
+            display: inline-block;
+            margin: 3px 5px;
+            padding: 5px;
+            border: 1px solid #19c4dd;
+            color: #19c4dd;
+            border-radius: 10px;
+            font-size: 15px;
+            font-family: Arial
+        }
+
+@media(max-width : 600px) {
+    .carousel-caption h1 {
+        font-size: 35px;
+        line-height: normal;
+    }
+
+    .carousel-caption p {
+        width: 100%;
+        font-size: 16px
+    }
+
+    .carousel-image {
+        background-position: center
+    }
+}
+
+@media(min-width : 850px) {
+    a.left.carousel-control, a.right.carousel-control {
+        display: inline-block;
+    }
+
+    .carousel-caption {
+        top: 80px;
+        left: 100px;
+    }
+
+    .carousel-image {
+        background-position: center
+    }
+}
+
+@media(min-width : 950px) {
+    .carousel-caption {
+        top: 115px;
+        left: 155px;
+    }
+}
+
+@media(min-width : 1050px) {
+    .carousel-caption {
+        top: 155px;
+        left: 195px;
+    }
+}
+
+.new__batch {
+    margin: 40px 0;
+}
+
+    .new__batch h1 {
+        text-align: center;
+        margin-bottom: 35px;
+        padding-bottom: 20px;
+        background: url('../../PragimCourses/Content/Images/border_bottom.png') no-repeat center bottom
+    }
+
+.batch__wrap {
+    margin: 0 10px 20px;
+    min-height: 95px;
+    box-shadow: 2px 2px 2px #ccc;
+}
+
+.batch__date {
+    background: #1AC4DD;
+    color: white;
+    width: 16%;
+    float: left;
+    margin-right: 20px;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+    min-height: 95px;
+}
+
+    .batch__date span {
+        display: block;
+        text-align: center;
+        font-size: 12px;
+        font-family: Arial;
+        padding: 5px
+    }
+
+        .batch__date span:nth-of-type(2) {
+            font-weight: bold;
+            font-size: 20px
+        }
+
+.batch__description {
+    float: left;
+    padding-top: 7px;
+}
+
+.week__free_classes {
+    background: #ddd;
+}
+
+
+.pragim__information {
+    background: #3B3D46;
+    min-height: 500px;
+    color: white;
+    text-align: center;
+    font-family: Arial;
+}
+
+    .pragim__information h1 {
+        margin: 0;
+        font-size: 30px;
+        font-weight: bold;
+        padding: 80px 0 25px;
+        text-align: center;
+        margin-bottom: 75px;
+        background: url('../../PragimCourses/Content/Images/border_bottom.png') no-repeat center bottom
+    }
+
+    .pragim__information span {
+        font-size: 40px;
+    }
+
+    .pragim__information h2 {
+        font-size: 20px;
+        margin: 40px 0 20px;
+    }
+
+    .pragim__information p {
+        font-size: 13px;
+        color: #ddd
+    }
+
+.pragim__information-button {
+    margin: 45px auto 75px;
+    background: #FF5722;
+    font-size: 19px;
+    padding: 10px 35px;
+    display: block
+}
+
+    .pragim__information-button:hover {
+        /* margin: 40px auto; */
+        background: #0583E4
+    }
+
+.popular__courses {
+    margin: 80px 0 40px;
+    font-family: Arial;
+}
+
+    .popular__courses h1 {
+        text-align: center;
+        margin-bottom: 50px;
+        font-size: 33px;
+        font-weight: bold;
+        padding-bottom: 20px;
+        background: url('../../PragimCourses/Content/Images/border_bottom.png') no-repeat center bottom
+    }
+
+.course__wrap {
+    box-shadow: 2px 2px 2px #ddd;
+    min-height: 360px;
+    margin-bottom: 25px;
+    overflow: hidden; perspective: 400px;
+}
+
+    .course__wrap img {
+        width: 100%;
+    }
+
+        .course__wrap img:hover {
+            transform: translateZ(50px);
+            transition: all 1s ease-in-out;
+        }
+
+    .course__wrap p {
+        padding: 20px;
+        font-size: 16px
+    }
+
+.course__footer {
+    padding: 20px;
+}
+
+.star__content {
+    display: inline-block;
+    float: left;
+    color: #FFAF00
+}
+
+.course__footer .enrolled {
+    float: right
+}
+
+/*---------------------------*/
+
+.keep-responsive {
+    margin-bottom: 20px
+}
+
+.people__opinion {
+    min-height: 945px;
+    background: #2583CD;
+    margin-top: 60px
+}
+
+    .people__opinion h1 {
+        color: white;
+        padding: 40px 40px 20px;
+        margin-bottom: 30px;
+        text-align: center;
+        font-size: 30px;
+        font-weight: bold;
+        background: url('../../PragimCourses/Content/Images/border_bottom_white.png') no-repeat center bottom
+    }
+
+.opinion__wrap {
+    background: white;
+    padding: 30px;
+    line-height: 2;
+    font-size: 16px;
+    color: #aaa;
+}
+
+.people {
+    display: flex;
+    align-items: flex-end;
+    margin: 15px 0;
+}
+
+.customer__image {
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    background: #ccc;
+}
+
+.customer__details {
+    margin-left: 20px;
+    font-family: Arial;
+}
+
+    .customer__details h2 {
+        font-size: 18px;
+        font-weight: bold;
+        color: black;
+        margin-bottom: 0
+    }
+
+    .customer__details p {
+        font-size: 15px;
+    }
+
+.signup__news {
+    background: #FF5722;
+    font-family: Arial;
+}
+
+.right__wrap {
+    display: flex;
+    padding: 45px 20px;
+}
+
+    .right__wrap span {
+        width: 80px;
+        height: 80px;
+        background: #E94917;
+        font-size: 37px;
+        text-align: center;
+        padding: 20px;
+        border-radius: 50%;
+        color: white
+    }
+
+    .right__wrap .information {
+        margin-left: 20px
+    }
+
+        .right__wrap .information h2 {
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .right__wrap .information p {
+            color: white;
+            font-size: 13px
+        }
+
+.signup-form {
+    display: flex;
+    padding: 60px 20px;
+}
+
+    .signup-form button {
+        background: #262C38;
+        color: white;
+        width: 150px;
+        height: 36px
+    }
+
+        .signup-form button:hover {
+            background: #E94917;
+        }
+
+.footer {
+    background: #262C38;
+    min-height: 500px;
+    color: white;
+    font-family: Arial;
+    padding-bottom: 18px
+}
+
+    .footer h1 {
+        height: 40px;
+        font-size: 20px;
+        font-weight: bold;
+        margin: 95px 0 55px;
+        background: url('../../PragimCourses/Content/Images/border_bottom.png') no-repeat left bottom
+    }
+
+    .footer p {
+        color: #657184;
+        line-height: 2;
+        display: inline-block
+    }
+
+    .footer ul {
+        margin: 0;
+        padding: 0;
+    }
+
+        .footer ul li {
+            list-style: none;
+        }
+
+.img-course {
+    width: 100px;
+    height: 100px;
+    display: inline-block;
+    vertical-align: top
+}
+
+    .img-course img {
+        width: 100%
+    }
+
+.course__content {
+    display: inline-block;
+    vertical-align: top
+}
+
+    .course__content h4 {
+        color: #657184;
+        margin-bottom: 0;
+    }
+
+    .course__content p {
+        font-size: 12px;
+        color: #FFAF00;
+    }
+
+.footer textarea, .footer input[type="text"] {
+    border: 0.5px solid #657184;
+    background: #262C38;
+}
+
+.footer button {
+    background: #FF5722;
+    width: 100%;
+    max-width: 283px
+}
+
+    .footer button:hover {
+        background: #2583CD;
+    }
+
+.footer hr {
+    border-top-color: #848181;
+}
+
+.footer p:nth-of-type(2) {
+    float: right
+}
+
+/*------------------------Subscribe--------------------------*/
+
+.subscribe__title,
+.feedback__title,
+.testimonial__title,
+.support__title,
+.contact__title,
+.courses__title {
+    background: #E4E8EE;
+    min-height: 220px
+}
+
+    .subscribe__title h1,
+    .feedback__title h1,
+    .testimonial__title h1,
+    .support__title h1,
+    .contact__title h1,
+    .courses__title {
+        padding: 60px 25px;
+        font-family: Arial;
+        font-size: 25px;
+        font-weight: 600;
+    }
+
+.subscribe__info-details {
+    margin: 50px 0;
+}
+
+    .subscribe__info-details h1 {
+        padding-bottom: 5px;
+        background: url('../../PragimCourses/Content/Images/border_bottom.png') no-repeat center bottom;
+        margin-bottom: 30px;
+        font-size: 23px;
+        font-weight: 700;
+    }
+
+    .subscribe__info-details p {
+        margin-bottom: 25px;
+        color: #83888e;
+        font-size: 13px;
+        line-height: 1.7;
+    }
+
+        .subscribe__info-details p > span {
+            font-weight: bold;
+            color: #6d6a6a;
+            font-size: 14px
+        }
+
+.subscribe__form h2 {
+    margin-bottom: 23px;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.subscribe__form input {
+    margin-bottom: 20px;
+    min-width: 500px;
+}
+
+.subscribe__form button {
+    background: #FF5722;
+    color: white;
+    width: 200px;
+    text-transform: uppercase;
+    min-height: 54px;
+    font-size: 18px;
+}
+
+    .subscribe__form button span {
+        font-size: 14px
+    }
+
+    .subscribe__form button:hover, .subscribe__form button:active {
+        background: #2583CD;
+        color: white
+    }
+
+@media(max-width : 550px) {
+    .subscribe__form input {
+        min-width: 250px;
+    }
+}
+/**-------------------------end subscribe----------------------*/
+
+/*-----------------------start feedback---------------------------*/
+.feedback__info-details {
+    margin: 50px 0;
+}
+
+    .feedback__info-details h1 {
+        padding-bottom: 5px;
+        background: url('../../PragimCourses/Content/Images/border_bottom.png') no-repeat left bottom;
+        margin-bottom: 30px;
+        font-size: 23px;
+        font-weight: 700;
+    }
+
+.feedback__form h2 {
+    margin: 21px 0;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.feedback__form select, input, textarea {
+    margin-bottom: 20px
+}
+
+.feedback__form select {
+    max-width: 200px
+}
+
+.feedback__form input, textarea {
+    min-width: 350px
+}
+
+.feedback__form h3 {
+    font-size: 15px;
+    font-weight: 600;
+    color: #525761;
+    margin-bottom: 18px;
+}
+
+.feedback__form button {
+    background: #FF5722;
+    color: white;
+    width: 150px;
+    text-transform: uppercase;
+    min-height: 54px;
+    font-size: 18px;
+}
+
+    .feedback__form button span {
+        font-size: 14px
+    }
+
+    .feedback__form button:hover, .feedback__form button:active {
+        background: #2583CD;
+        color: white
+    }
+/**---------------------end--------------------------------*/
+/*-----------------------support us ---------------------*/
+.left__support {
+    margin-top: 75px
+}
+
+    .left__support h1 {
+        padding: 15px 0;
+        margin-bottom: 30px;
+        font-size: 23px;
+        font-weight: 600;
+        background: url('../../PragimCourses/Content/Images/border_bottom.png') no-repeat left bottom
+    }
+
+    .left__support h4 {
+        margin-bottom: 25px;
+        color: #657184;
+        font-size: 15px;
+        font-weight: 600;
+    }
+
+    .left__support .link {
+        margin-bottom: 8px;
+    }
+
+        .left__support .link h4 {
+            margin-bottom: 5px;
+            color: #657184;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .left__support .link a {
+            color: black;
+        }
+
+    .left__support p {
+        margin-top: 30px;
+        color: #657184;
+    }
+
+        .left__support p:nth-of-type(2) {
+            margin-bottom: 30px;
+        }
+
+    .left__support .payment {
+        margin: 30px 0;
+        padding: 15px;
+        box-shadow: 2px 2px 2px #ccc
+    }
+
+        .left__support .payment h4 {
+            margin-bottom: 0;
+        }
+
+        .left__support .payment select {
+            max-width: 80px;
+        }
+
+        .left__support .payment button {
+            margin-top: 30px;
+            border-radius: 10px;
+            outline: none;
+            color: #657184;
+            font-size: 15px;
+            font-weight: 600
+        }
+
+        .left__support .payment p {
+            margin: 50px 0 30px;
+        }
+
+        .left__support .payment h5 {
+            color: #657184;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+.support .list {
+    color: black;
+    margin-bottom: 70px;
+}
+
+    .support .list a {
+        color: inherit;
+        font-size: 14px;
+        font-weight: 600;
+    }
+
+    .support .list li:nth-child(odd) {
+        background: #ddd
+    }
+
+
+.right__support {
+    margin-top: 75px
+}
+
+    .right__support h1 {
+        padding: 15px 0;
+        margin-bottom: 30px;
+        font-size: 23px;
+        font-weight: 600;
+        background: url('../../PragimCourses/Content/Images/border_bottom.png') no-repeat left bottom
+    }
+
+    .right__support .phone, .whatsapp, .email, .address {
+        margin-bottom: 35px;
+    }
+
+        .right__support .phone h6, .whatsapp h6, .email h6, .address h6 {
+            color: #657184;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .right__support .phone p, .whatsapp p, .email p, .address p {
+            color: #b3adad;
+            font-size: 12px;
+            font-weight: 600;
+        }
+/*--------------------------end-------------------------*/
+
+/*------------------contact start-----------------------*/
+.left__contact, .right__contact {
+    margin-top: 50px;
+}
+
+    .left__contact h1, .right__contact h1 {
+        padding: 15px 0;
+        margin-bottom: 30px;
+        font-size: 23px;
+        font-weight: 600;
+        background: url('../../PragimCourses/Content/Images/border_bottom.png') no-repeat left bottom
+    }
+
+    .left__contact .contact__form {
+        color: #657184
+    }
+
+        .left__contact .contact__form textarea, input[type="text"] {
+            min-width: 300px;
+        }
+
+        .left__contact .contact__form button {
+            background: #FF5722;
+            color: white;
+            min-width: 80px
+        }
+
+            .left__contact .contact__form button:hover,
+            .left__contact .contact__form button:active {
+                background: #0583E4
+            }
+
+    .right__contact p {
+        color: #657184
+    }
+
+    .right__contact span.glyphicon-filter {
+        float: left;
+        min-height: 100px;
+        color: #FF5722;
+        font-size: 17px;
+        margin-right: 5px;
+    }
+
+.phone {
+    margin-bottom: 33px;
+}
+
+    .phone .glyphicon-earphone {
+        color: #FF5722;
+        font-size: 17px;
+        margin-right: 5px;
+    }
+
+.whatsapp {
+    margin-bottom: 33px;
+}
+
+    .whatsapp .glyphicon-earphone {
+        color: #FF5722;
+        font-size: 13px;
+        margin-right: 5px;
+    }
+
+.email {
+    margin-bottom: 33px;
+}
+
+    .email p {
+        color: #3a3737;
+    }
+
+    .email .glyphicon-envelope {
+        color: #fd8964;
+        font-size: 13px;
+        margin-right: 5px;
+    }
+/*-------------------end---------------------------------*/
+/*----------------------download course start---------------*/
+.course__wrap-2 {
+    min-height: 205px;
+    margin-bottom: 25px;
+    box-shadow: 2px 2px 2px #ddd, -2px -2px 2px #ddd;
+}
+
+.img__course {
+    float: left;
+    width: 30%;
+}
+
+    .img__course img {
+        width: 100%;
+        min-height: 205px
+    }
+
+.course__details {
+    margin-left: 20px;
+    width: 65%;
+    float: left
+}
+
+    .course__details h3 {
+        font-size: 20px;
+        font-weight: 600;
+    }
+
+    .course__details .course__price {
+        display: block;
+        font-size: 17px;
+        font-weight: 600;
+        color: #657184;
+        margin: 15px 0 25px
+    }
+
+    .course__details button {
+        background: #FF5722;
+        color: white;
+        min-width: 90px
+    }
+
+        .course__details button:hover,
+        .course__details button:active {
+            background: #0583E4
+        }
+
+/*----------------------end---------------*/

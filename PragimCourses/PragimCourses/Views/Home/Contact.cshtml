@@ -1,17 +1,94 @@
 ﻿@{
     ViewBag.Title = "Contact";
 }
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
 
-<address>
-    One Microsoft Way<br />
-    Redmond, WA 98052-6399<br />
-    <abbr title="Phone">P:</abbr>
-    425.555.0100
-</address>
+<div class="contact__title">
+    <div class="container">
+        <h1>Contact Us</h1>
+    </div>
+</div>
 
-<address>
-    <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
-    <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
-</address>
+<div class="contact">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-5">
+                <div class="left__contact">
+                    <h1>Stay In Touch</h1>
+                    <div class="contact__form">
+                        <form>
+                            <div class="form-group">
+                                <label for="name">Your Name*</label>
+                                <input class="form-control" type="text" id="name" name="name" value="" />
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Your Email*</label>
+                                <input class="form-control" type="text" id="email" name="email" value="" />
+                            </div>
+                            <div class="form-group">
+                                <label for="subject">Your Subject</label>
+                                <input class="form-control" type="text" id="subject" name="subject" value="" />
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Your Message</label>
+                                <textarea class="form-control" id="message" rows="5"></textarea>
+                            </div>
+                            <div class="g-recaptcha" data-sitekey="6LfKuN0UAAAAAApO_hgLfawhEPoGGn0NKrJUPMWJ"></div>
+
+                            <div class="form-group">
+                                <button class="btn btn-default">Send</button>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-7">
+                <div class="right__contact">
+                    <div class="col-sm-6">
+                        <h1>Office Address</h1>
+                        <p>
+                            <span class="glyphicon glyphicon-filter"></span>
+                            3rd Floor Above Unilet Showroom Beside Nandas Hyderabadi Biryani, Marathahalli, Bengaluru, Karnataka 560037
+                        </p>
+                    </div>
+                    <div class="col-sm-6">
+                        <h1>Contact Number</h1>
+                        <div class="phone">
+                            <p><span class="glyphicon glyphicon-earphone"></span>+01022169733</p>
+                            <p><span class="glyphicon glyphicon-earphone"></span>+01022169733</p>
+                        </div>
+                        <div class="whatsapp">
+                            <p><span class="glyphicon glyphicon-earphone"></span>+01022169733</p>
+                        </div>
+                        <div class="email">
+                            <p><span class="glyphicon glyphicon-envelope"></span>pragim@gmail.com</p>
+                            <p><span class="glyphicon glyphicon-envelope"></span>pragim@pragimtech.com</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="signup__news">
+    <div class="container">
+        <div class="col-md-6 col-sm-6 col-xs-12">
+            <div class="right__wrap">
+                <span class="glyphicon glyphicon-envelope"></span>
+                <div class="information">
+                    <h2>Subscribe Email Alerts</h2>
+                    <p>If you wish to receive email alerts when new articles, videos or interview questions are posted on PragimTech.com, you can subscribe by providing your valid email.</p>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-md-6 col-sm-6 col-xs-12">
+            <div class="signup-form">
+                <input placeholder="Your Email Address" type="text" class="form-control" name="name" value="" />
+                <button class="btn btn-warning">Signup <span class="glyphicon glyphicon-arrow-right"></span> </button>
+
+            </div>
+        </div>
+    </div>
+</div>

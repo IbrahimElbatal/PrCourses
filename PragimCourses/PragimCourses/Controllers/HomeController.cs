@@ -12,7 +12,34 @@ namespace PragimCourses.Controllers
         {
             return View();
         }
-
+        public ActionResult Support()
+        {
+            return View();
+        }
+        public ActionResult Subscribe()
+        {
+            return View();
+        }
+        public ActionResult Feedback()
+        {
+            return View();
+        }
+        public ActionResult Testimonial()
+        {
+            return View();
+        }
+        public ActionResult FreeCourses()
+        {
+            return View();
+        }
+        public ActionResult ClassRoomCourses()
+        {
+            return View();
+        }
+        public ActionResult DownloadCourses()
+        {
+            return View();
+        }
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";

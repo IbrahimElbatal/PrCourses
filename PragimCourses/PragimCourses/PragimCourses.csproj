@@ -211,6 +211,19 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Images\angularjs8-360x270.jpg" />
+    <Content Include="Content\Images\banner-1.jpg" />
+    <Content Include="Content\Images\banner-2.jpg" />
+    <Content Include="Content\Images\banner-3.jpg" />
+    <Content Include="Content\Images\banner-5.jpg" />
+    <Content Include="Content\Images\border_bottom.png" />
+    <Content Include="Content\Images\border_bottom_white.png" />
+    <Content Include="Content\Images\c.jpg" />
+    <Content Include="Content\Images\devops-aws.jpg" />
+    <Content Include="Content\Images\mvc.jpg" />
+    <Content Include="Content\Images\pargim-logo-1.png" />
+    <Content Include="Content\Images\paython.jpg" />
+    <Content Include="Content\Images\ui-dev.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -265,6 +278,13 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Home\Support.cshtml" />
+    <Content Include="Views\Home\Subscribe.cshtml" />
+    <Content Include="Views\Home\Feedback.cshtml" />
+    <Content Include="Views\Home\Testimonial.cshtml" />
+    <Content Include="Views\Home\FreeCourses.cshtml" />
+    <Content Include="Views\Home\DownloadCourses.cshtml" />
+    <Content Include="Views\Home\ClassRoomCourses.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -4,38 +4,168 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
+    <script src="https://www.google.com/recaptcha/api.js"></script>
+
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                </ul>
-                @Html.Partial("_LoginPartial")
+
+    <header class="site__header">
+        <div class="header__meta">
+            <div class="container">
+                <div class="row">
+                    <p class="site__description col-xs-12 col-md-4">Training + Placements = Success</p>
+                    <nav class="meta__nav col-md-8">
+                        <ul>
+                            <li class="call">
+                                <i class="glyphicon glyphicon-phone"></i>
+                                Call us +01022169733 / 01013658438 &nbsp;|&nbsp;
+                                <i class="glyphicon glyphicon-calendar"></i> +01022169733
+                            </li>
+                            <li><a href="#">Signup</a></li>
+                            <li><a href="#">Login</a></li>
+                        </ul>
+                    </nav>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
-    </div>
+
+        <div class="container">
+            <div class="header__menu">
+                <div class="row">
+                    <div class="col-sm-3 col-xs-12 header__brand">
+                        <a href="~/Home/Index">
+                            <img src="~/Content/Images/pargim-logo-1.png" />
+                        </a>
+                    </div>
+                    <div class="col-sm-9 col-xs-12 header__list">
+                        <nav class="navbar navbar-default">
+                            <div class="navbar-header">
+                                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                                    <span class="sr-only">Toggle navigation</span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                </button>
+                            </div>
+
+                            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                                <ul class="nav navbar-nav">
+                                    <li class="dropdown active">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">Home <span class="caret"></span></a>
+                                        <ul class="dropdown-menu">
+                                            <li>
+                                                @Html.ActionLink("Subscribe","Subscribe","Home")
+                                            </li>
+                                            <li>
+                                                @Html.ActionLink("Feedback", "Feedback", "Home")
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="dropdown">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">Courses <span class="caret"></span></a>
+                                        <ul class="dropdown-menu">
+                                            <li>
+                                                @Html.ActionLink("Free Online Courses", "FreeCourses", "Home")
+
+                                            </li>
+                                            <li>
+                                                @Html.ActionLink("Download Courses", "DownloadCourses", "Home")
+
+                                            </li>
+                                            <li>
+                                                @Html.ActionLink("ClassRoom Courses","ClassRoomCourses","Home")
+
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        @Html.ActionLink("Testimonial", "Testimonial","Home")
+
+                                    </li>
+                                    <li>
+                                        @Html.ActionLink("Support Us", "Support","Home")
+
+                                    </li>
+                                    <li>
+                                        @Html.ActionLink("Contact Us", "Contact", "Home")
+
+                                    </li>
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+
+    @RenderBody()
+
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-xs-12">
+                    <h1>About Pragim Technologies</h1>
+                    <p>
+                        PRAGIM is known for placements in major IT companies. Major MNC's visit PRAGIM campus every week for interviews.You can contact our old students who are placed with in 1 week of completing their Training and are getting a salary ranging from Rs. 25,000 to Rs.50,000.Click Here to check out our selected trainees by different MNC's and what they say about training at PRAGIM.
+                    </p>
+                </div>
+                <div class="col-md-4 col-xs-12">
+                    <h1>Recent Courses</h1>
+                    <ul>
+                        <li>
+                            <div class="img-course">
+                                <img src="~/Content/Images/paython.jpg" alt="Alternate Text" />
+                            </div>
+                            <div class="course__content">
+                                <h4>Python</h4>
+                                <p>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                </p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="img-course">
+                                <img src="~/Content/Images/mvc.jpg" alt="Alternate Text" />
+                            </div>
+                            <div class="course__content">
+                                <h4>Mvc</h4>
+                                <p>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                </p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-4 col-xs-12">
+                    <h1>Quick Contact</h1>
+                    <input type="text" class="form-control" placeholder="Your Email Address" name="name" value="" />
+                    <br />
+                    <textarea class="form-control" placeholder="Type Your Messege" rows="5"></textarea>
+                    <div class="g-recaptcha" data-sitekey="6LfKuN0UAAAAAApO_hgLfawhEPoGGn0NKrJUPMWJ"></div>
+                    <br />
+                    <button class="btn btn-block btn-warning"><span class="glyphicon glyphicon-arrow-right"></span></button>
+                </div>
+            </div>
+            <hr />
+            <p>© Copyright 2019 All rights reserved by Pragim Technologies Pvt Ltd</p>
+            <p>Disclaimer - Terms of use</p>
+        </div>
+
+    </footer>
+
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")

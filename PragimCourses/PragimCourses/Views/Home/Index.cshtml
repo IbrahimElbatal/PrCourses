@@ -1,31 +1,511 @@
 ﻿@{
-    ViewBag.Title = "Home Page";
+    ViewBag.Title = "Home";
 }
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+        <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+        <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+        <li data-target="#carousel-example-generic" data-slide-to="3"></li>
+    </ol>
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner" role="listbox">
+        <div class="item active">
+
+            <div class="carousel-image" style="background-image:url('../../Content/Images/banner-1.jpg') "></div>
+            <div class="carousel-caption">
+                <h1>Class Room Courses</h1>
+                <p>Come and experience quality learning offered by PRAGIM's best Trainers</p>
+                <div class="free__courses">
+                    <ul>
+                        <li>C#</li>
+                        <li>Asp.net</li>
+                        <li>Entityframework</li>
+                        <li>Angular 6</li>
+                        <li>Angular cli</li>
+                        <li>Ado.net</li>
+                        <li>Sql Server</li>
+                        <li>Mvc</li>
+                    </ul>
+                </div>
+                <button class="btn btn-default">View Courses <span class="glyphicon glyphicon-arrow-right"></span></button>
+            </div>
+        </div>
+        <div class="item">
+            <div class="carousel-image" style="background-image:url('../../Content/Images/banner-2.jpg') "></div>
+
+            <div class="carousel-caption">
+                <h1>Free Online Courses</h1>
+                <p>Browse through kudvenkat's free courses. Just click the button, select the course and start learning!</p>
+
+                <div class="free__courses">
+                    <ul>
+                        <li>C#</li>
+                        <li>Asp.net</li>
+                        <li>Entityframework</li>
+                        <li>Angular 6</li>
+                        <li>Angular cli</li>
+                        <li>Ado.net</li>
+                        <li>Sql Server</li>
+                        <li>Mvc</li>
+                    </ul>
+                </div>
+                <button class="btn btn-default">Learn Free Courses <span class="glyphicon glyphicon-arrow-right"></span></button>
+
+            </div>
+        </div>
+        <div class="item">
+            <div class="carousel-image" style="background-image:url('../../Content/Images/banner-3.jpg') "></div>
+
+            <div class="carousel-caption">
+                <h1>Download Courses</h1>
+                <p>Buy and Download kudvenkat's courses including exclusive slides and videos.</p>
+                <div class="free__courses">
+                    <ul>
+                        <li>C#</li>
+                        <li>Asp.net</li>
+                        <li>Entityframework</li>
+                        <li>Angular 6</li>
+                        <li>Angular cli</li>
+                        <li>Ado.net</li>
+                        <li>Sql Server</li>
+                        <li>Mvc</li>
+                    </ul>
+                </div>
+                <button class="btn btn-default">Buy Courses <span class="glyphicon glyphicon-arrow-right"></span></button>
+
+            </div>
+
+        </div>
+        <div class="item">
+            <div class="carousel-image" style="background-image:url('../../Content/Images/banner-5.jpg') "></div>
+
+            <div class="carousel-caption">
+                <h1>New Training Courses</h1>
+                <p></p>
+                <div class="free__courses">
+                    <ul>
+                        <li>C#</li>
+                        <li>Asp.net</li>
+                        <li>Entityframework</li>
+                        <li>Angular 6</li>
+                        <li>Angular cli</li>
+                        <li>Ado.net</li>
+                        <li>Sql Server</li>
+                        <li>Mvc</li>
+                    </ul>
+                </div>
+                <button class="btn btn-default">Check Courses <span class="glyphicon glyphicon-arrow-right"></span></button>
+
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Controls -->
+    <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
 </div>
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+<div class="container">
+    <div class="new__batch">
+        <h1>Next New Batches</h1>
+        <div class="row">
+            <div class="col-md-6 col-sm-12">
+                <div class="batch__wrap">
+                    <div class="batch__date">
+                        <span>February</span>
+                        <span>26</span>
+                        <span>2020</span>
+                    </div>
+                    <div class="batch__description">
+                        <p>Asp.net core with angular 8 session</p>
+                        <span>7:00 AM</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-12">
+                <div class="batch__wrap">
+
+                    <div class="batch__date">
+                        <span>March</span>
+                        <span>26</span>
+                        <span>2020</span>
+                    </div>
+                    <div class="batch__description">
+                        <p>Asp.net core with angular 8 session</p>
+                        <span>7:00 AM</span>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+
+</div>
+
+<div class="week__free_classes">
+    <div class="container">
+        <div class="new__batch">
+            <h1>This Week Free Classes</h1>
+            <div class="row">
+                <div class="col-md-6 col-sm-12">
+                    <div class="batch__wrap">
+                        <div class="batch__date">
+                            <span>February</span>
+                            <span>26</span>
+                            <span>2020</span>
+                        </div>
+                        <div class="batch__description">
+                            <p>Asp.net core with angular 8 session</p>
+                            <span>7:00 AM</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-12">
+                    <div class="batch__wrap">
+
+                        <div class="batch__date">
+                            <span>March</span>
+                            <span>26</span>
+                            <span>2020</span>
+                        </div>
+                        <div class="batch__description">
+                            <p>Asp.net core with angular 8 session</p>
+                            <span>7:00 AM</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+</div>
+
+
+<div class="pragim__information">
+    <div class="container">
+        <h1>Why should you choose PRAGIM TECH</h1>
+        <div class="row">
+            <div class="col-xs-12 col-md-4">
+                <span class="glyphicon glyphicon-plane"></span>
+                <h2>Superfast Support</h2>
+                <p>
+                    PRAGIM is known for placements in major IT companies. Major MNC's visit PRAGIM campus every week for interviews. You can contact our old students for feedback.
+                </p>
+            </div>
+            <div class="col-xs-12 col-md-4">
+                <span class="glyphicon glyphicon-phone"></span>
+                <h2>Learn On Any Device</h2>
+                <p>
+                    Real world project-based training by working software professionals with over 10 years experience.
+                </p>
+            </div>
+            <div class="col-xs-12 col-md-4">
+                <span class="glyphicon glyphicon-certificate"></span>
+                <h2>Certification Courses</h2>
+                <p>
+                    Course completion certificate, Mock interviews and resume preparation.
+                </p>
+            </div>
+        </div>
+        <button class="btn btn-warning pragim__information-button">Buy Course</button>
+
+    </div>
+</div>
+
+<div class="popular__courses">
+    <div class="container">
+        <h1>Most Popular Online Courses</h1>
+        <div class="col-md-4 col-sm-6 col-xs-12">
+            <div class="course__wrap">
+                <div><img src="~/Content/Images/mvc.jpg" /></div>
+                <p>Asp.Net Mvc</p>
+                <div class="course__footer">
+                    <div class="star__content">
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star"></span>
+                    </div>
+                    <span class="enrolled">165 Enrolled</span>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-md-4 col-sm-6 col-xs-12">
+            <div class="course__wrap">
+                <div><img src="~/Content/Images/paython.jpg" /></div>
+                <p>Python Course</p>
+                <div class="course__footer">
+                    <div class="star__content">
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star"></span>
+                    </div>
+                    <span class="enrolled">165 Enrolled</span>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-md-4 col-sm-6 col-xs-12">
+            <div class="course__wrap">
+                <div><img src="~/Content/Images/angularjs8-360x270.jpg" /></div>
+                <p>Angular 8 Course</p>
+                <div class="course__footer">
+                    <div class="star__content">
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star"></span>
+                    </div>
+                    <span class="enrolled">165 Enrolled</span>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-md-4 col-sm-6 col-xs-12">
+            <div class="course__wrap">
+                <div><img src="~/Content/Images/c.jpg" /></div>
+                <p>C# Course</p>
+                <div class="course__footer">
+                    <div class="star__content">
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star"></span>
+                    </div>
+                    <span class="enrolled">165 Enrolled</span>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-md-4 col-sm-6 col-xs-12">
+            <div class="course__wrap">
+                <div><img src="~/Content/Images/ui-dev.jpg" /></div>
+                <p>UI Design Course</p>
+                <div class="course__footer">
+                    <div class="star__content">
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star"></span>
+                    </div>
+                    <span class="enrolled">165 Enrolled</span>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-md-4 col-sm-6 col-xs-12">
+            <div class="course__wrap">
+                <div><img src="~/Content/Images/devops-aws.jpg" /></div>
+                <p>DevOps Course</p>
+                <div class="course__footer">
+                    <div class="star__content">
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star"></span>
+                    </div>
+                    <span class="enrolled">165 Enrolled</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<div class="container">
+    <button class="btn btn-warning pragim__information-button">
+        Browse All Courses
+        <span style="font-size: 14px" class="glyphicon glyphicon-arrow-right"></span>
+
+    </button>
+</div>
+
+<div class="pragim__information">
+    <div class="container">
+        <h1>Software Development Services</h1>
+        <div class="row">
+            <div class="col-xs-12 col-md-4">
+                <span class="glyphicon glyphicon-plane"></span>
+                <h2>Cost effective software solutions</h2>
+                <p>
+                    We help develop, implement and maintain cost effective and high quality software applications and solutions.
+                </p>
+            </div>
+            <div class="col-xs-12 col-md-4">
+                <span class="glyphicon glyphicon-phone"></span>
+                <h2>Highly skilled and experienced team</h2>
+                <p>
+                    Our development team is thoroughly trained, skilled, experienced and love what they do.
+                </p>
+            </div>
+            <div class="col-xs-12 col-md-4">
+                <span class="glyphicon glyphicon-certificate"></span>
+                <h2>Contact us for a free quote</h2>
+                <p>
+                    Contact us on kudvenkat@pragimtech.com for a free no obligation quote
+                </p>
+            </div>
+        </div>
+        <button class="btn btn-warning pragim__information-button">Our Development Approach</button>
+
+    </div>
+</div>
+
+<div class="people__opinion">
+    <h1>What People Say</h1>
+
+    <div class="container">
+        <div id="carousel-example-generic1" class="carousel slide" data-ride="carousel">
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+                <li data-target="#carousel-example-generic1" data-slide-to="0" class="active"></li>
+                <li data-target="#carousel-example-generic1" data-slide-to="1"></li>
+                <li data-target="#carousel-example-generic1" data-slide-to="2"></li>
+            </ol>
+
+            <!-- Wrapper for slides -->
+            <div style="min-height: 785px" class="carousel-inner" role="listbox">
+                <div class="item active">
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6 keep-responsive">
+                            <div class="opinion__wrap">
+                                <p>
+                                    I got my first job as junior software developer and really want to thank you as when I was preparing for interviews videos uploaded by you on .net technologies helped so much. I bought your DVDs from your website and are very useful. Thank you Venkat sir.
+                                </p>
+                                <div class="people">
+                                    <div class="customer__image"></div>
+                                    <div class="customer__details">
+                                        <h2>Ali</h2>
+                                        <p>DotNet Developer</p>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6 keep-responsive">
+                            <div class="opinion__wrap">
+                                <p>
+                                    In PRAGIM Technologies, they did not ask me for any registration fee. They gave me a chance to attend the classes free for one week. After one week, if I feel the training is good I can continue, otherwise we can quit without paying anything. Dotnet trainer in PRAGIM Technologies has 8 years of experience. I also spoke to the previous batch students who were placed in different organizations. After speaking with old batch students, I became very confident obout their quality of training, trainer and placement programs.
+                                </p>
+                                <div class="people">
+                                    <div class="customer__image"></div>
+                                    <div class="customer__details">
+                                        <h2>Ibrahim</h2>
+                                        <p>DotNet Developer</p>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6 keep-responsive">
+                            <div class="opinion__wrap">
+                                <p>
+                                    Hello Pragim Technologies. I have been following your videos since last one year and just got a job in an MNC. They asked me all about SQL, GAC and DLL Hell. I have given almost 100% answer to all question just because of your video tutorials sir. I am coming from medium class family and you changed my life. I do not have enough words. God bless you sir. I promise I will do any thing for you. Hatts off to you sir. Thank you so much. You Changed my life until i live i can not forget you.
+                                </p>
+                                <div class="people">
+                                    <div class="customer__image"></div>
+                                    <div class="customer__details">
+                                        <h2>Noha</h2>
+                                        <p>Sharepoint Developer</p>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6 keep-responsive">
+                            <div class="opinion__wrap">
+                                <p>
+                                    Every institute says they provide placements and never do that after training, but Pragim Technologies is the only institute who helped me get a job immediately after my training. The quality of the training is really good in Pragim Technologies. Real time project along with the interview questions is also explained by our OBIEE trainer.
+                                </p>
+                                <div class="people">
+                                    <div class="customer__image"></div>
+                                    <div class="customer__details">
+                                        <h2>Samir</h2>
+                                        <p>Oracle Developer</p>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6 keep-responsive">
+                            <div class="opinion__wrap">
+                                <p>Hello KudVenkat sir, I would like to express my gratitude to You. Your DVDs with all the slides and videos helped a lot. I got a job in 2 months. I really admire the way you professionally provide information. I do not have many words to describe my admiration for You. But can only say one thing: I searched the entire internet and youtube all and I can assure You channel is the best channel that only can be found (even paid resources on the Internet can not be compared with your product). I am very grateful to you for the work you have done. if you need any help, I will be very grateful. I have shared your youtube and blog links in internet forums and social networks like facebook, google+ and twitter. Your work is very helpful to people, because after watching your video, they go for an interview and applying for a job. It is hoped that you will be pleased to read this message. Good day to You.</p>
+                                <div class="people">
+                                    <div class="customer__image"></div>
+                                    <div class="customer__details">
+                                        <h2>Mona</h2>
+                                        <p>Database Administrator</p>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6 keep-responsive">
+                            <div class="opinion__wrap">
+                                <p>
+                                    Hi Pragim Technologies, your training is so awesome. Without even ever doing c or c++ or any other programming language, I am able to develop small projects using Visual studio and even MVC. Many people suggested that it is not possible being from biochemistry background to become a .NET developer but I am sure that nothing is impossible and I proved that with your training. Your training institute is awesome and your training is more than sufficient if anyone has good motivation to become a software engineer. Its that good.
+                                </p>
+                                <div class="people">
+                                    <div class="customer__image"></div>
+                                    <div class="customer__details">
+                                        <h2>Asmaa</h2>
+                                        <p>Php Developer</p>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="signup__news">
+    <div class="container">
+        <div class="col-md-6 col-sm-6 col-xs-12">
+            <div class="right__wrap">
+                <span class="glyphicon glyphicon-envelope"></span>
+                <div class="information">
+                    <h2>Subscribe Email Alerts</h2>
+                    <p>If you wish to receive email alerts when new articles, videos or interview questions are posted on PragimTech.com, you can subscribe by providing your valid email.</p>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-md-6 col-sm-6 col-xs-12">
+            <div class="signup-form">
+                <input placeholder="Your Email Address" type="text" class="form-control" name="name" value="" />
+                <button class="btn btn-warning">Signup <span class="glyphicon glyphicon-arrow-right"></span> </button>
+
+            </div>
+        </div>
     </div>
 </div>
