@@ -28,8 +28,24 @@ textarea {
 
 
 
-/**Header*/
+/*Pagination*/
+.pagination-container {
+    text-align: right;
+    margin-right: 40px;
+}
 
+.pagination li a {
+    color: #FF5722;
+    padding: 15px
+}
+
+.pagination .active a {
+    background: #FF5722;
+    border-color: #FF5722;
+}
+
+
+/**Header*/
 .site__header {
 }
 
@@ -267,7 +283,7 @@ a.left.carousel-control {
         text-align: center;
         margin-bottom: 35px;
         padding-bottom: 20px;
-        background: url('../../PragimCourses/Content/Images/border_bottom.png') no-repeat center bottom
+        background: url('../Content/Images/border_bottom.png') no-repeat center bottom
     }
 
 .batch__wrap {
@@ -325,7 +341,7 @@ a.left.carousel-control {
         padding: 80px 0 25px;
         text-align: center;
         margin-bottom: 75px;
-        background: url('../../PragimCourses/Content/Images/border_bottom.png') no-repeat center bottom
+        background: url('../Content/Images/border_bottom.png') no-repeat center bottom
     }
 
     .pragim__information span {
@@ -366,18 +382,20 @@ a.left.carousel-control {
         font-size: 33px;
         font-weight: bold;
         padding-bottom: 20px;
-        background: url('../../PragimCourses/Content/Images/border_bottom.png') no-repeat center bottom
+        background: url('../Content/Images/border_bottom.png') no-repeat center bottom
     }
 
 .course__wrap {
     box-shadow: 2px 2px 2px #ddd;
     min-height: 450px;
     margin-bottom: 25px;
-    overflow: hidden; perspective: 400px;
+    overflow: hidden; 
+    perspective: 400px;
 }
 
     .course__wrap img {
         width: 100%;
+        min-height: 212px
     }
 
         .course__wrap img:hover {
@@ -391,20 +409,22 @@ a.left.carousel-control {
     }
 
 .course__footer {
-    /* position: absolute; */
-    /* left: 0; */
-    /* bottom: 20px; */
-    padding: 60px 20px 20px;
+    position: absolute;
+    left: 0;
+    bottom: 25px;
+    width: 100%
 }
 
 .star__content {
     display: inline-block;
-    float: left;
-    color: #FFAF00
+    color: #FFAF00;
+    padding-left: 12px;
+    width: 65%
 }
 
 .course__footer .enrolled {
-    float: right
+    /* float: right */
+    color: #b0b7c5;
 }
 
 /*---------------------------*/
@@ -426,7 +446,7 @@ a.left.carousel-control {
         text-align: center;
         font-size: 30px;
         font-weight: bold;
-        background: url('../../PragimCourses/Content/Images/border_bottom_white.png') no-repeat center bottom
+        background: url('../Content/Images/border_bottom_white.png') no-repeat center bottom
     }
 
 .opinion__wrap {
@@ -530,7 +550,7 @@ a.left.carousel-control {
         font-size: 20px;
         font-weight: bold;
         margin: 95px 0 55px;
-        background: url('../../PragimCourses/Content/Images/border_bottom.png') no-repeat left bottom
+        background: url('../Content/Images/border_bottom.png') no-repeat left bottom
     }
 
     .footer p {
@@ -627,7 +647,7 @@ a.left.carousel-control {
 
     .subscribe__info-details h1 {
         padding-bottom: 5px;
-        background: url('../../PragimCourses/Content/Images/border_bottom.png') no-repeat center bottom;
+        background: url('../Content/Images/border_bottom.png') no-repeat center bottom;
         margin-bottom: 30px;
         font-size: 23px;
         font-weight: 700;
@@ -689,7 +709,7 @@ a.left.carousel-control {
 
     .feedback__info-details h1 {
         padding-bottom: 5px;
-        background: url('../../PragimCourses/Content/Images/border_bottom.png') no-repeat left bottom;
+        background: url('../Content/Images/border_bottom.png') no-repeat left bottom;
         margin-bottom: 30px;
         font-size: 23px;
         font-weight: 700;
@@ -748,7 +768,7 @@ a.left.carousel-control {
         margin-bottom: 30px;
         font-size: 23px;
         font-weight: 600;
-        background: url('../../PragimCourses/Content/Images/border_bottom.png') no-repeat left bottom
+        background: url('../Content/Images/border_bottom.png') no-repeat left bottom
     }
 
     .left__support h4 {
@@ -840,7 +860,7 @@ a.left.carousel-control {
         margin-bottom: 30px;
         font-size: 23px;
         font-weight: 600;
-        background: url('../../PragimCourses/Content/Images/border_bottom.png') no-repeat left bottom
+        background: url('../Content/Images/border_bottom.png') no-repeat left bottom
     }
 
     .right__support .phone, .whatsapp, .email, .address {
@@ -870,7 +890,7 @@ a.left.carousel-control {
         margin-bottom: 30px;
         font-size: 23px;
         font-weight: 600;
-        background: url('../../PragimCourses/Content/Images/border_bottom.png') no-repeat left bottom
+        background: url('../Content/Images/border_bottom.png') no-repeat left bottom
     }
 
     .left__contact .contact__form {
@@ -952,8 +972,13 @@ a.left.carousel-control {
 
     .img__course img {
         width: 100%;
-        min-height: 205px
+        min-height: 205px;
+        max-height: 205px;
     }
+    
+.img__course img:hover {
+    filter: brightness(0.5)
+}
 
 .course__details {
     margin-left: 20px;

@@ -12,12 +12,14 @@ namespace PragimCourses.Configuration
             Property(c => c.Header)
                 .HasMaxLength(50)
                 .IsRequired()
-                .HasColumnAnnotation("Index",
-                    new IndexAnnotation(new IndexAttribute("Ak_Course_Name") { IsUnique = true }));
+            .HasColumnAnnotation("Index",
+                new IndexAnnotation(new IndexAttribute("Ak_Course") { Order = 1, IsUnique = true }));
 
             Property(c => c.Description)
                 .HasMaxLength(200)
-                .IsRequired();
+                .IsRequired()
+            .HasColumnAnnotation("Index",
+                new IndexAnnotation(new IndexAttribute("AK_Course") { Order = 2, IsUnique = true }));
 
             Property(c => c.ImagePath)
                 .HasMaxLength(200)

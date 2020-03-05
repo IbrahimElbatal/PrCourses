@@ -1,0 +1,46 @@
+﻿@using PagedList.Mvc
+@model PagedList.IPagedList<PragimCourses.Models.CourseCategory>
+@{
+    ViewBag.Title = "ClassRoom Courses";
+}
+
+<div class="contact__title">
+    <div class="container">
+        <h1>ClassRoom Courses</h1>
+    </div>
+</div>
+
+<div class="popular__courses">
+    <div class="container">
+        @foreach (var course in Model)
+        {
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <div class="course__wrap">
+                    <div><img src="@Url.Content(course.Course.ImagePath)"/></div>
+                    <p>@course.Course.Description</p>
+                    <div class="course__footer">
+                        <div class="star__content">
+                            <span class="glyphicon glyphicon-star"></span>
+                            <span class="glyphicon glyphicon-star"></span>
+                            <span class="glyphicon glyphicon-star"></span>
+                            <span class="glyphicon glyphicon-star"></span>
+                            <span class="glyphicon glyphicon-star"></span>
+                        </div>
+                        <span class="enrolled">165 Enrolled</span>
+                    </div>
+                </div>
+
+            </div>
+        }
+        @Html.PagedListPager(@Model,page => Url.Action("ClassRoomCourses",new
+        {
+            page
+        }),new PagedListRenderOptions()
+        {
+            DisplayEllipsesWhenNotShowingAllPageNumbers = true    
+        })
+
+    </div>
+</div>
+
+@{Html.RenderPartial("_signup_news");}

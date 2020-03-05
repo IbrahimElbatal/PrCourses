@@ -13,7 +13,7 @@ namespace PragimCourses.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "202003041829421_initial"; }
+            get { return "202003051440292_initial"; }
         }
         
         string IMigrationMetadata.Source

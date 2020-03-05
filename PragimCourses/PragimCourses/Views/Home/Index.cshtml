@@ -488,24 +488,5 @@
     </div>
 </div>
 
-<div class="signup__news">
-    <div class="container">
-        <div class="col-md-6 col-sm-6 col-xs-12">
-            <div class="right__wrap">
-                <span class="glyphicon glyphicon-envelope"></span>
-                <div class="information">
-                    <h2>Subscribe Email Alerts</h2>
-                    <p>If you wish to receive email alerts when new articles, videos or interview questions are posted on PragimTech.com, you can subscribe by providing your valid email.</p>
-                </div>
-            </div>
 
-        </div>
-        <div class="col-md-6 col-sm-6 col-xs-12">
-            <div class="signup-form">
-                <input placeholder="Your Email Address" type="text" class="form-control" name="name" value="" />
-                <button class="btn btn-warning">Signup <span class="glyphicon glyphicon-arrow-right"></span> </button>
-
-            </div>
-        </div>
-    </div>
-</div>
+@{Html.RenderPartial("_signup_news");}

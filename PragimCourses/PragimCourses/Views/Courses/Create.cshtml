@@ -1,0 +1,41 @@
+﻿@model PragimCourses.ViewModels.CourseViewModel
+@{
+    ViewBag.Title = "Create";
+}
+<div class="container">
+    @using (Html.BeginForm("Create", "Courses", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <div class="form-group">
+            @Html.Label("Course Category")
+            @Html.DropDownListFor(c => c.CategoryId, Model.Categories, "Select Category", new { @class = "form-control" })
+            @Html.ValidationMessageFor(c => c.CategoryId, "", new { @class = "text-danger" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(c => c.Header)
+            @Html.EditorFor(c => c.Header, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(c => c.Header, "", new { @class = "text-danger" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(c => c.Description)
+            @Html.EditorFor(c => c.Description, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(c => c.Description, "", new { @class = "text-danger" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(c => c.Price)
+            @Html.EditorFor(c => c.Price, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(c => c.Price, "", new { @class = "text-danger" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(c => c.ImagePath)
+            @Html.EditorFor(c => c.ImagePath, null, "postedFile", new { htmlAttributes = new { @class = "form-control", @type = "file" } })
+            @Html.ValidationMessageFor(c => c.ImagePath, "", new { @class = "text-danger" })
+        </div>
+
+        <button class="btn btn-default" type="submit">Save</button>
+    }
+</div>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

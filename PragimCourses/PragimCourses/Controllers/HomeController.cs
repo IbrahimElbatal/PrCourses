@@ -1,6 +1,4 @@
-﻿using System.Data.Entity;
-using PragimCourses.Models;
-using System.Linq;
+﻿using PragimCourses.Models;
 using System.Web.Mvc;
 
 namespace PragimCourses.Controllers
@@ -32,22 +30,8 @@ namespace PragimCourses.Controllers
         {
             return View();
         }
-        public ActionResult FreeCourses()
-        {
-            var freeCoursesId = _context.Categories
-                .SingleOrDefault(c => c.Name.ToLower() == "free courses").Id;
 
-            var courses = _context.CourseCategories.Include(c => c.Course).Where(c => c.CategoryId == freeCoursesId).ToList();
-            return View(courses);
-        }
-        public ActionResult ClassRoomCourses()
-        {
-            return View();
-        }
-        public ActionResult DownloadCourses()
-        {
-            return View();
-        }
+
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";

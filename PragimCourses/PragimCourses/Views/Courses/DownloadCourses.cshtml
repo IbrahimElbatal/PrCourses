@@ -1,0 +1,34 @@
+﻿@model IEnumerable<PragimCourses.Models.CourseCategory>
+@{
+    ViewBag.Title = "Download Courses";
+}
+
+<div class="courses__title">
+    <div class="container">
+        <h1>Download Courses</h1>
+    </div>
+</div>
+
+
+<div class="popular__courses">
+    <div class="container">
+        @foreach (var course in Model)
+        {
+            <div class="col-xs-12">
+                <div class="course__wrap-2">
+                    <div class="img__course">
+                        <img src="@Url.Content(course.Course.ImagePath)" />
+                    </div>
+                    <div class="course__details">
+                        <h3>@course.Course.Description</h3>
+                        <span class="course__price">$ @course.Course.Price</span>
+                        <button class="btn btn-default">Buy Now</button>
+                    </div>
+                </div>
+
+            </div>
+        }
+    </div>
+</div>
+
+@{Html.RenderPartial("_signup_news");}
