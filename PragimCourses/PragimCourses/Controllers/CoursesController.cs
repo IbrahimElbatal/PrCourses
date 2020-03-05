@@ -62,13 +62,21 @@ namespace PragimCourses.Controllers
                 "Name");
 
             if (!ModelState.IsValid)
+            {
                 return View(model);
+            }
 
-            var fileName =
-                Path.Combine(Server.MapPath("~/Content/Images/FreeCourses/"), postedFile.FileName);
-            postedFile.SaveAs(fileName);
+            var category = _context.Categories.Find(model.CategoryId)?.Name;
+            category = category?.Replace(" ", "");
 
-            model.ImagePath = "~/Content/Images/FreeCourses/" + postedFile.FileName;
+            if (category != null)
+            {
+                var fileName =
+                    Path.Combine(Server.MapPath("~/Content/Images/" + category + "/"), postedFile.FileName);
+                postedFile.SaveAs(fileName);
+
+                model.ImagePath = "~/Content/Images/" + category + "/" + postedFile.FileName;
+            }
 
             var course = new Course()
             {
@@ -84,9 +92,10 @@ namespace PragimCourses.Controllers
             };
             _context.Courses.Add(course);
             _context.CourseCategories.Add(courseCategory);
+
             _context.SaveChanges();
 
-            return RedirectToAction("FreeCourses");
+            return RedirectToAction("FreeCourses", "Courses");
         }
     }
 }

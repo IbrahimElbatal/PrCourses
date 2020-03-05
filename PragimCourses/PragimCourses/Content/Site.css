@@ -386,7 +386,7 @@ a.left.carousel-control {
     }
 
 .course__wrap {
-    box-shadow: 2px 2px 2px #ddd;
+    box-shadow: 2px 2px 2px #ddd , -2px -2px 2px #ddd;
     min-height: 450px;
     margin-bottom: 25px;
     overflow: hidden; 
