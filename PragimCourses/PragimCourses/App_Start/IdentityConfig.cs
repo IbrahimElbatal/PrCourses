@@ -1,16 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
-using System.Security.Claims;
-using System.Threading.Tasks;
-using System.Web;
-using Microsoft.AspNet.Identity;
+﻿using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
 using PragimCourses.Models;
+using System;
+using System.Net;
+using System.Net.Mail;
+using System.Security.Claims;
+using System.Threading.Tasks;
 
 namespace PragimCourses
 {
@@ -18,7 +16,30 @@ namespace PragimCourses
     {
         public Task SendAsync(IdentityMessage message)
         {
-            // Plug in your email service here to send an email.
+            var userName = "ibrahimelbatal2@gmail.com";
+            var password = "Elbatal_123";
+
+            var smtpClient = new SmtpClient();
+
+            smtpClient.Host = "smtp.gmail.com";
+            smtpClient.Port = 587;
+            smtpClient.EnableSsl = true;
+            smtpClient.DeliveryMethod = SmtpDeliveryMethod.Network;
+            smtpClient.UseDefaultCredentials = false;
+
+            smtpClient.Credentials = new NetworkCredential()
+            {
+                UserName = userName,
+                Password = password
+            };
+
+            var mailMessage = new MailMessage(userName, message.Destination)
+            {
+                Body = message.Body,
+                Subject = message.Subject
+            };
+            smtpClient.Send(mailMessage);
+
             return Task.FromResult(0);
         }
     }
@@ -40,7 +61,7 @@ namespace PragimCourses
         {
         }
 
-        public static ApplicationUserManager Create(IdentityFactoryOptions<ApplicationUserManager> options, IOwinContext context) 
+        public static ApplicationUserManager Create(IdentityFactoryOptions<ApplicationUserManager> options, IOwinContext context)
         {
             var manager = new ApplicationUserManager(new UserStore<ApplicationUser>(context.Get<ApplicationDbContext>()));
             // Configure validation logic for usernames
@@ -81,7 +102,7 @@ namespace PragimCourses
             var dataProtectionProvider = options.DataProtectionProvider;
             if (dataProtectionProvider != null)
             {
-                manager.UserTokenProvider = 
+                manager.UserTokenProvider =
                     new DataProtectorTokenProvider<ApplicationUser>(dataProtectionProvider.Create("ASP.NET Identity"));
             }
             return manager;

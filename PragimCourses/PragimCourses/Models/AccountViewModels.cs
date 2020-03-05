@@ -50,7 +50,6 @@ namespace PragimCourses.Models
     {
         [Required]
         [Display(Name = "Email")]
-        [EmailAddress]
         public string Email { get; set; }
 
         [Required]
@@ -64,6 +63,18 @@ namespace PragimCourses.Models
 
     public class RegisterViewModel
     {
+        [Required]
+        [Display(Name = "First Name")]
+        public string FirstName { get; set; }
+
+        [Required]
+        [Display(Name = "LastName")]
+        public string LastName { get; set; }
+
+        [Required]
+        [Display(Name = "UserName")]
+        public string UserName { get; set; }
+
         [Required]
         [EmailAddress]
         [Display(Name = "Email")]

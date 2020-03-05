@@ -203,6 +203,7 @@
     <Compile Include="Configuration\CategoryCourseConfiguration.cs" />
     <Compile Include="Configuration\CategoryConfiguration.cs" />
     <Compile Include="Configuration\CourseConfiguration.cs" />
+    <Compile Include="Configuration\UserConfiguration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CoursesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -213,6 +214,10 @@
     <Compile Include="Migrations\202003051440292_initial.cs" />
     <Compile Include="Migrations\202003051440292_initial.Designer.cs">
       <DependentUpon>202003051440292_initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202003051830416_updateUserTable.cs" />
+    <Compile Include="Migrations\202003051830416_updateUserTable.Designer.cs">
+      <DependentUpon>202003051830416_updateUserTable.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -389,6 +394,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202003051440292_initial.resx">
       <DependentUpon>202003051440292_initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003051830416_updateUserTable.resx">
+      <DependentUpon>202003051830416_updateUserTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
