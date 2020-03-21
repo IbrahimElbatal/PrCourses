@@ -66,7 +66,7 @@ namespace PragimCourses.Controllers
                 return View(model);
             }
 
-            var userName = 
+            var userName =
                 (await UserManager.FindByEmailAsync(model.Email))?.UserName == null ?
                     (await UserManager.FindByNameAsync(model.Email)).UserName :
                     (await UserManager.FindByEmailAsync(model.Email)).UserName;
@@ -152,6 +152,19 @@ namespace PragimCourses.Controllers
                     UserName = model.UserName,
                     Email = model.Email
                 };
+
+                if (model.CheckWeekPassword)
+                {
+                    var password = model.Password;
+                    if (!(password.Contains("_") && password.Contains("$")) ||
+                        !(password.Contains("_") && password.Contains("-")) ||
+                        !(password.Contains("-") && password.Contains("$")))
+                    {
+                        ModelState.AddModelError("",
+                            @"Password must contains two of these characters - _ $");
+                        return View(model);
+                    }
+                }
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {

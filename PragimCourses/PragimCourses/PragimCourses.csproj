@@ -202,7 +202,11 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Configuration\CategoryCourseConfiguration.cs" />
     <Compile Include="Configuration\CategoryConfiguration.cs" />
+    <Compile Include="Configuration\ContactConfiguration.cs" />
     <Compile Include="Configuration\CourseConfiguration.cs" />
+    <Compile Include="Configuration\CourseDetailsBodyConfiguration.cs" />
+    <Compile Include="Configuration\CourseDetailsHeaderConfiguration.cs" />
+    <Compile Include="Configuration\FeedbackConfiguration.cs" />
     <Compile Include="Configuration\UserConfiguration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CoursesController.cs" />
@@ -219,16 +223,38 @@
     <Compile Include="Migrations\202003051830416_updateUserTable.Designer.cs">
       <DependentUpon>202003051830416_updateUserTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202003191351404_addContactTable.cs" />
+    <Compile Include="Migrations\202003191351404_addContactTable.Designer.cs">
+      <DependentUpon>202003191351404_addContactTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202003201452499_FeedbackTable.cs" />
+    <Compile Include="Migrations\202003201452499_FeedbackTable.Designer.cs">
+      <DependentUpon>202003201452499_FeedbackTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202003211211573_CourseDetailsTables.cs" />
+    <Compile Include="Migrations\202003211211573_CourseDetailsTables.Designer.cs">
+      <DependentUpon>202003211211573_CourseDetailsTables.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\ApplicationUser.cs" />
+    <Compile Include="Models\Contact.cs" />
     <Compile Include="Models\Course.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\CourseCategory.cs" />
+    <Compile Include="Models\CourseDetailsBody.cs" />
+    <Compile Include="Models\CourseDetailsHeader.cs" />
+    <Compile Include="Models\Feedback.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\ContactViewModel.cs" />
+    <Compile Include="ViewModels\CourseDetailsBodyViewModel.cs" />
+    <Compile Include="ViewModels\CourseDetailsHeaderViewModel.cs" />
     <Compile Include="ViewModels\CourseViewModel.cs" />
+    <Compile Include="ViewModels\FeedbackViewModel.cs" />
+    <Compile Include="ViewModels\RecaptchaResponse.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -374,6 +400,7 @@
     <Content Include="Views\Courses\ClassRoomCourses.cshtml" />
     <Content Include="Views\Courses\DownloadCourses.cshtml" />
     <Content Include="Views\Shared\_signup_news.cshtml" />
+    <Content Include="Views\Shared\_testimonial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -397,6 +424,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202003051830416_updateUserTable.resx">
       <DependentUpon>202003051830416_updateUserTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003191351404_addContactTable.resx">
+      <DependentUpon>202003191351404_addContactTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003201452499_FeedbackTable.resx">
+      <DependentUpon>202003201452499_FeedbackTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003211211573_CourseDetailsTables.resx">
+      <DependentUpon>202003211211573_CourseDetailsTables.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

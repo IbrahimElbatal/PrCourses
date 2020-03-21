@@ -1,4 +1,5 @@
-﻿@{
+﻿@model PragimCourses.ViewModels.ContactViewModel
+@{
     ViewBag.Title = "Contact";
 }
 
@@ -15,30 +16,37 @@
                 <div class="left__contact">
                     <h1>Stay In Touch</h1>
                     <div class="contact__form">
-                        <form>
+                        
+                        @using (Html.BeginForm("contact","Home",FormMethod.Post))
+                        {
+                            @Html.ValidationSummary(false,"",new{@class="alert alert-danger"})
                             <div class="form-group">
-                                <label for="name">Your Name*</label>
-                                <input class="form-control" type="text" id="name" name="name" value="" />
+                                @Html.LabelFor(c=>c.Name)
+                                @Html.TextBoxFor(c=>c.Name,new{@class="form-control"})
+                                @Html.ValidationMessageFor(c=>c.Name,"",new{@class="text-danger"})
                             </div>
                             <div class="form-group">
-                                <label for="email">Your Email*</label>
-                                <input class="form-control" type="text" id="email" name="email" value="" />
+                                @Html.LabelFor(c => c.Email)
+                                @Html.TextBoxFor(c => c.Email, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(c => c.Email, "", new { @class = "text-danger" })
+
                             </div>
                             <div class="form-group">
-                                <label for="subject">Your Subject</label>
-                                <input class="form-control" type="text" id="subject" name="subject" value="" />
+                                @Html.LabelFor(c => c.Subject)
+                                @Html.TextBoxFor(c => c.Subject, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(c => c.Subject, "", new { @class = "text-danger" })
                             </div>
                             <div class="form-group">
-                                <label for="message">Your Message</label>
-                                <textarea class="form-control" id="message" rows="5"></textarea>
+                                @Html.LabelFor(c => c.Message)
+                                @Html.TextAreaFor(c => c.Message,5,10, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(c => c.Message, "", new { @class = "text-danger" })
                             </div>
                             <div class="g-recaptcha" data-sitekey="6LfKuN0UAAAAAApO_hgLfawhEPoGGn0NKrJUPMWJ"></div>
 
                             <div class="form-group">
                                 <button class="btn btn-default">Send</button>
                             </div>
-
-                        </form>
+                        }
                     </div>
                 </div>
             </div>

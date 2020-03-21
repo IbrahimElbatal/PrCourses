@@ -1,0 +1,90 @@
+﻿@model IEnumerable<PragimCourses.Models.Feedback>
+
+@{
+    var count = Math.Floor(Model.ToList().Count / 2m);
+}
+<div class="people__opinion">
+    <h1>What People Say</h1>
+
+    <div class="container">
+        <div id="carousel-example-generic1" class="carousel slide" data-ride="carousel">
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+                @for (var i = 0; i < count; i++)
+                {
+                    if (i == 0)
+                    {
+                        <li data-target="#carousel-example-generic1" data-slide-to="@i" class="active"></li>
+                    }
+                    else
+                    {
+                        <li data-target="#carousel-example-generic1" data-slide-to="@i"></li>
+                    }
+
+                }
+            </ol>
+
+            <!-- Wrapper for slides -->
+            <div style="min-height: 890px" class="carousel-inner" role="listbox">
+
+                @for (var i = 0; i < count; i++)
+                {
+                    if (i == 0)
+                    {
+                        <div class="item active">
+                            <div class="row">
+                                @foreach (var item in Model.Skip(i * 2).Take(2))
+                                {
+                                    <div class="col-md-6 col-sm-6 keep-responsive">
+                                        <div class="opinion__wrap">
+                                            <p>
+                                                @item.Comment
+                                            </p>
+                                            <div class="people">
+                                                <div class="customer__image"></div>
+                                                <div class="customer__details">
+                                                    <h2>@item.TrainerName</h2>
+                                                    <p>@item.Technology</p>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="item">
+                            <div class="row">
+                                @foreach (var item in Model.Skip(i * 2).Take(2))
+                                {
+                                    <div class="col-md-6 col-sm-6 keep-responsive">
+                                        <div class="opinion__wrap">
+                                            <p>
+                                                @item.Comment
+                                            </p>
+                                            <div class="people">
+                                                <div class="customer__image"></div>
+                                                <div class="customer__details">
+                                                    <h2>@item.TrainerName</h2>
+                                                    <p>@item.Technology</p>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    }
+                  
+                }
+       
+
+            </div>
+        </div>
+    </div>
+</div>
+

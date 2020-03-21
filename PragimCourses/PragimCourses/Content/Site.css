@@ -129,7 +129,8 @@ textarea {
 
 .site__description {
     margin-bottom: 0;
-    padding-top: 4px
+    padding-top: 4px;
+    color: white
 }
 
 .meta__nav {
@@ -263,8 +264,9 @@ a.left.carousel-control {
 
     .carousel-caption p {
         font-family: Arial;
-        font-size: 18px;
+        font-size: 17px;
         width: 500px;
+        color:white
     }
 
     .carousel-caption button {
@@ -354,7 +356,7 @@ a.left.carousel-control {
         text-align: center;
         margin-bottom: 35px;
         padding-bottom: 20px;
-        background: url('../Content/Images/border_bottom.png') no-repeat center bottom
+        background: url('../../PragimCourses/Content/Images/border_bottom.png') no-repeat center bottom
     }
 
 .batch__wrap {
@@ -412,7 +414,7 @@ a.left.carousel-control {
         padding: 80px 0 25px;
         text-align: center;
         margin-bottom: 75px;
-        background: url('../Content/Images/border_bottom.png') no-repeat center bottom
+        background: url('../../PragimCourses/Content/Images/border_bottom.png') no-repeat center bottom
     }
 
     .pragim__information span {
@@ -453,7 +455,7 @@ a.left.carousel-control {
         font-size: 33px;
         font-weight: bold;
         padding-bottom: 20px;
-        background: url('../Content/Images/border_bottom.png') no-repeat center bottom
+        background: url('../../PragimCourses/Content/Images/border_bottom.png') no-repeat center bottom
     }
 
 .course__wrap {
@@ -517,7 +519,7 @@ a.left.carousel-control {
         text-align: center;
         font-size: 30px;
         font-weight: bold;
-        background: url('../Content/Images/border_bottom_white.png') no-repeat center bottom
+        background: url('../../PragimCourses/Content/Images/border_bottom_white.png') no-repeat center bottom
     }
 
 .opinion__wrap {
@@ -621,7 +623,7 @@ a.left.carousel-control {
         font-size: 20px;
         font-weight: bold;
         margin: 95px 0 55px;
-        background: url('../Content/Images/border_bottom.png') no-repeat left bottom
+        background: url('../../PragimCourses/Content/Images/border_bottom.png') no-repeat left bottom
     }
 
     .footer p {
@@ -652,7 +654,9 @@ a.left.carousel-control {
 
 .course__content {
     display: inline-block;
-    vertical-align: top
+    vertical-align: top;
+    margin-left :10px
+
 }
 
     .course__content h4 {
@@ -720,7 +724,7 @@ a.left.carousel-control {
 
     .subscribe__info-details h1 {
         padding-bottom: 5px;
-        background: url('../Content/Images/border_bottom.png') no-repeat center bottom;
+        background: url('../../PragimCourses/Content/Images/border_bottom.png') no-repeat center bottom;
         margin-bottom: 30px;
         font-size: 23px;
         font-weight: 700;
@@ -782,7 +786,7 @@ a.left.carousel-control {
 
     .feedback__info-details h1 {
         padding-bottom: 5px;
-        background: url('../Content/Images/border_bottom.png') no-repeat left bottom;
+        background: url('../../PragimCourses/Content/Images/border_bottom.png') no-repeat left bottom;
         margin-bottom: 30px;
         font-size: 23px;
         font-weight: 700;
@@ -841,7 +845,7 @@ a.left.carousel-control {
         margin-bottom: 30px;
         font-size: 23px;
         font-weight: 600;
-        background: url('../Content/Images/border_bottom.png') no-repeat left bottom
+        background: url('../../PragimCourses/Content/Images/border_bottom.png') no-repeat left bottom
     }
 
     .left__support h4 {
@@ -933,7 +937,7 @@ a.left.carousel-control {
         margin-bottom: 30px;
         font-size: 23px;
         font-weight: 600;
-        background: url('../Content/Images/border_bottom.png') no-repeat left bottom
+        background: url('../../PragimCourses/Content/Images/border_bottom.png') no-repeat left bottom
     }
 
     .right__support .phone, .whatsapp, .email, .address {
@@ -963,7 +967,7 @@ a.left.carousel-control {
         margin-bottom: 30px;
         font-size: 23px;
         font-weight: 600;
-        background: url('../Content/Images/border_bottom.png') no-repeat left bottom
+        background: url('../../PragimCourses/Content/Images/border_bottom.png') no-repeat left bottom
     }
 
     .left__contact .contact__form {
@@ -971,7 +975,7 @@ a.left.carousel-control {
     }
 
         .left__contact .contact__form textarea, input[type="text"] {
-            min-width: 300px;
+            /* min-width: 300px; */
         }
 
         .left__contact .contact__form button {

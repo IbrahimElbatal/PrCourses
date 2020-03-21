@@ -1,25 +1,10 @@
-﻿using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
+﻿using Microsoft.AspNet.Identity.EntityFramework;
 using PragimCourses.Configuration;
 using System.Data.Entity;
-using System.Security.Claims;
-using System.Threading.Tasks;
 
 namespace PragimCourses.Models
 {
     // You can add profile data for the user by adding more properties to your ApplicationUser class, please visit https://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
-    public class ApplicationUser : IdentityUser
-    {
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
-        {
-            // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
-            var userIdentity = await manager.CreateIdentityAsync(this, DefaultAuthenticationTypes.ApplicationCookie);
-            // Add custom user claims here
-            return userIdentity;
-        }
-    }
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
@@ -31,12 +16,20 @@ namespace PragimCourses.Models
         public DbSet<Course> Courses { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<CourseCategory> CourseCategories { get; set; }
+        public DbSet<Contact> Contacts { get; set; }
+        public DbSet<Feedback> Feedbacks { get; set; }
+        public DbSet<CourseDetailsHeader> CourseDetailsHeaders { get; set; }
+        public DbSet<CourseDetailsBody> CourseDetailsBodies { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Configurations.Add(new CategoryConfiguration());
             modelBuilder.Configurations.Add(new CourseConfiguration());
             modelBuilder.Configurations.Add(new CategoryCourseConfiguration());
+            modelBuilder.Configurations.Add(new ContactConfiguration());
+            modelBuilder.Configurations.Add(new FeedbackConfiguration());
+            modelBuilder.Configurations.Add(new CourseDetailsHeaderConfiguration());
+            modelBuilder.Configurations.Add(new CourseDetailsBodyConfiguration());
             base.OnModelCreating(modelBuilder);
         }
 
