@@ -1,6 +1,7 @@
 ﻿using PagedList;
 using PragimCourses.Models;
 using PragimCourses.ViewModels;
+using System;
 using System.Data.Entity;
 using System.IO;
 using System.Linq;
@@ -97,5 +98,38 @@ namespace PragimCourses.Controllers
 
             return RedirectToAction("FreeCourses", "Courses");
         }
+
+        [HttpGet]
+        public ActionResult AddClassRoomCourseDescription()
+        {
+            var courses = _context.CourseCategories
+                 .Where(cc => cc.CategoryId == 3)
+                 .Select(cc => cc.Course).ToList();
+
+            ViewBag.CourseId = new SelectList(courses, "Id", "Description");
+
+            return View();
+        }
+
+        [HttpGet]
+        public ActionResult Details(int id)
+        {
+            var result = _context.CourseDetailsHeaders
+                .Where(cd => cd.CourseId == id)
+                .Include(cd => cd.Course)
+                .Include(cd => cd.CourseBodies)
+                .ToList();
+
+            ViewBag.RelatedCourses = _context.CourseCategories
+                .Where(c => c.CategoryId == 3)
+                .Include(c => c.Course)
+                .Select(c => c.Course)
+                .OrderBy(c => Guid.NewGuid())
+                .Take(3)
+                .ToList();
+
+            return View(result);
+        }
+
     }
 }

@@ -16,18 +16,20 @@
         {
             <div class="col-md-4 col-sm-6 col-xs-12">
                 <div class="course__wrap">
-                    <div><img src="@Url.Content(course.Course.ImagePath)"/></div>
-                    <p>@course.Course.Description</p>
-                    <div class="course__footer">
-                        <div class="star__content">
-                            <span class="glyphicon glyphicon-star"></span>
-                            <span class="glyphicon glyphicon-star"></span>
-                            <span class="glyphicon glyphicon-star"></span>
-                            <span class="glyphicon glyphicon-star"></span>
-                            <span class="glyphicon glyphicon-star"></span>
+                    <a href="@Url.Action("Details","Courses",new{id=course.Course.Id})">
+                        <div><img src="@Url.Content(course.Course.ImagePath)" /></div>
+                        <p>@course.Course.Description</p>
+                        <div class="course__footer">
+                            <div class="star__content">
+                                <span class="glyphicon glyphicon-star"></span>
+                                <span class="glyphicon glyphicon-star"></span>
+                                <span class="glyphicon glyphicon-star"></span>
+                                <span class="glyphicon glyphicon-star"></span>
+                                <span class="glyphicon glyphicon-star"></span>
+                            </div>
+                            <span class="enrolled">165 Enrolled</span>
                         </div>
-                        <span class="enrolled">165 Enrolled</span>
-                    </div>
+                    </a>
                 </div>
 
             </div>

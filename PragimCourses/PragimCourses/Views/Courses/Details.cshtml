@@ -1,0 +1,174 @@
+﻿@using PragimCourses.Models
+@model IEnumerable<PragimCourses.Models.CourseDetailsHeader>
+@{
+    ViewBag.Title = "Course Details";
+    var course = Model?.Take(1).Single();
+    var relatedCourses = ViewBag.RelatedCourses as IEnumerable<Course>;
+}
+
+
+<div class="wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="course__Description">
+                    <h1>@course.Course.Description</h1>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="course__image">
+                    <img style="width: 100%; max-height: 500px" src="@Url.Content(course.Course.ImagePath)" alt="Alternate Text" />
+                    <div class="icons">
+                        <div class="social__icon">
+                            <span class="glyphicon glyphicon-apple"></span>
+                        </div>
+                        <div class="social__icon">
+                            <span class="glyphicon glyphicon-apple"></span>
+                        </div>
+                        <div class="social__icon">
+                            <span class="glyphicon glyphicon-apple"></span>
+                        </div>
+                        <div class="social__icon">
+                            <span class="glyphicon glyphicon-apple"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12">
+                <div class="course__information">
+                    <div style="padding: 25px 25px 60px">
+                        <div class="price">
+                            <span>Price : <span>Free</span></span>
+                        </div>
+                        <div class="details">
+                            <div class="left">
+                                <button class="btn btn-default" type="submit">
+                                    Enroll Now! <span class="glyphicon glyphicon-arrow-right"></span>
+                                </button>
+                                <div class="star__content">
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                </div>
+                            </div>
+                            <div class="right">
+                                <span class="glyphicon glyphicon-heart"></span><br />
+                                <span>126 Enrolled</span>
+                            </div>
+                        </div>
+                        <div style="clear: both;margin-bottom: 60px"></div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <p>
+                                    <span class="fSpan">Enroll Dates : </span>
+                                    <span class="sSpan">Enroll Anytime</span>
+                                </p>
+                                <hr />
+                            </div>
+                            <div class="col-md-12">
+                                <p>
+                                    <span class="fSpan">Course Dates : </span>
+                                    <span class="sSpan">November 30,2019 - No End Date</span>
+                                </p>
+                                <hr />
+                            </div>
+                            <div class="col-md-12">
+                                <p>
+                                    <span class="fSpan">Enrollment : </span>
+                                    <span class="sSpan">Anyone</span>
+                                </p>
+                                <hr />
+                            </div>
+                            <div class="col-md-12">
+                                <p>
+                                    <span class="fSpan">Includes : </span>
+                                    <span class="sSpan">Certificate of Completion</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12">
+                <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                    <div class="panel panel-default">
+                        <div class="panel-heading" role="tab" id="headingOne">
+                            <h4 class="panel-title">
+                                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    Course Description
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                            <div class="panel-body">
+                                <ul class="course-detail">
+                                    @foreach (var item in Model)
+                                    {
+                                        <li>
+                                            @item.Header
+                                            <ol>
+                                                @foreach (var det in item.CourseBodies)
+                                                {
+                                                    <li>@det.Body</li>
+                                                }
+                                            </ol>
+                                        </li>
+                                    }
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading" role="tab" id="headingTwo">
+                            <h4 class="panel-title">
+                                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    Course Overview
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                            <div class="panel-body">
+                                put the content here
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-12">
+                <div class="related__courses">
+                    <h3>Related Courses</h3>
+
+                    <ul>
+                        @foreach (var rCourse in relatedCourses)
+                        {
+                        <li>
+                            <a href="@Url.Action("Details","Courses",new{id=rCourse.Id})">
+                                <div class="img-course">
+                                    <img src="@Url.Content(rCourse.ImagePath)" />
+                                </div>
+                                <div class="course__content">
+                                    <h4>@rCourse.Header</h4>
+                                    <p>
+                                        <span class="glyphicon glyphicon-star"></span>
+                                        <span class="glyphicon glyphicon-star"></span>
+                                        <span class="glyphicon glyphicon-star"></span>
+                                        <span class="glyphicon glyphicon-star"></span>
+                                        <span class="glyphicon glyphicon-star"></span>
+                                    </p>
+                                </div>
+                            </a>
+                        </li>
+                        }
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

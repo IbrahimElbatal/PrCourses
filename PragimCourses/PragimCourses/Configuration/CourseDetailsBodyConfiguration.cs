@@ -13,7 +13,7 @@ namespace PragimCourses.Configuration
                 .IsRequired();
 
             HasRequired(c => c.CourseDetailsHeader)
-                .WithMany();
+                .WithMany(c => c.CourseBodies);
         }
     }
 }

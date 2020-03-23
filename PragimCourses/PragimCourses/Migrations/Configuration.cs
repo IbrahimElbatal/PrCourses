@@ -98,6 +98,7 @@ namespace PragimCourses.Migrations
                 new Feedback(){Technology = "DotNet Developer",TrainerEmail = null,Punctuality = "Always In Time",TechnologyStrength = "Good",TrainerName = "Ibrahim",Comment = "In PRAGIM Technologies, they did not ask me for any registration fee. They gave me a chance to attend the classes free for one week. After one week, if I feel the training is good I can continue, otherwise we can quit without paying anything. Dotnet trainer in PRAGIM Technologies has 8 years of experience. I also spoke to the previous batch students who were placed in different organizations. After speaking with old batch students, I became very confident obout their quality of training, trainer and placement programs."},
                 new Feedback(){Technology = "DotNet Developer",TrainerEmail = null,Punctuality = "Always In Time",TechnologyStrength = "Good",TrainerName = "Ali",Comment = "I got my first job as junior software developer and really want to thank you as when I was preparing for interviews videos uploaded by you on .net technologies helped so much. I bought your DVDs from your website and are very useful. Thank you Venkat sir."},
             });
+
         }
     }
 }

@@ -1,0 +1,114 @@
+﻿@model PragimCourses.ViewModels.CourseDescriptionViewModel
+
+
+@{
+    ViewBag.Title = "Add Course Description";
+}
+
+<div class="courses__title">
+    <div class="container">
+        <h1>ClassRoom Courses: Adding Description.</h1>
+    </div>
+</div>
+
+<div class="container">
+    @using (Html.BeginForm())
+    {
+        <div class="row">
+            <div class="col-xs-12">
+                <ul style="margin: 20px 0;padding-left: 30px" class="error">
+
+                </ul>
+                <div class="form-group">
+                    <label for="CourseId">Course</label>
+                    @Html.DropDownList("CourseId", null, "Select Course", new {@class = "form-control"})
+                </div>
+                <div class="form-group">
+                    <label>Header</label>
+                    @Html.TextBoxFor(c => c.Header, new {@class = "form-control"})
+                </div>
+                <div class="form-group">
+                    <label>Body</label>
+                    @Html.TextBoxFor(c => c.Body, new {@class = "form-control"})
+                </div>
+                <div style="padding: 0" class="col-xs-8 col-md-4">
+                    <ul class="list-group ulBody">
+
+                    </ul>
+                </div>
+                <div style="clear: both" class="form-group">
+                    <button type="button" class="btn btn-primary btnSave">Save</button>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+@{Html.RenderPartial("_signup_news");}
+
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+    
+    <script>
+        $(document).ready(function() {
+            var ulBody = $('.ulBody');
+            var courseId = $('#CourseId');
+            var header = $('#Header');
+            var body = $('#Body');
+            var error = $('.error');
+            var bodyArray = [];
+            body.on('keyup',
+                function(e) {
+                    if (e.keyCode == 13) {
+                        bodyArray.push(body.val());
+                        var li = '<li class="list-group-item">' + body.val() + '</li>';
+                        ulBody.append(li);
+                        body.val('');
+                    }
+                });
+            $('.btnSave').on('click',
+                function () {
+                    if (header.val() === '') {
+                        error.empty();
+                        error.addClass('alert alert-danger');
+                        var li = '<li>Header Is Required</li>';
+                        error.append(li);
+                        return false;
+                    }
+                    if (courseId.val() === '') {
+                        error.empty();
+                        error.addClass('alert alert-danger');
+                        var li = '<li>Course Is Required</li>';
+                        error.append(li);
+                        return false;
+                    }
+                    if (bodyArray.length === 0) {
+                        error.empty();
+                        error.addClass('alert alert-danger');
+                        var li = '<li>Body Is Required</li>';
+                        error.append(li);
+                        return false;
+                    }
+                    $.ajax({
+                        url: 'http://localhost/PragimCourses/api/course',
+                        data: JSON.stringify({
+                            'Header': header.val(),
+                            'CourseId': courseId.val(),
+                            'Bodies' : bodyArray
+                        }),
+                        contentType : 'application/json',
+                        dataType:'json',
+                        type: 'post'
+                    }).done(function() {
+                            console.log('success');
+                            header.val('');
+                            bodyArray = [];
+                            ulBody.empty();
+                        }).fail(function (err) {
+                        console.log('error');
+                        console.log(err);
+                    });
+                });
+        });
+    </script>
+}
