@@ -1,4 +1,5 @@
-﻿@model PragimCourses.ViewModels.CourseDescriptionViewModel
+﻿
+@model PragimCourses.ViewModels.CourseDescriptionViewModel
 
 
 @{
@@ -100,7 +101,6 @@
                         dataType:'json',
                         type: 'post'
                     }).done(function() {
-                            console.log('success');
                             header.val('');
                             bodyArray = [];
                             ulBody.empty();

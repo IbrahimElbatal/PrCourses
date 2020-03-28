@@ -8,152 +8,238 @@
 
 
 <div class="wrapper">
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-12">
-                <div class="course__Description">
-                    <h1>@course.Course.Description</h1>
+<div class="container">
+<div class="row">
+<div class="col-xs-12 col-sm-8">
+    <div class="course__Description">
+        <h1>@course.Course.Description</h1>
+    </div>
+    <div class="course__image">
+        <img style="width: 100%; max-height: 500px" src="@Url.Content(course.Course.ImagePath)" alt="Alternate Text" />
+        <div class="icons">
+            <div class="social__icon">
+                <span class="glyphicon glyphicon-apple"></span>
+            </div>
+            <div class="social__icon">
+                <span class="glyphicon glyphicon-apple"></span>
+            </div>
+            <div class="social__icon">
+                <span class="glyphicon glyphicon-apple"></span>
+            </div>
+            <div class="social__icon">
+                <span class="glyphicon glyphicon-apple"></span>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+        <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingOne">
+                <h4 class="panel-title">
+                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        Course Description
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+                <div class="panel-body">
+                    <ul class="course-detail">
+                        @foreach (var item in Model)
+                        {
+                            <li>
+                                @item.Header
+                                <ol>
+                                    @foreach (var det in item.CourseBodies)
+                                    {
+                                        <li>@det.Body</li>
+                                    }
+                                </ol>
+                            </li>
+                        }
+                    </ul>
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-xs-12">
-                <div class="course__image">
-                    <img style="width: 100%; max-height: 500px" src="@Url.Content(course.Course.ImagePath)" alt="Alternate Text" />
-                    <div class="icons">
-                        <div class="social__icon">
-                            <span class="glyphicon glyphicon-apple"></span>
-                        </div>
-                        <div class="social__icon">
-                            <span class="glyphicon glyphicon-apple"></span>
-                        </div>
-                        <div class="social__icon">
-                            <span class="glyphicon glyphicon-apple"></span>
-                        </div>
-                        <div class="social__icon">
-                            <span class="glyphicon glyphicon-apple"></span>
-                        </div>
-                    </div>
-                </div>
+        <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingTwo">
+                <h4 class="panel-title">
+                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        Reviews
+                    </a>
+                </h4>
             </div>
-            <div class="col-xs-12">
-                <div class="course__information">
-                    <div style="padding: 25px 25px 60px">
-                        <div class="price">
-                            <span>Price : <span>Free</span></span>
-                        </div>
-                        <div class="details">
-                            <div class="left">
-                                <button class="btn btn-default" type="submit">
-                                    Enroll Now! <span class="glyphicon glyphicon-arrow-right"></span>
-                                </button>
-                                <div class="star__content">
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                </div>
-                            </div>
-                            <div class="right">
-                                <span class="glyphicon glyphicon-heart"></span><br />
-                                <span>126 Enrolled</span>
-                            </div>
-                        </div>
-                        <div style="clear: both;margin-bottom: 60px"></div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <p>
-                                    <span class="fSpan">Enroll Dates : </span>
-                                    <span class="sSpan">Enroll Anytime</span>
+            <div id="collapseTwo" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingTwo">
+                <div class="panel-body">
+                    <h3>Reviews</h3>
+                    <div class="review">
+                        <span class="span-header">Average Rating</span>
+                        <span class="span-number">@course.Course.Reviews.Count</span>
+                        <p class="p-rating">
+                            <span class="glyphicon glyphicon-star-empty"></span>
+                            <span class="glyphicon glyphicon-star-empty"></span>
+                            <span class="glyphicon glyphicon-star-empty"></span>
+                            <span class="glyphicon glyphicon-star-empty"></span>
+                            <span class="glyphicon glyphicon-star-empty"></span>
+                        </p>
+                        <span>@course.Course.Reviews.Count ratings</span>
+                        <div class="review__details">
+                            <h5>Details</h5>
+                            @for (var i = 1; i <= 5; i++)
+                            {
+                                <p>@i Stars 
+                                
+                                    <span>
+                                        <span class="inner-span" style="width: @course.Course.Reviews.Count(r => r.Rating == i)%">
+                                        </span>
+                                    </span> 
+                                    @course.Course.Reviews.Count(r => r.Rating == i)
                                 </p>
-                                <hr />
-                            </div>
-                            <div class="col-md-12">
-                                <p>
-                                    <span class="fSpan">Course Dates : </span>
-                                    <span class="sSpan">November 30,2019 - No End Date</span>
-                                </p>
-                                <hr />
-                            </div>
-                            <div class="col-md-12">
-                                <p>
-                                    <span class="fSpan">Enrollment : </span>
-                                    <span class="sSpan">Anyone</span>
-                                </p>
-                                <hr />
-                            </div>
-                            <div class="col-md-12">
-                                <p>
-                                    <span class="fSpan">Includes : </span>
-                                    <span class="sSpan">Certificate of Completion</span>
-                                </p>
-                            </div>
+                            }
                         </div>
                     </div>
-                </div>
-            </div>
-            <div class="col-xs-12">
-                <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-                    <div class="panel panel-default">
-                        <div class="panel-heading" role="tab" id="headingOne">
-                            <h4 class="panel-title">
-                                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                    Course Description
-                                </a>
-                            </h4>
-                        </div>
-                        <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
-                            <div class="panel-body">
-                                <ul class="course-detail">
-                                    @foreach (var item in Model)
-                                    {
-                                        <li>
-                                            @item.Header
-                                            <ol>
-                                                @foreach (var det in item.CourseBodies)
-                                                {
-                                                    <li>@det.Body</li>
-                                                }
-                                            </ol>
-                                        </li>
-                                    }
-                                </ul>
+                    <hr style="margin: 40px 0" />
+                    @foreach (var review in course.Course.Reviews)
+                    {
+                        <div class="people-review">
+                            <div class="left-div">
+                                <span style="margin: 38% 38%"></span>
                             </div>
-                        </div>
-                    </div>
-                    <div class="panel panel-default">
-                        <div class="panel-heading" role="tab" id="headingTwo">
-                            <h4 class="panel-title">
-                                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                    Course Overview
-                                </a>
-                            </h4>
-                        </div>
-                        <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-                            <div class="panel-body">
-                                put the content here
+                            <div class="middle-div">
+                                <p>@review.Name</p>
                             </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                            <div class="right-div">
+                                @{
+                                    var date =DateTime.Now - review.AddReviewDate;
+                                    var hours = Math.Ceiling(date.TotalHours);
+                                    var days = Math.Floor(date.TotalDays);
+                                    var weeks = Math.Floor(days / 7);
+                                    var months = Math.Floor(weeks / 4);
+                                    var years = Math.Floor(months / 12);
 
-            <div class="col-xs-12">
-                <div class="related__courses">
-                    <h3>Related Courses</h3>
-
-                    <ul>
-                        @foreach (var rCourse in relatedCourses)
+                                    var result = hours < 24 ? $"more than {hours} hours" :
+                                        days < 7 ? $"more than {days} days" :
+                                            weeks < 4 ? $"more than {weeks} week" :
+                                                months < 12 ? $"more than {months} month" :
+                                                    $"more than {years} year";
+                                }
+                                @result
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                    }
+                    <h3>ADD A REVIEW</h3>
+                    <div class="form__review">
+                        @using (Html.BeginForm())
                         {
-                        <li>
-                            <a href="@Url.Action("Details","Courses",new{id=rCourse.Id})">
+                            <div class="form-group">
+                                <label>Name *</label>
+                                <input class="form-control" type="text" name="name" id="name" />
+                            </div>
+                            <div class="form-group">
+                                <label>Email</label>
+                                <input class="form-control" type="text" name="email" id="email" />
+                            </div>
+                            <div class="form-group">
+                                <label>Review Title *</label>
+                                <input class="form-control" type="text" name="title" id="title" />
+                            </div>
+                            <div class="form-group">
+                                <label>Rating *</label>
+                                <p id="rating" class="p-rating">
+                                    <span class="glyphicon glyphicon-star-empty"></span>
+                                    <span class="glyphicon glyphicon-star-empty"></span>
+                                    <span class="glyphicon glyphicon-star-empty"></span>
+                                    <span class="glyphicon glyphicon-star-empty"></span>
+                                    <span class="glyphicon glyphicon-star-empty"></span>
+                                </p>
+                            </div>
+                            <div class="form-group">
+                                <label>Review Content *</label>
+                                <textarea id="content" class="form-control" rows="6"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <button data-id ="@course.Course.Id" type="button" class="btn btn-default btn-submit">Submit</button>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col-sm-4">
+    <div class="course__information">
+        <div style="padding: 25px 25px 60px">
+            <div class="price">
+                <span>Price : <span>Free</span></span>
+            </div>
+            <div class="details">
+                <div class="left">
+                    <button class="btn btn-default" type="submit">
+                        Enroll Now! <span class="glyphicon glyphicon-arrow-right"></span>
+                    </button>
+                    <div class="heart">
+                        <span class="glyphicon glyphicon-heart-empty"></span>
+                    </div>
+                </div>
+                <div class="right">
+                    <div class="star__content">
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star"></span>
+                    </div>
+                    <span class="enrollment">126 Enrolled</span>
+                </div>
+            </div>
+            <div style="clear: both;margin-bottom: 60px"></div>
+            <div class="row">
+                <div class="col-md-12">
+                    <p>
+                        <span class="fSpan">Enroll Dates : </span>
+                        <span class="sSpan">Enroll Anytime</span>
+                    </p>
+                    <hr />
+                </div>
+                <div class="col-md-12">
+                    <p>
+                        <span class="fSpan">Course Dates : </span>
+                        <span class="sSpan">November 30,2019 - No End Date</span>
+                    </p>
+                    <hr />
+                </div>
+                <div class="col-md-12">
+                    <p>
+                        <span class="fSpan">Enrollment : </span>
+                        <span class="sSpan">Anyone</span>
+                    </p>
+                    <hr />
+                </div>
+                <div class="col-md-12">
+                    <p>
+                        <span class="fSpan">Includes : </span>
+                        <span class="sSpan">Certificate of Completion</span>
+                    </p>
+                    <hr />
+                </div>
+            </div>
+
+            <div class="similar__course">
+                <h3 style="margin-bottom: 30px">Related Courses</h3>
+
+                <ul class="list-group">
+                    @foreach (var rCourse in relatedCourses)
+                    {
+                        <li class="list-group-item">
+                            <a style="display: flex" href="@Url.Action("Details","Courses",new{id=rCourse.Id})">
                                 <div class="img-course">
                                     <img src="@Url.Content(rCourse.ImagePath)" />
                                 </div>
                                 <div class="course__content">
-                                    <h4>@rCourse.Header</h4>
-                                    <p>
+                                    <h4 style="font-size: 14px;font-weight: 700">@rCourse.Header</h4>
+                                    <p style="display: flex">
                                         <span class="glyphicon glyphicon-star"></span>
                                         <span class="glyphicon glyphicon-star"></span>
                                         <span class="glyphicon glyphicon-star"></span>
@@ -163,12 +249,92 @@
                                 </div>
                             </a>
                         </li>
-                        }
-                    </ul>
+                    }
+                </ul>
 
-                </div>
             </div>
+                        
         </div>
     </div>
+</div>
+</div>
+</div>
 
 </div>
+    
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            console.log($('.btn-submit').attr('data-id'));
+            var rating = 0;
+            var name = $('#name'); 
+            var email = $('#email'); 
+            var title = $('#title'); 
+            var content = $('#content');
+            $('#rating').on('click',
+                'span',
+                function (){
+                    $(this).toggleClass('glyphicon-star-empty').toggleClass('glyphicon-star');
+                   rating = $('#rating span.glyphicon-star').length;
+                });
+            $('.btn-submit').on('click',
+                function() {
+                    validateForm();
+                    $.ajax({
+                        url: 'http://localhost/PragimCourses/api/Review',
+                        data: JSON.stringify({
+                            Name: name.val(),
+                            Email: email.val(),
+                            Title: title.val(),
+                            Rating: rating,
+                            Content: content.val(),
+                            CourseId: $(this).attr('data-id')
+                        }),
+                        type: 'post',
+                        dataType: 'json',
+                        contentType:'application/json'
+                    })
+                        .done(function() {
+                            console.log('success');
+                            emptyForm();
+                        })
+                        .fail(function(err) {
+                            console.log(err);
+                        });
+                });
+            function validateForm() {
+                if (name.val() === '') {
+                    console.log('Name Is Required');
+                    return;
+                }
+                if (title.val() === '') {
+                    console.log('Title Is Required');
+                    return;
+                }
+                if (content.val() === '') {
+                    console.log('Content Is Required');
+                }
+                if (name.val().length > 50) {
+                    console.log('Max Length For Name Is 50 Characters');
+                    return;
+                }
+                if (title.val().length > 50) {
+                    console.log('Max Length For Title Is 100 Characters');
+                    return;
+                }
+                if (content.val().length > 200) {
+                    console.log('Max Length For Content Is 200 Characters');
+                    return;
+                }
+            }
+            function emptyForm() {
+                name.val('');
+                email.val('');
+                title.val('');
+                content.val('');
+                $('.p-rating span').removeClass('glyphicon-star').addClass('glyphicon-star-empty');
+            }
+        });
+    </script>
+}

@@ -20,6 +20,7 @@ namespace PragimCourses.Models
         public DbSet<Feedback> Feedbacks { get; set; }
         public DbSet<CourseDetailsHeader> CourseDetailsHeaders { get; set; }
         public DbSet<CourseDetailsBody> CourseDetailsBodies { get; set; }
+        public DbSet<Review> Reviews { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -30,6 +31,8 @@ namespace PragimCourses.Models
             modelBuilder.Configurations.Add(new FeedbackConfiguration());
             modelBuilder.Configurations.Add(new CourseDetailsHeaderConfiguration());
             modelBuilder.Configurations.Add(new CourseDetailsBodyConfiguration());
+            modelBuilder.Configurations.Add(new ReviewConfiguration());
+
             base.OnModelCreating(modelBuilder);
         }
 
@@ -38,4 +41,5 @@ namespace PragimCourses.Models
             return new ApplicationDbContext();
         }
     }
+
 }

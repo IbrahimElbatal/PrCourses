@@ -1,10 +1,10 @@
-﻿using PragimCourses.Models;
-using PragimCourses.ViewModels;
-using System.Data.Entity;
+﻿using System.Data.Entity;
 using System.Linq;
 using System.Web.Http;
+using PragimCourses.Models;
+using PragimCourses.ViewModels;
 
-namespace PragimCourses.Controllers
+namespace PragimCourses.Controllers.Api
 {
     public class CourseController : ApiController
     {

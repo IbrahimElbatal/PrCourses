@@ -116,7 +116,7 @@ namespace PragimCourses.Controllers
         {
             var result = _context.CourseDetailsHeaders
                 .Where(cd => cd.CourseId == id)
-                .Include(cd => cd.Course)
+                .Include(cd => cd.Course.Reviews)
                 .Include(cd => cd.CourseBodies)
                 .ToList();
 
