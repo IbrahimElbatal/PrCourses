@@ -218,10 +218,12 @@
     <Compile Include="Configuration\CourseDetailsHeaderConfiguration.cs" />
     <Compile Include="Configuration\FeedbackConfiguration.cs" />
     <Compile Include="Configuration\ReviewConfiguration.cs" />
+    <Compile Include="Configuration\SubscriberConfiguration.cs" />
     <Compile Include="Configuration\UserConfiguration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\Api\CourseController.cs" />
     <Compile Include="Controllers\Api\ReviewController.cs" />
+    <Compile Include="Controllers\Api\Subscriber.cs" />
     <Compile Include="Controllers\CoursesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -256,6 +258,10 @@
     <Compile Include="Migrations\202003241737490_AddReviewNavigationProperty.Designer.cs">
       <DependentUpon>202003241737490_AddReviewNavigationProperty.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202003291500155_addSubscriberTable.cs" />
+    <Compile Include="Migrations\202003291500155_addSubscriberTable.Designer.cs">
+      <DependentUpon>202003291500155_addSubscriberTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
@@ -270,6 +276,7 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Review.cs" />
+    <Compile Include="Models\Subscriber.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\ContactViewModel.cs" />
@@ -475,6 +482,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202003241737490_AddReviewNavigationProperty.resx">
       <DependentUpon>202003241737490_AddReviewNavigationProperty.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003291500155_addSubscriberTable.resx">
+      <DependentUpon>202003291500155_addSubscriberTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

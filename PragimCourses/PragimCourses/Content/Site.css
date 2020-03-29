@@ -736,7 +736,7 @@ a.left.carousel-control {
 
     .subscribe__info-details h1 {
         padding-bottom: 5px;
-        background: url('../../PragimCourses/Content/Images/border_bottom.png'),url('../Content/Images/border_bottom.png') no-repeat center bottom;
+        background: url('../../PragimCourses/Content/Images/border_bottom.png'),url('../Content/Images/border_bottom.png') no-repeat left bottom;
         margin-bottom: 30px;
         font-size: 23px;
         font-weight: 700;

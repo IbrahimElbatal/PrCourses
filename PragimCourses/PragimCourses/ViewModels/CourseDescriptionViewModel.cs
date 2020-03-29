@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using PragimCourses.Models;
+using System.Collections.Generic;
 
 namespace PragimCourses.ViewModels
 {
@@ -7,6 +8,7 @@ namespace PragimCourses.ViewModels
         public int CourseId { get; set; }
         public string Header { get; set; }
         public string Body { get; set; }
+        public CourseType CourseType { get; set; }
         public IEnumerable<string> Bodies { get; set; }
     }
 }

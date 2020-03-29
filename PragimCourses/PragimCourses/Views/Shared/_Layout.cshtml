@@ -183,5 +183,31 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+<script>
+    $(document).ready(function () {
+
+        $('.btn-subscribe').on('click',
+            function () {
+                var email = $('#email').val();
+                var url = window.location.origin;
+                if (email === '') {
+                    return;
+                }
+                $.ajax({
+                    url: url+'/api/subscriber',
+                    type: 'post',
+                    dataType: 'json',
+                    contentType: 'application/json',
+                    data: JSON.stringify({
+                        Email : email
+                    })
+                }).done(function() {
+                    window.location.href = '@Url.Action("Index","Home")';
+                }).fail(function(err) {
+                    console.log(err);
+                });
+            });
+    });
+</script>
 </body>
 </html>

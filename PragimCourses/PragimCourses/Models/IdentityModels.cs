@@ -21,6 +21,7 @@ namespace PragimCourses.Models
         public DbSet<CourseDetailsHeader> CourseDetailsHeaders { get; set; }
         public DbSet<CourseDetailsBody> CourseDetailsBodies { get; set; }
         public DbSet<Review> Reviews { get; set; }
+        public DbSet<Subscriber> Subscribers { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -32,6 +33,7 @@ namespace PragimCourses.Models
             modelBuilder.Configurations.Add(new CourseDetailsHeaderConfiguration());
             modelBuilder.Configurations.Add(new CourseDetailsBodyConfiguration());
             modelBuilder.Configurations.Add(new ReviewConfiguration());
+            modelBuilder.Configurations.Add(new SubscriberConfiguration());
 
             base.OnModelCreating(modelBuilder);
         }

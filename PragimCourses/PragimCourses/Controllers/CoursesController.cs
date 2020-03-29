@@ -1,4 +1,6 @@
-﻿using PagedList;
+﻿using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
+using PagedList;
 using PragimCourses.Models;
 using PragimCourses.ViewModels;
 using System;
@@ -96,6 +98,22 @@ namespace PragimCourses.Controllers
 
             _context.SaveChanges();
 
+            if (model.CategoryId == (int)CourseType.FreeCourses)
+            {
+                var manager = HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
+
+                foreach (var subscriber in _context.Subscribers)
+                {
+                    manager.EmailService.SendAsync(new IdentityMessage()
+                    {
+                        Destination = subscriber.Email,
+                        Subject = "New Course Added",
+                        Body = "New Course is added <br/> " +
+                               "Course Header is : " + model.Header +
+                               "Course Description is : " + model.Description
+                    });
+                }
+            }
             return RedirectToAction("FreeCourses", "Courses");
         }
 
