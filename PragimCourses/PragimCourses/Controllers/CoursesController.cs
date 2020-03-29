@@ -100,17 +100,24 @@ namespace PragimCourses.Controllers
         }
 
         [HttpGet]
-        public ActionResult AddClassRoomCourseDescription()
+        public ActionResult AddCourseDescription()
         {
-            var courses = _context.CourseCategories
-                 .Where(cc => cc.CategoryId == 3)
-                 .Select(cc => cc.Course).ToList();
-
-            ViewBag.CourseId = new SelectList(courses, "Id", "Description");
+            ViewBag.CourseTypes = new SelectList(_context.Categories.ToList(),
+                "Id",
+                "Name");
 
             return View();
         }
 
+        [HttpGet]
+        public ActionResult GetCourses(int courseType)
+        {
+            var courses = _context.CourseCategories
+                .Where(cc => cc.CategoryId == courseType)
+                .Select(cc => cc.Course).ToList();
+
+            return Json(courses, JsonRequestBehavior.AllowGet);
+        }
         [HttpGet]
         public ActionResult Details(int id)
         {
@@ -120,16 +127,63 @@ namespace PragimCourses.Controllers
                 .Include(cd => cd.CourseBodies)
                 .ToList();
 
-            ViewBag.RelatedCourses = _context.CourseCategories
-                .Where(c => c.CategoryId == 3)
+            Course course;
+            if (result.Count == 0)
+            {
+                course = _context.Courses.Find(id);
+            }
+            else
+            {
+                course = result.First(c => c.Course.Id == id).Course;
+            }
+
+            var count = course.Reviews.Count == 0 ? 1 : course.Reviews.Count;
+            ViewBag.Rating = Math.Floor(
+                (float)CalculateRating(id) /
+                count);
+
+            ViewBag.Course = course;
+
+            string categoryName = _context.CourseCategories
+                .Where(cc => cc.CourseId == id)
+                .Select(c => c.Category).Single().Name;
+
+            ViewBag.CategoryName = categoryName;
+
+            var courses = _context.CourseCategories
+                .Where(c => c.Category.Name == categoryName)
                 .Include(c => c.Course)
                 .Select(c => c.Course)
                 .OrderBy(c => Guid.NewGuid())
-                .Take(3)
-                .ToList();
+                .Take(3).ToList();
+
+            ViewBag.RelatedCourses = courses
+                .Select(c => new MyCustom
+                {
+                    Course = c,
+                    Rating = (float)CalculateRating(c.Id, 5) / (c.Reviews.Count == 0 ? 1 : c.Reviews.Count)
+                }).ToList();
+
 
             return View(result);
         }
 
+        private int CalculateRating(int id, int rate = 5)
+        {
+            var reviews = _context.Reviews.Where(r => r.CourseId == id).ToList();
+
+            if (rate <= 0)
+            {
+                return 0;
+            }
+            return rate * reviews.Count(x => x.Rating == rate) + CalculateRating(id, rate - 1);
+        }
+
+    }
+
+    public class MyCustom
+    {
+        public Course Course { get; set; }
+        public float Rating { get; set; }
     }
 }

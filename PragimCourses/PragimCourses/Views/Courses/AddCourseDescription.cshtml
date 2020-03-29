@@ -1,4 +1,4 @@
-﻿
+
 @model PragimCourses.ViewModels.CourseDescriptionViewModel
 
 
@@ -21,8 +21,12 @@
 
                 </ul>
                 <div class="form-group">
+                    <label for="CourseTypes">Course Type</label>
+                    @Html.DropDownList("CourseTypes", null, "Select Course Type", new {@class = "form-control"})
+                </div>
+                <div class="form-group">
                     <label for="CourseId">Course</label>
-                    @Html.DropDownList("CourseId", null, "Select Course", new {@class = "form-control"})
+                    @Html.DropDownList("CourseId", Enumerable.Empty<SelectListItem>(), "Select Course", new {@class = "form-control"})
                 </div>
                 <div class="form-group">
                     <label>Header</label>
@@ -52,12 +56,41 @@
     
     <script>
         $(document).ready(function() {
+
             var ulBody = $('.ulBody');
             var courseId = $('#CourseId');
             var header = $('#Header');
             var body = $('#Body');
             var error = $('.error');
             var bodyArray = [];
+
+            var ddlCourses = $('#CourseTypes');
+            ddlCourses.on('change',
+                function () {
+                    if (ddlCourses.val() === '') {
+                        courseId.empty();
+                        var option = '<option value="">Select Course</option>';
+                        courseId.append(option);
+                        return;
+                    }
+                    $.ajax({
+                        url: '@Url.Action("GetCourses","Courses")',
+                        type: 'get',
+                        dataType: 'json',
+                        data: {courseType : ddlCourses.val()}
+                    }).done(function (data) {
+                        courseId.empty();
+                        var option = '<option value="">Select Course</option>';
+                        $.each(data,
+                            function (index, element) {
+                                option += '<option value="' + element.Id + '">' + element.Description + '</option>';
+                            });
+                        courseId.append(option);
+                    }).fail(function(err) {
+                        console.log(err);
+                    });
+                });
+
             body.on('keyup',
                 function(e) {
                     if (e.keyCode == 13) {

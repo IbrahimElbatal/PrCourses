@@ -276,7 +276,7 @@ a.left.carousel-control {
     }
 
     .carousel-caption button {
-        background: #787878;
+        background: #8a8787;
         margin-top: 40px;
         color: white
     }
@@ -320,9 +320,14 @@ a.left.carousel-control {
         font-size: 16px
     }
 
-    .carousel-image {
-        background-position: center
+    .carousel-image { background-position: center 
+
     }
+}
+ @media(min-width: 600px){
+.free__courses {
+    width: 500px;
+}
 }
 
 @media(min-width : 850px) {
@@ -362,7 +367,7 @@ a.left.carousel-control {
         text-align: center;
         margin-bottom: 35px;
         padding-bottom: 20px;
-        background: url('../../PragimCourses/Content/Images/border_bottom.png') no-repeat center bottom
+        background: url('../../PragimCourses/Content/Images/border_bottom.png'),url('../Content/Images/border_bottom.png') no-repeat center bottom
     }
 
 .batch__wrap {
@@ -420,7 +425,7 @@ a.left.carousel-control {
         padding: 80px 0 25px;
         text-align: center;
         margin-bottom: 75px;
-        background: url('../../PragimCourses/Content/Images/border_bottom.png') no-repeat center bottom
+        background: url('../../PragimCourses/Content/Images/border_bottom.png'),url('../Content/Images/border_bottom.png') no-repeat center bottom
     }
 
     .pragim__information span {
@@ -461,7 +466,7 @@ a.left.carousel-control {
         font-size: 33px;
         font-weight: bold;
         padding-bottom: 20px;
-        background: url('../../PragimCourses/Content/Images/border_bottom.png') no-repeat center bottom
+        background: url('../../PragimCourses/Content/Images/border_bottom.png'),url('../Content/Images/border_bottom.png') no-repeat center bottom
     }
 
 .course__wrap {
@@ -474,7 +479,8 @@ a.left.carousel-control {
 
     .course__wrap img {
         width: 100%;
-        min-height: 212px
+        min-height: 212px;
+        transition: all 1s ease-in-out
     }
 
         .course__wrap img:hover {
@@ -525,7 +531,7 @@ a.left.carousel-control {
         text-align: center;
         font-size: 30px;
         font-weight: bold;
-        background: url('../../PragimCourses/Content/Images/border_bottom_white.png') no-repeat center bottom
+        background: url('../../PragimCourses/Content/Images/border_bottom_white.png'),url('../Content/Images/border_bottom_white.png') no-repeat center bottom
     }
 
 .opinion__wrap {
@@ -629,7 +635,7 @@ a.left.carousel-control {
         font-size: 20px;
         font-weight: bold;
         margin: 95px 0 55px;
-        background: url('../../PragimCourses/Content/Images/border_bottom.png') no-repeat left bottom
+        background: url('../../PragimCourses/Content/Images/border_bottom.png'),url('../Content/Images/border_bottom.png') no-repeat left bottom
     }
 
     .footer p {
@@ -671,7 +677,8 @@ a.left.carousel-control {
 
     .course__content p {
         font-size: 12px;
-        color: #FFAF00;
+        color: #FF5722;
+        margin: 5px 0 0;
     }
 
 .footer textarea, .footer input[type="text"] {
@@ -729,7 +736,7 @@ a.left.carousel-control {
 
     .subscribe__info-details h1 {
         padding-bottom: 5px;
-        background: url('../../PragimCourses/Content/Images/border_bottom.png') no-repeat center bottom;
+        background: url('../../PragimCourses/Content/Images/border_bottom.png'),url('../Content/Images/border_bottom.png') no-repeat center bottom;
         margin-bottom: 30px;
         font-size: 23px;
         font-weight: 700;
@@ -791,7 +798,7 @@ a.left.carousel-control {
 
     .feedback__info-details h1 {
         padding-bottom: 5px;
-        background: url('../../PragimCourses/Content/Images/border_bottom.png') no-repeat left bottom;
+        background: url('../../PragimCourses/Content/Images/border_bottom.png'),url('../Content/Images/border_bottom.png') no-repeat left bottom;
         margin-bottom: 30px;
         font-size: 23px;
         font-weight: 700;
@@ -850,7 +857,7 @@ a.left.carousel-control {
         margin-bottom: 30px;
         font-size: 23px;
         font-weight: 600;
-        background: url('../../PragimCourses/Content/Images/border_bottom.png') no-repeat left bottom
+        background: url('../../PragimCourses/Content/Images/border_bottom.png'),url('../Content/Images/border_bottom.png') no-repeat left bottom
     }
 
     .left__support h4 {
@@ -942,7 +949,7 @@ a.left.carousel-control {
         margin-bottom: 30px;
         font-size: 23px;
         font-weight: 600;
-        background: url('../../PragimCourses/Content/Images/border_bottom.png') no-repeat left bottom
+        background: url('../../PragimCourses/Content/Images/border_bottom.png'),url('../Content/Images/border_bottom.png') no-repeat left bottom
     }
 
     .right__support .phone, .whatsapp, .email, .address {
@@ -972,7 +979,7 @@ a.left.carousel-control {
         margin-bottom: 30px;
         font-size: 23px;
         font-weight: 600;
-        background: url('../../PragimCourses/Content/Images/border_bottom.png') no-repeat left bottom
+        background: url('../../PragimCourses/Content/Images/border_bottom.png'),url('../Content/Images/border_bottom.png') no-repeat left bottom
     }
 
     .left__contact .contact__form {
@@ -1105,6 +1112,14 @@ a.left.carousel-control {
         margin-bottom: 15px
     }
 
+.course__image img{
+    transition: all 1s ease-in-out
+}
+.course__image img:hover {
+    transform: translateZ(50px);
+    transition: all 1s ease-in-out
+}
+
         .wrapper .course__Description h1 {
             font-size: 27px;
             padding: 27px
@@ -1127,9 +1142,10 @@ a.left.carousel-control {
             background: black
         }
 
-        .icons .social__icon span {
-            margin: 7px;
-            color: white
+        .icons .social__icon i {
+            margin: 6px 8px;
+            color: white;
+            font-size: 17px
         }
 
 .course__information .price {
@@ -1233,7 +1249,7 @@ ul.course-detail {
 }
 
     ul.course-detail > li {
-        font-size: 20px;
+        font-size: 18px;
         font-weight: 600;
         margin-bottom: 5px;
     }
@@ -1296,7 +1312,7 @@ ul.course-detail {
 .panel-body h3 {
     font-weight: 700;
     padding-bottom: 10px;
-    background: url('../../PragimCourses/Content/Images/border_bottom.png') no-repeat left bottom
+    background: url('../../PragimCourses/Content/Images/border_bottom.png'),url('../Content/Images/border_bottom.png') no-repeat left bottom
 }
 
 .form__review button {
@@ -1384,4 +1400,12 @@ ul.course-detail {
         padding: 30px 10px;
         display: inline-block;
         float: right
+    }
+.freecourses-list a {
+    color: black;
+    text-decoration: none
+}
+    .freecourses-list a:hover {
+        color: #FF5722;
+        text-decoration: none
     }

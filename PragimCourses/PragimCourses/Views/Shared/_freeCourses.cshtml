@@ -1,0 +1,12 @@
+﻿
+<ol class="course-detail">
+    @foreach (var item in Model)
+    {
+        <li class="freecourses-list">
+                <a target="_blank" href="@item.CourseBodies[0].Body">Text</a> | 
+                <a target="_blank" href="@item.CourseBodies[1].Body">Slides</a> | 
+                <a target="_blank" href="@item.CourseBodies[2].Body">@item.Header</a>
+        </li>
+
+}
+</ol>

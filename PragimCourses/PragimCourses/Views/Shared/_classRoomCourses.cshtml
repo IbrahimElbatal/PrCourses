@@ -1,0 +1,17 @@
+﻿
+
+<ul class="course-detail">
+    @foreach (var item in Model)
+    {
+        <li>
+            @item.Header
+            <ol>
+                @foreach (var det in item.CourseBodies)
+                {
+                    <li>@det.Body</li>
+                }
+            </ol>
+        </li>
+
+    }
+</ul>

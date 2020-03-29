@@ -1,5 +1,4 @@
-﻿using System.Web;
-using System.Web.Optimization;
+﻿using System.Web.Optimization;
 
 namespace PragimCourses
 {
@@ -24,6 +23,7 @@ namespace PragimCourses
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
+                      "~/Content/font-awesome.min.css",
                       "~/Content/site.css"));
         }
     }
