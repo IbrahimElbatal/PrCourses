@@ -1,0 +1,446 @@
+﻿
+@model IEnumerable<PragimCourses.ViewModels.CartViewModel>
+@{
+    ViewBag.Title = "Checkout";
+}
+
+
+<div class="backdrop">
+    <div class="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+</div>
+<div class="support__title">
+    <div class="container">
+        <h1>Checkout</h1>
+    </div>
+</div>
+
+<div class="support">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-8">
+                <div class="left__support">
+                    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                        @{ var authonticated = User.Identity.IsAuthenticated; }
+                        @if (!authonticated)
+                        {
+                            <div class="panel panel-default">
+                                <div class="panel-heading" role="tab" id="headingOne">
+                                    <h4 class="panel-title">
+                                        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                            <span class="badge">1</span>Login/Register
+                                        </a>
+                                    </h4>
+                                </div>
+                                <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                                    <div class="panel-body">
+                                        <div class="row">
+                                            <div class="col-sm-6 col-xs-12">
+                                                <h2>Have an account?</h2>
+                                                <p>Sign in to speed up the checkout process.</p>
+                                                <form id="checkoutLoginForm">
+                                                    <div class="form-group">
+                                                        <label>E-mail Address/UserName</label>
+                                                        <input type="text" name="email" id="email" class="form-control" />
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Password</label>
+                                                        <input type="password" name="password" id="password" class="form-control" />
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <a href="#">Lost Password</a>
+                                                    </div>
+                                                    <button type="button" class="btn btn-custom">Login</button>
+                                                </form>
+                                            </div>
+                                            <div class="col-sm-6 col-xs-12">
+                                                <h2>First-time customer?</h2>
+                                                <p>Proceed to checkout and you'll have an opportunity to create an account at the end.</p>
+                                                <button id="guest" type="button" style="float: right; margin: 15px" class="btn btn-custom1">
+                                                    Continue as Guest
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="headingTwo">
+                                <h4 class="panel-title">
+                                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                        <span class="badge">
+                                            @{ var auth = ""; }
+                                            @if (authonticated)
+                                            {
+                                                @:1
+                                                auth = "in";
+                                            }
+                                            else
+                                            {
+                                                @:2
+                                                auth = "";
+                                            }
+                                        </span>Billing/Shipping Address
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapseTwo" class="panel-collapse collapse @auth" role="tabpanel" aria-labelledby="headingTwo">
+                                <div class="panel-body">
+                                    
+                                    @Html.Partial("_billing")
+                                    <div style="margin-left: 20px" class="checkbox">
+                                        <label>
+                                            <input type="checkbox" name="shippingForm" id="shippingForm"/>
+                                            Shipping address different than billing?
+                                        </label>
+                                    </div>
+                                    <div id="shipping" style="display: none">
+                                        @Html.Partial("_shipping ")
+                                    </div>
+                                    <div style="margin-left: 20px" class="checkbox">
+                                        <label>
+                                            <input type="checkbox" name="newCustomer" id="newCustomer"/>
+                                            Register as customer?
+                                        </label>
+                                    </div>
+                                    <div class="loginF" style="display: none; margin-left: 12px">
+                                        <form>
+                                            <div class="form-group">
+                                                <label>User Name</label>
+                                                <input type="text" id="userName" name="userName" class="form-control"/>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Password</label>
+                                                <input type="password" id="passwordL" name="passwordL" class="form-control"/>
+                                            </div>
+                                        </form>
+                                    </div>
+
+                                    <button style="float: right" id="nextCollapsePart" class="btn btn-custom1">Next</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="headingThree">
+                                <h4 class="panel-title">
+                                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                        <span class="badge">
+                                            @if (authonticated)
+                                            {
+                                                @:2
+                                            }
+                                            else
+                                            {
+                                                @:3
+                                            }
+                                        </span>Review Order/Payment
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                                <div class="panel-body">
+                                    <div class="row payment-overview">
+                                        <div class="col-md-6 billing">
+                                            <h3>Billing Address</h3>
+                                        </div>
+                                        <div class="col-md-6 shipping">
+                                            <h3>Shipping Address</h3>
+                                            
+                                        </div>
+                                    </div>
+
+                                    <div class="cart">
+                                        <h2>Cart</h2>
+                                        @foreach (var cart in Model)
+                                        {
+                                            <div class="cart-item">
+                                                <img src="@Url.Content(cart.Course.ImagePath)" />
+                                                <span class="fSpan">@cart.Course.Description</span>
+                                                <span class="cSpan">@cart.Course.Price $</span>
+                                                <span style="padding: 0 30px 0 0;font-weight: 600;">
+                                                    @cart.Quantity
+                                                </span>
+                                            </div>
+                                        }
+                                    </div>
+
+                                    <div class="cart-payment">
+                                        <h2>Payment</h2>
+                                        <p style="font-size: 13px; color: orange; padding-left: 10px;margin-bottom: 25px">You will be redirected to the PayPal site to finalize your payment.</p>
+                                        <div class="cart-total">
+                                            <ul class="list-group">
+                                                @{
+                                                    var totalPrice = 0.00m;
+                                                }
+                                                @foreach (var cart in Model)
+                                                {
+                                                    <li style="display: none"></li>
+                                                    <li class="list-group-item">
+                                                        <span style="float: right">
+                                                            @(cart.Course.Price * cart.Quantity) $
+                                                        </span>
+                                                        Product Total
+                                                    </li>
+                                                    totalPrice += cart.Course.Price * cart.Quantity;
+                                                }
+                                                <li style="font-weight: 600" class="list-group-item">
+                                                    <span style="float: right">@totalPrice $</span>
+                                                    Order Total
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    @Html.ActionLink("Continue Shopping?", "DownloadCourses", "Courses", null, new { @class = "btn btn-custom1", style = "float:left" })
+                                    @Html.ActionLink("Continue", "DownloadCourses", "Courses", null, new { @class = "btn btn-custom", style = "float:right" })
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                @Html.Partial("_contactInfo")
+            </div>
+        </div>
+    </div>
+</div>
+
+@Html.Partial("_signup_news")
+
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            var data = JSON.parse(localStorage.getItem("data"));
+            if (data) {
+                fillPayment(data);
+                fillBillingAndShipping(data);
+            }
+            
+            var ckShipping = $('#shippingForm');
+            var ckNewCustomer = $('#newCustomer');
+            ckNewCustomer.parents('.checkbox').css('display', 'none');
+            ckShipping.on('click',
+                function () {
+                    if (ckShipping.is(':checked')) {
+                        $('#shipping').css("display", "block");
+
+                    } else {
+                        $('#shipping').css("display", "none");
+
+                    }
+                });
+            ckNewCustomer.on('click',
+                function () {
+                    if (ckNewCustomer.is(':checked')) {
+                        $('.loginF').css("display", "block");
+
+                    } else {
+                        $('.loginF').css("display", "none");
+
+                    }
+                });
+
+            
+            var accordion = $('#accordion');
+            var accordionHeaders = accordion.find('.panel-title a');
+            //            accordionHeaders.attr('data-toggle', '');
+//            accordion.find('#collapseOne').addClass('in');
+            $('#guest').on('click',
+                function () {
+                    accordion.find('#collapseOne').removeClass('in');
+                    accordion.find('#collapseTwo').addClass('in');
+                    accordionHeaders.first().attr('data-toggle', 'collapse');
+                    ckNewCustomer.parents('.checkbox').css('display', 'block');
+                });
+            accordionHeaders.first().on('click',
+                function () {
+                    ckNewCustomer.parents('.checkbox').css('display', 'none');
+                });
+
+
+            var btnLoginCheckout = $('#checkoutLoginForm button');
+            btnLoginCheckout.on('click',
+                function () {
+                    $('.backdrop').css('display', 'block');
+                    var url = window.location.origin;
+                    $.ajax({
+                            url: url + '/api/authonticate',
+                            type: 'post',
+                            dataType: 'json',
+                            contentType: 'application/json',
+                            data: JSON.stringify({
+                                email: $('#checkoutLoginForm #email').val(),
+                                password: $('#checkoutLoginForm #password').val()
+                            })
+                        }).done(function(data) {
+                            window.location.href = window.location.origin + '/cart/checkout';
+
+                            localStorage.setItem("data",JSON.stringify(data));
+                            $('.backdrop').css('display', 'none');
+                        })
+                        .fail(function(err) {
+                            $('.backdrop').css('display', 'none');
+                            console.log(err);
+                        });
+                });
+
+            $('#nextCollapsePart').on('click',
+                function () {
+
+                    var bFName = $('#bFName');
+                    var bLName = $('#bLName');
+                    var bEmail = $('#bEmail');
+
+                    var bCompany = $('#bCompany');
+                    var bLine1 = $('#bLine1');
+                    var bLine2 = $('#bLine2');
+                    var bCity = $('#bCity');
+                    var bZipCode = $('#bZipCode');
+                    var bCountry = $('#bCountry');
+
+                    var billing = {
+                        company: bCompany.val(),
+                        address1: bLine1.val(),
+                        address2: bLine2.val(),
+                        city: bCity.val(),
+                        zipCode: bZipCode.val(),
+                        country: bCountry.val()
+                    };
+
+                    var user = {
+                        firstName: bFName.val(),
+                        lastName: bLName.val(),
+                        email: bEmail.val(),
+                        userName : bEmail.val()
+                    };
+                    var shipping = {};
+                    if (ckShipping.is(':checked')) {
+                        var sFName = $('#sFName');
+                        var sLName = $('#sLName');
+                        var sEmail = $('#sEmail');
+
+                        var sCompany = $('#sCompany');
+                        var sLine1 = $('#sLine1');
+                        var sLine2 = $('#sLine2');
+                        var sCity = $('#sCity');
+                        var sZipCode = $('#sZipCode');
+                        var sCountry = $('#sCountry');
+
+
+                        shipping = {
+                            company: sCompany.val(),
+                            address1: sLine1.val(),
+                            address2: sLine2.val(),
+                            city: sCity.val(),
+                            zipCode: sZipCode.val(),
+                            country: sCountry.val()
+                        };
+                    }
+                    
+
+                    var url = window.location.origin;
+                    $.ajax({
+                        url: url + '/api/Checkout',
+                        dataType: 'json',
+                        contentType: 'application/json',
+                        type: 'post',
+                        data: JSON.stringify({
+                            billing: billing,
+                            shipping: shipping,
+                            user : user
+                        })
+                    }).done(function (data) {
+                        $('#collapseTwo').removeClass('in');
+                        $('#collapseThree').addClass('in');
+                        fillPayment(data);
+                    }).fail(function (err) {
+                        console.log(err);
+                    });
+                });
+        });
+
+        function fillPayment(data) {
+            var billContent = '';
+            billContent += '<p class="col-sm-6">' +
+                data.user.firstName +
+                '</p>' +
+                '<p class="col-sm-6">' +
+                data.user.lastName +
+                '</p>' +
+                '<p>' +
+                data.user.email +
+                '</p>' +
+                '<p>' +
+                data.billing.company +
+                '</p>' +
+                '<p>' +
+                data.billing.address1 +
+                '</p>' +
+                '<p>' +
+                data.billing.address2 +
+                '</p>' +
+                '<p>' +
+                data.billing.city +
+                '</p>' +
+                '<p>' +
+                data.billing.country +
+                '</p>' +
+                '<p>phone</p>';
+            $('.payment-overview .billing').append(billContent);
+
+            var shippContent = '';
+            shippContent += '<p style="padding-left: 0" class="col-sm-6">' +
+                data.user.firstName +
+                '</p>' +
+                '<p style="padding-left: 0" class="col-sm-6">' +
+                data.user.lastName +
+                '</p>' +
+                '<p>' +
+                data.user.email +
+                '</p>' +
+                '<p>' +
+                data.shipping.company +
+                '</p>' +
+                '<p>' +
+                data.shipping.address1 +
+                '</p>' +
+                '<p>' +
+                data.shipping.address2 +
+                '</p>' +
+                '<p>' +
+                data.shipping.city +
+                '</p>' +
+                '<p>' +
+                data.shipping.country +
+                '</p>' +
+                '<p>phone</p>';
+            $('.payment-overview .shipping').append(shippContent);
+        }
+
+        function fillBillingAndShipping(data) {
+            $('#bFName').val(data.user.firstName);
+            $('#bLName').val(data.user.lastName);
+            $('#bEmail').val(data.user.email);
+
+            $('#bLine1').val(data.billing.address1);
+            $('#bLine2').val(data.billing.address2);
+            $('#bCompany').val(data.billing.company);
+            $('#bCity').val(data.billing.city);
+            $('#bCountry').val(data.billing.country);
+            $('#bZipCode').val(data.billing.zipCode);
+
+            $('#sFName').val(data.user.firstName);
+            $('#sLName').val(data.user.lastName);
+            $('#sEmail').val(data.user.email);
+                
+            $('#sLine1').val(data.shipping.address1);
+            $('#sLine2').val(data.shipping.address2);
+            $('#sCompany').val(data.shipping.company);
+            $('#sCity').val(data.shipping.city);
+            $('#sCountry').val(data.shipping.country);
+            $('#sZipCode').val(data.shipping.zipCode);
+        }
+    </script>
+}

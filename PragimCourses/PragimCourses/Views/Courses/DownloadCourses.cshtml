@@ -22,7 +22,7 @@
                     <div class="course__details">
                         <h3>@course.Course.Description</h3>
                         <span class="course__price">$ @course.Course.Price</span>
-                        <button class="btn btn-default">Buy Now</button>
+                        @Html.ActionLink("Buy Now","AddToCart","Cart",new {id=course.CourseId},new{@class="btn btn-default"})
                     </div>
                 </div>
 

@@ -16,14 +16,14 @@
                 <div class="left__contact">
                     <h1>Stay In Touch</h1>
                     <div class="contact__form">
-                        
-                        @using (Html.BeginForm("contact","Home",FormMethod.Post))
+
+                        @using (Html.BeginForm("contact", "Home", FormMethod.Post))
                         {
-                            @Html.ValidationSummary(false,"",new{@class="alert alert-danger"})
+                            @Html.ValidationSummary(false, "", new { @class = "alert alert-danger" })
                             <div class="form-group">
-                                @Html.LabelFor(c=>c.Name)
-                                @Html.TextBoxFor(c=>c.Name,new{@class="form-control"})
-                                @Html.ValidationMessageFor(c=>c.Name,"",new{@class="text-danger"})
+                                @Html.LabelFor(c => c.Name)
+                                @Html.TextBoxFor(c => c.Name, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(c => c.Name, "", new { @class = "text-danger" })
                             </div>
                             <div class="form-group">
                                 @Html.LabelFor(c => c.Email)
@@ -38,7 +38,7 @@
                             </div>
                             <div class="form-group">
                                 @Html.LabelFor(c => c.Message)
-                                @Html.TextAreaFor(c => c.Message,5,10, new { @class = "form-control" })
+                                @Html.TextAreaFor(c => c.Message, 5, 10, new { @class = "form-control" })
                                 @Html.ValidationMessageFor(c => c.Message, "", new { @class = "text-danger" })
                             </div>
                             <div class="g-recaptcha" data-sitekey="6LfKuN0UAAAAAApO_hgLfawhEPoGGn0NKrJUPMWJ"></div>
@@ -79,24 +79,4 @@
     </div>
 </div>
 
-<div class="signup__news">
-    <div class="container">
-        <div class="col-md-6 col-sm-6 col-xs-12">
-            <div class="right__wrap">
-                <span class="glyphicon glyphicon-envelope"></span>
-                <div class="information">
-                    <h2>Subscribe Email Alerts</h2>
-                    <p>If you wish to receive email alerts when new articles, videos or interview questions are posted on PragimTech.com, you can subscribe by providing your valid email.</p>
-                </div>
-            </div>
-
-        </div>
-        <div class="col-md-6 col-sm-6 col-xs-12">
-            <div class="signup-form">
-                <input placeholder="Your Email Address" type="text" class="form-control" name="name" value="" />
-                <button class="btn btn-warning">Signup <span class="glyphicon glyphicon-arrow-right"></span> </button>
-
-            </div>
-        </div>
-    </div>
-</div>
+@Html.Partial("_signup_news")

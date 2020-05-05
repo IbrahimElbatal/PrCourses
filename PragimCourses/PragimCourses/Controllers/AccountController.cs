@@ -150,7 +150,9 @@ namespace PragimCourses.Controllers
                     FirstName = model.FirstName,
                     LastName = model.LastName,
                     UserName = model.UserName,
-                    Email = model.Email
+                    Email = model.Email,
+                    BillingInfo = new BillingInfo() { Address1 = "", City = "", Country = "", ZipCode = "",Company = ""},
+                    ShippingInfo = new ShippingInfo() { Address1 = "", City = "", Country = "", ZipCode = "",Company = ""}
                 };
 
                 if (model.CheckWeekPassword)

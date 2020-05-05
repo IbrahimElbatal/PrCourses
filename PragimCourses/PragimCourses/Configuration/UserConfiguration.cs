@@ -14,6 +14,7 @@ namespace PragimCourses.Configuration
             Property(u => u.LastName)
                 .HasMaxLength(80)
                 .IsRequired();
+
         }
     }
 }

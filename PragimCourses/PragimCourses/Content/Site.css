@@ -14,6 +14,97 @@ a:hover, a h3:hover, a h4:hover ,a p:hover {
     white-space: normal;
 }
 
+.backdrop {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0,0,0,.5);
+    z-index: 100;
+    display: none
+}
+/**------------------------------------spinner--------------------------*/
+.lds-spinner {
+    display: inline-block;
+    position: relative;
+    width: 80px;
+    height: 80px;
+    top: 40%;
+    left: 40%
+}
+.lds-spinner div {
+    transform-origin: 40px 40px;
+    animation: lds-spinner 1.2s linear infinite;
+}
+.lds-spinner div:after {
+    content: " ";
+    display: block;
+    position: absolute;
+    top: 3px;
+    left: 37px;
+    width: 6px;
+    height: 18px;
+    border-radius: 20%;
+    background: #fff;
+}
+.lds-spinner div:nth-child(1) {
+    transform: rotate(0deg);
+    animation-delay: -1.1s;
+}
+.lds-spinner div:nth-child(2) {
+    transform: rotate(30deg);
+    animation-delay: -1s;
+}
+.lds-spinner div:nth-child(3) {
+    transform: rotate(60deg);
+    animation-delay: -0.9s;
+}
+.lds-spinner div:nth-child(4) {
+    transform: rotate(90deg);
+    animation-delay: -0.8s;
+}
+.lds-spinner div:nth-child(5) {
+    transform: rotate(120deg);
+    animation-delay: -0.7s;
+}
+.lds-spinner div:nth-child(6) {
+    transform: rotate(150deg);
+    animation-delay: -0.6s;
+}
+.lds-spinner div:nth-child(7) {
+    transform: rotate(180deg);
+    animation-delay: -0.5s;
+}
+.lds-spinner div:nth-child(8) {
+    transform: rotate(210deg);
+    animation-delay: -0.4s;
+}
+.lds-spinner div:nth-child(9) {
+    transform: rotate(240deg);
+    animation-delay: -0.3s;
+}
+.lds-spinner div:nth-child(10) {
+    transform: rotate(270deg);
+    animation-delay: -0.2s;
+}
+.lds-spinner div:nth-child(11) {
+    transform: rotate(300deg);
+    animation-delay: -0.1s;
+}
+.lds-spinner div:nth-child(12) {
+    transform: rotate(330deg);
+    animation-delay: 0s;
+}
+@keyframes lds-spinner {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+/*-------------------------------------------------end spinner--------------------*/
 /* Set width on the form input elements since they're 100% wide by default */
 input,
 select,
@@ -90,7 +181,7 @@ textarea {
             color: #FF5722;
         }
 
-    .login input[type="text"], input[type="password"],
+    .login input[type="text"], input[type="password"], input[type="text"],
     .register__form input[type="text"], input[type="password"] {
         background: #E8F0FE;
     }
@@ -367,7 +458,7 @@ a.left.carousel-control {
         text-align: center;
         margin-bottom: 35px;
         padding-bottom: 20px;
-        background: url('../../PragimCourses/Content/Images/border_bottom.png'),url('../Content/Images/border_bottom.png') no-repeat center bottom
+        background: url('../../PragimCourses/Content/Images/border_bottom.png') no-repeat center bottom ,url('../Content/Images/border_bottom.png') no-repeat center bottom
     }
 
 .batch__wrap {
@@ -425,7 +516,7 @@ a.left.carousel-control {
         padding: 80px 0 25px;
         text-align: center;
         margin-bottom: 75px;
-        background: url('../../PragimCourses/Content/Images/border_bottom.png'),url('../Content/Images/border_bottom.png') no-repeat center bottom
+        background: url('../../PragimCourses/Content/Images/border_bottom.png') no-repeat center bottom,url('../Content/Images/border_bottom.png') no-repeat center bottom
     }
 
     .pragim__information span {
@@ -466,7 +557,7 @@ a.left.carousel-control {
         font-size: 33px;
         font-weight: bold;
         padding-bottom: 20px;
-        background: url('../../PragimCourses/Content/Images/border_bottom.png'),url('../Content/Images/border_bottom.png') no-repeat center bottom
+        background: url('../../PragimCourses/Content/Images/border_bottom.png') no-repeat center bottom,url('../Content/Images/border_bottom.png') no-repeat center bottom
     }
 
 .course__wrap {
@@ -531,7 +622,7 @@ a.left.carousel-control {
         text-align: center;
         font-size: 30px;
         font-weight: bold;
-        background: url('../../PragimCourses/Content/Images/border_bottom_white.png'),url('../Content/Images/border_bottom_white.png') no-repeat center bottom
+        background: url('../../PragimCourses/Content/Images/border_bottom_white.png') no-repeat center bottom,url('../Content/Images/border_bottom_white.png') no-repeat center bottom
     }
 
 .opinion__wrap {
@@ -635,7 +726,7 @@ a.left.carousel-control {
         font-size: 20px;
         font-weight: bold;
         margin: 95px 0 55px;
-        background: url('../../PragimCourses/Content/Images/border_bottom.png'),url('../Content/Images/border_bottom.png') no-repeat left bottom
+        background: url('../../PragimCourses/Content/Images/border_bottom.png') no-repeat left bottom,url('../Content/Images/border_bottom.png') no-repeat left bottom
     }
 
     .footer p {
@@ -736,7 +827,7 @@ a.left.carousel-control {
 
     .subscribe__info-details h1 {
         padding-bottom: 5px;
-        background: url('../../PragimCourses/Content/Images/border_bottom.png'),url('../Content/Images/border_bottom.png') no-repeat left bottom;
+        background: url('../../PragimCourses/Content/Images/border_bottom.png') no-repeat left bottom,url('../Content/Images/border_bottom.png') no-repeat left bottom;
         margin-bottom: 30px;
         font-size: 23px;
         font-weight: 700;
@@ -798,7 +889,7 @@ a.left.carousel-control {
 
     .feedback__info-details h1 {
         padding-bottom: 5px;
-        background: url('../../PragimCourses/Content/Images/border_bottom.png'),url('../Content/Images/border_bottom.png') no-repeat left bottom;
+        background: url('../../PragimCourses/Content/Images/border_bottom.png') no-repeat left bottom,url('../Content/Images/border_bottom.png') no-repeat left bottom;
         margin-bottom: 30px;
         font-size: 23px;
         font-weight: 700;
@@ -849,7 +940,8 @@ a.left.carousel-control {
 /**---------------------end--------------------------------*/
 /*-----------------------support us ---------------------*/
 .left__support {
-    margin-top: 75px
+    margin-top: 75px;
+    margin-bottom: 100px
 }
 
     .left__support h1 {
@@ -857,7 +949,7 @@ a.left.carousel-control {
         margin-bottom: 30px;
         font-size: 23px;
         font-weight: 600;
-        background: url('../../PragimCourses/Content/Images/border_bottom.png'),url('../Content/Images/border_bottom.png') no-repeat left bottom
+        background: url('../../PragimCourses/Content/Images/border_bottom.png') no-repeat left bottom,url('../Content/Images/border_bottom.png') no-repeat left bottom
     }
 
     .left__support h4 {
@@ -949,7 +1041,7 @@ a.left.carousel-control {
         margin-bottom: 30px;
         font-size: 23px;
         font-weight: 600;
-        background: url('../../PragimCourses/Content/Images/border_bottom.png'),url('../Content/Images/border_bottom.png') no-repeat left bottom
+        background: url('../../PragimCourses/Content/Images/border_bottom.png') no-repeat left bottom,url('../Content/Images/border_bottom.png') no-repeat left bottom
     }
 
     .right__support .phone, .whatsapp, .email, .address {
@@ -979,7 +1071,7 @@ a.left.carousel-control {
         margin-bottom: 30px;
         font-size: 23px;
         font-weight: 600;
-        background: url('../../PragimCourses/Content/Images/border_bottom.png'),url('../Content/Images/border_bottom.png') no-repeat left bottom
+        background: url('../../PragimCourses/Content/Images/border_bottom.png') no-repeat left bottom,url('../Content/Images/border_bottom.png') no-repeat left bottom
     }
 
     .left__contact .contact__form {
@@ -1088,17 +1180,40 @@ a.left.carousel-control {
         margin: 15px 0 25px
     }
 
-    .course__details button {
+    .course__details a {
         background: #FF5722;
         color: white;
         min-width: 90px
     }
 
-        .course__details button:hover,
-        .course__details button:active {
-            background: #0583E4
+        .course__details a:hover,
+        .course__details a:active {
+            background: #0583E4;
+            color: white
         }
 
+.btn-custom {
+    background: #FF5722;
+    color: white;
+    min-width: 90px;
+    font-size: 15px;
+    font-weight: 600
+}
+    .btn-custom:hover {
+        background: #0583E4;
+        color: white;
+    }
+.btn-custom1 {
+    background: #0583E4;
+    color: white;
+    min-width: 90px;
+    font-size: 15px;
+    font-weight: 600
+}
+    .btn-custom1:hover {
+        color: white;
+        box-shadow: 2px 2px 2px black;
+    }
 /*----------------------end---------------*/
 
 /*--------------------------Wrapper --------------------*/
@@ -1312,7 +1427,7 @@ ul.course-detail {
 .panel-body h3 {
     font-weight: 700;
     padding-bottom: 10px;
-    background: url('../../PragimCourses/Content/Images/border_bottom.png'),url('../Content/Images/border_bottom.png') no-repeat left bottom
+    background: url('../../PragimCourses/Content/Images/border_bottom.png') no-repeat left bottom,url('../Content/Images/border_bottom.png') no-repeat left bottom
 }
 
 .form__review button {
@@ -1409,3 +1524,121 @@ ul.course-detail {
         color: #FF5722;
         text-decoration: none
     }
+
+/*---------------------li cart-------------------------------*/
+li.updateQ {
+    border: 1px solid wheat;
+}
+    li.updateQ a {
+        padding: 0;
+        color: black
+    }
+    li.updateQ span:first-of-type {
+        font-size: 30px;
+        padding: 7px 13px
+    }
+    li.updateQ span > span:first-of-type {
+        position: absolute;
+        top: 4px;
+        left: 30px;
+        background: #FF5722;
+        padding: 3px 7px;
+        font-size: 12px
+    }
+
+/*------------------------------end li cart ----------------------*/
+/*--------------------------cart-----------------------*/
+.left__support .no-item {
+    padding: 10px;
+    width: 100%;
+    background: #6AB0DE;
+    border: 1px solid blue
+}
+.left__support .no-item a {
+    color: white;
+    text-decoration: underline
+}
+
+.left__support .cart-item {
+    margin-bottom: 10px;
+    background: #F3F3F3;
+    display: flex;
+    align-items: center
+}
+    .left__support .cart-item img {
+        margin: 15px;
+        width: 80px;
+        height: 80px
+    }
+
+    .left__support .cart-item .fSpan {
+        font-weight: 500;
+        width: 350px;
+        margin: 15px 15px 15px 0;
+    }
+
+    .left__support .cart-item .cSpan {
+        font-weight: 600;
+        width: 100px;
+        min-width: 60px;
+        margin: 15px 15px 15px 0;
+    }
+
+    .left__support .cart-item select {
+        height: 35px;
+        margin: 15px 15px 15px 0;
+        width: 100px;
+    }
+
+.left__support .cart-total li:first-of-type {
+    background: black;
+    color: white
+}
+
+/*-------------------------------------*/
+/*------------------------checkout------------------------*/
+.left__support .panel-title {
+    margin: 0
+}
+
+    .left__support .panel-title .badge {
+        width: 33px;
+        height: 35px;
+        padding: 8px 10px;
+        border-radius: 10px;
+        font-size: 20px;
+        margin-right: 10px;
+    }
+.left__support .panel-body h2{
+         font-weight: 600;
+         font-size: 25px;
+    }
+.left__support .panel-body p{
+    font-size: 16px;
+    }
+.left__support .panel-body .custom-height {
+    padding-left: 0
+}
+.left__support .panel-body .custom-height input {
+    margin-bottom: 9px
+}
+    .left__support .panel-body .custom-height .custom-label {
+        color: #888d96;
+        font-style: italic;
+        font-size: 15px
+    }
+@media (min-width: 600px) {
+    .left__support .panel-body .custom-height {
+        height: 90px;
+    }
+    .left__support .panel-body .emailAd{
+        margin-top: 35px
+    }
+ }
+
+/*-----------------------------payment-----------------*/
+.left__support .panel-body .payment-overview p {
+    padding-left: 0;
+    font-size: 15px
+}
+/*----------------------------------------------*/

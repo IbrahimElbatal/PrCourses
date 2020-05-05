@@ -22,6 +22,8 @@ namespace PragimCourses.Models
         public DbSet<CourseDetailsBody> CourseDetailsBodies { get; set; }
         public DbSet<Review> Reviews { get; set; }
         public DbSet<Subscriber> Subscribers { get; set; }
+        public DbSet<BillingInfo> BillingInfos { get; set; }
+        public DbSet<ShippingInfo> ShippingInfos { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -34,6 +36,20 @@ namespace PragimCourses.Models
             modelBuilder.Configurations.Add(new CourseDetailsBodyConfiguration());
             modelBuilder.Configurations.Add(new ReviewConfiguration());
             modelBuilder.Configurations.Add(new SubscriberConfiguration());
+            modelBuilder.Configurations.Add(new BillingInfoConfiguration());
+            modelBuilder.Configurations.Add(new ShippingInfoConfiguration());
+
+            modelBuilder.Entity<ApplicationUser>()
+                .HasRequired(u => u.BillingInfo)
+                .WithRequiredPrincipal(b => b.User)
+            .Map(map => map.MapKey("UserId"));
+
+
+            modelBuilder.Entity<ApplicationUser>()
+                .HasOptional(u => u.ShippingInfo)
+                .WithRequired(s => s.User)
+                .Map(map => map.MapKey("UserId"));
+
 
             base.OnModelCreating(modelBuilder);
         }

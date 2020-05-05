@@ -105,6 +105,19 @@
                                     <li>
                                         @Html.ActionLink("Contact Us", "Contact", "Home")
 
+                                    </li> 
+                                    <li class="updateQ">
+                                        <a href="~/cart/index">
+                                            <span class="fa fa-cart-arrow-down">
+                                                <span class="badge">
+                                                    @{
+                                                        var quantity = (int)(TempData["Quantity"] ?? 0);
+                                                        TempData.Keep("Quantity");
+                                                    }
+                                                    @quantity
+                                                </span>
+                                            </span>
+                                        </a>
                                     </li>
                                 </ul>
                             </div>

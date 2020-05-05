@@ -1,0 +1,129 @@
+﻿
+@model IEnumerable<PragimCourses.ViewModels.CartViewModel>
+@{
+    ViewBag.Title = "Cart";
+}
+
+<div class="support__title">
+    <div class="container">
+        <h1>Cart</h1>
+    </div>
+</div>
+
+<div class="support">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-8">
+                <div class="left__support">
+                    @if (!Model.Any())
+                    {
+                        <div class="no-item">
+                            <h5>
+                                There are no items in your cart -
+                                @Html.ActionLink("go add some!", "DownloadCourses", "Courses")
+                            </h5>
+                        </div>
+                    }
+                    else
+                    {
+                        foreach (var cart in Model)
+                        {
+                            <div class="cart-item">
+                                <img src="@Url.Content(cart.Course.ImagePath)" />
+                                <span class="fSpan">@cart.Course.Description</span>
+                                <span class="cSpan">@cart.Course.Price $</span>
+                                <span>
+                                    <select data-id="@cart.Course.Id" id="ddlQuantity" name="ddlQuantity">
+                                        @for (int i = 1; i <= 100; i++)
+                                        {
+                                            if (i == cart.Quantity)
+                                            {
+                                                <option selected="selected" value="@i">@i</option>
+                                            }
+                                            else
+                                            {
+                                                <option value="@i">@i</option>
+                                            }
+                                        }
+                                    </select>
+                                    <br />
+                                    <span><a href="#">Remove</a></span>
+                                </span>
+                            </div>
+                        }
+                        <div class="cart-total">
+                            <ul class="list-group">
+                                <li class="list-group-item">Estimated Total</li>
+                                @{
+                                    var totalPrice = 0.00m;
+                                    var quantity = 0;
+                                }
+                                @foreach (var cart in Model)
+                                {
+                                    <li class="list-group-item">
+                                        <span style="float: right">
+                                            @(cart.Course.Price * cart.Quantity) $
+                                        </span>
+                                        Product Total
+                                    </li>
+                                    totalPrice += cart.Course.Price * cart.Quantity;
+                                    quantity += cart.Quantity;
+                                }
+                                @{ TempData["Quantity"] = quantity; }
+                                <li style="font-weight: 600" class="list-group-item">
+                                    <span style="float: right">@totalPrice $</span>
+                                    Estimated Total
+                                </li>
+                            </ul>
+                        </div>
+                        @Html.ActionLink("Continue Shopping?", "DownloadCourses", "Courses", null, new { @class = "btn btn-custom1", style = "float:left" })
+                        @Html.ActionLink("Checkout", "Checkout", "Cart", null, new { @class = "btn btn-custom", style = "float:right" })
+
+                    }
+
+                </div>
+            </div>
+            <div class="col-sm-4">
+                @Html.Partial("_contactInfo")
+            </div>
+        </div>
+    </div>
+</div>
+
+@Html.Partial("_signup_news")
+
+@section scripts
+{
+    <script>
+        $(document).ready(function() {
+            $('select[name="ddlQuantity"]').on('change',
+                function() {
+                    var selectedDDL = $(this).attr('data-id');
+                    var ddlValue = $(this).val();
+
+                    $.ajax({
+                        url: '@Url.Action("UpdateQuantity","Cart")',
+                        type: 'post',
+                        contentType: 'application/json',
+                        dataType : 'json',
+                        data: JSON.stringify({
+                            CourseId: Number(selectedDDL),
+                            Quantity: ddlValue
+                        })
+                    }).done(function () {
+                        $('.list-group').load(window.location.href +' .list-group',
+                            function() {
+                                
+                            });
+                        $('.updateQ').load(window.location.href +' .updateQ',
+                            function() {
+                                
+                            });
+                        console.log("updated");
+                    }).fail(function(err) {
+                        console.log(err);
+                    });
+                });
+        });
+    </script>
+}
