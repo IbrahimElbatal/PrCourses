@@ -6,6 +6,10 @@ body {
     padding-bottom: 20px;
 }
 
+.g-recaptcha {
+    margin-left: -28px
+}
+
 a:hover, a h3:hover, a h4:hover ,a p:hover {
     color: #FF5722;
     text-decoration: none
@@ -465,12 +469,13 @@ a.left.carousel-control {
     margin: 0 10px 20px;
     min-height: 95px;
     box-shadow: 2px 2px 2px #ccc;
+    display: flex
 }
 
 .batch__date {
     background: #1AC4DD;
     color: white;
-    width: 16%;
+    width: 20%;
     float: left;
     margin-right: 20px;
     border-top-left-radius: 8px;
@@ -509,6 +514,7 @@ a.left.carousel-control {
     font-family: Arial;
 }
 
+
     .pragim__information h1 {
         margin: 0;
         font-size: 30px;
@@ -530,7 +536,7 @@ a.left.carousel-control {
 
     .pragim__information p {
         font-size: 13px;
-        color: #ddd
+        color: #99a6bb
     }
 
 .pragim__information-button {
@@ -538,12 +544,17 @@ a.left.carousel-control {
     background: #FF5722;
     font-size: 19px;
     padding: 10px 35px;
-    display: block
+    display: block;
+    color: white
 }
-
+.btn:focus, .btn:active:focus {
+    outline: none;
+    color: white
+    }
     .pragim__information-button:hover {
         /* margin: 40px auto; */
-        background: #0583E4
+        background: #0583E4;
+        color: white
     }
 
 .popular__courses {
@@ -567,11 +578,14 @@ a.left.carousel-control {
     overflow: hidden;
     perspective: 400px;
 }
-
+    .course__wrap >div {
+        overflow: hidden
+    }
     .course__wrap img {
         width: 100%;
         min-height: 212px;
-        transition: all 1s ease-in-out
+        transition: all 1s ease-in-out;
+        max-height: 320px
     }
 
         .course__wrap img:hover {
@@ -599,7 +613,8 @@ a.left.carousel-control {
 }
 
 .course__footer .enrolled {
-    /* float: right */
+    float: right;
+    margin-right: 20px;
     color: #b0b7c5;
 }
 
@@ -905,13 +920,13 @@ a.left.carousel-control {
     margin-bottom: 20px
 }
 
-.feedback__form select {
+    .feedback__form select {
     max-width: 200px
 }
 
-.feedback__form input, textarea {
-    min-width: 350px
-}
+/* .feedback__form input, textarea { */
+/*     min-width: 350px */
+/* } */
 
 .feedback__form h3 {
     font-size: 15px;
@@ -1642,3 +1657,61 @@ li.updateQ {
     font-size: 15px
 }
 /*----------------------------------------------*/
+
+
+/*----------------------Custom bootstrap ---------------------*/
+.custom-nav > li > ul > li a {
+    color: #ded6d6
+}
+.navbar-default .navbar-nav .open .dropdown-menu > li > a {
+    color: #ded6d6
+}
+.dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus {
+    color: #fff !important;
+    text-decoration: none;
+    background: none
+}
+.dropdown-menu > .active > a, .dropdown-menu > .active > a:hover, .dropdown-menu > .active > a:focus {
+    color: #968e8e !important;
+    background-color: #E7E7E7;
+}
+/*----------------end custom bootstrap-----------------*/
+
+
+@media only screen and (max-width: 350px) {
+    .batch__date {
+        width: 25%;
+    }
+    button#wrap-text {
+        white-space: pre-wrap;
+    }
+    .course__footer .enrolled {
+        float: none;
+        margin-right: 0;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .pragim__information .col-xs-12 {
+        margin-bottom: 25px;
+        padding: 0 20px
+    }
+}
+
+.btn-group {
+    margin-bottom: 30px;
+}
+.btn-group button {
+    background: transparent;
+    border: none;
+    outline: none;
+    padding: 1rem 2rem;
+    font-size: 20px
+}
+    .btn-group button.btn.active{
+        color: black;
+        background: #ddd
+    }
+        .btn-group button.btn.active:focus {
+            outline: none
+        }
