@@ -185,8 +185,8 @@ textarea {
             color: #FF5722;
         }
 
-    .login input[type="text"], input[type="password"], input[type="text"],
-    .register__form input[type="text"], input[type="password"] {
+    .login input[type="text"], .login input[type="password"], .login input[type="text"],
+    .register__form input[type="text"], .register__form input[type="password"] {
         background: #E8F0FE;
     }
 
@@ -1063,7 +1063,7 @@ a.left.carousel-control {
         margin-bottom: 35px;
     }
 
-        .right__support .phone h6, .whatsapp h6, .email h6, .address h6 {
+.right__support .phone h6, .whatsapp h6, .email h6, .address h6 {
             color: #657184;
             font-size: 13px;
             font-weight: 600;
@@ -1144,9 +1144,9 @@ a.left.carousel-control {
     margin-bottom: 33px;
 }
 
-    .email p {
-        color: #3a3737;
-    }
+.right__contact .email p {
+    color: #657184;
+}
 
     .email .glyphicon-envelope {
         color: #fd8964;

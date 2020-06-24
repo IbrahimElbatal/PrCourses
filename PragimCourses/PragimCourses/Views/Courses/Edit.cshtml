@@ -1,11 +1,15 @@
 ﻿@model PragimCourses.ViewModels.CourseViewModel
+
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Edit";
 }
+
 <div class="container">
-    @using (Html.BeginForm("Create", "Courses", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    @using (Html.BeginForm("Edit", "Courses", FormMethod.Post, new { enctype = "multipart/form-data" }))
     {
         @Html.AntiForgeryToken();
+        @Html.HiddenFor(m => m.Id)
+     
 
         <div class="form-group">
             @Html.Label("Course Category")
@@ -36,8 +40,6 @@
         <button class="btn btn-default" type="submit">Save</button>
     }
 </div>
-
-
-@section Scripts {
+@section scripts{
     @Scripts.Render("~/bundles/jqueryval")
 }

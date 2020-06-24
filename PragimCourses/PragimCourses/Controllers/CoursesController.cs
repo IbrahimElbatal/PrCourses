@@ -58,6 +58,7 @@ namespace PragimCourses.Controllers
             return View(model);
         }
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Create(CourseViewModel model, HttpPostedFileBase postedFile)
         {
             model.Categories = new SelectList(_context.Categories.ToList(),
@@ -116,6 +117,80 @@ namespace PragimCourses.Controllers
             }
             return RedirectToAction("FreeCourses", "Courses");
         }
+        [HttpGet]
+        public ActionResult Edit(int id)
+        {
+            var course = _context.Courses.Find(id);
+
+            if (course == null)
+            {
+                return HttpNotFound($"the course with {id} not found it might be delated.");
+            }
+
+            var category = _context.CourseCategories
+                .Include(c => c.Category)
+                .FirstOrDefault(cc => cc.CourseId == course.Id)?.Category;
+
+            var model = new CourseViewModel()
+            {
+                Categories = new SelectList(_context.Categories.ToList(),
+                    "Id",
+                    "Name"),
+                Id = course.Id,
+                Header = course.Header,
+                Description = course.Description,
+                ImagePath = course.ImagePath,
+                Price = course.Price,
+                CategoryId = category.Id
+            };
+
+            return View(model);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit([Bind(Include = "Id,Price,Header,Description,ImagePath")]CourseViewModel model, HttpPostedFileBase postedFile)
+        {
+            model.Categories = new SelectList(_context.Categories.ToList(),
+                "Id",
+                "Name");
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
+            var courseInDb = _context.Courses.Find(model.Id);
+            if (courseInDb == null)
+            {
+                return HttpNotFound();
+            }
+
+            var category = _context.Categories.Find(model.CategoryId)?.Name;
+            category = category?.Replace(" ", "");
+            model.ImagePath = courseInDb.ImagePath;
+            if (postedFile != null)
+            {
+                var fileName =
+                    Path.Combine(Server.MapPath("~/Content/Images/" + category + "/"), postedFile.FileName);
+                postedFile.SaveAs(fileName);
+
+                model.ImagePath = "~/Content/Images/" + category + "/" + postedFile.FileName;
+            }
+
+            courseInDb.Header = model.Header;
+            courseInDb.Description = model.Description;
+            courseInDb.ImagePath = model.ImagePath;
+            courseInDb.Price = model.Price;
+
+            //            var courseCategory = new CourseCategory()
+            //            {
+            //                CategoryId = model.CategoryId,
+            //                CourseId = course.Id
+            //            };
+
+            _context.SaveChanges();
+            return RedirectToAction("FreeCourses", "Courses");
+        }
+
 
         [HttpGet]
         public ActionResult AddCourseDescription()

@@ -475,6 +475,7 @@
     <Content Include="Views\Shared\_contactInfo.cshtml" />
     <Content Include="Views\Shared\_billing.cshtml" />
     <Content Include="Views\Shared\_shipping .cshtml" />
+    <Content Include="Views\Courses\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
