@@ -148,7 +148,7 @@ namespace PragimCourses.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Price,Header,Description,ImagePath")]CourseViewModel model, HttpPostedFileBase postedFile)
+        public ActionResult Edit([Bind(Include = "Id,Price,Header,Description,ImagePath,CategoryId")]CourseViewModel model, HttpPostedFileBase postedFile)
         {
             model.Categories = new SelectList(_context.Categories.ToList(),
                 "Id",
@@ -167,7 +167,7 @@ namespace PragimCourses.Controllers
             var category = _context.Categories.Find(model.CategoryId)?.Name;
             category = category?.Replace(" ", "");
             model.ImagePath = courseInDb.ImagePath;
-            if (postedFile != null)
+            if (category != null && postedFile != null)
             {
                 var fileName =
                     Path.Combine(Server.MapPath("~/Content/Images/" + category + "/"), postedFile.FileName);
@@ -180,12 +180,6 @@ namespace PragimCourses.Controllers
             courseInDb.Description = model.Description;
             courseInDb.ImagePath = model.ImagePath;
             courseInDb.Price = model.Price;
-
-            //            var courseCategory = new CourseCategory()
-            //            {
-            //                CategoryId = model.CategoryId,
-            //                CourseId = course.Id
-            //            };
 
             _context.SaveChanges();
             return RedirectToAction("FreeCourses", "Courses");
