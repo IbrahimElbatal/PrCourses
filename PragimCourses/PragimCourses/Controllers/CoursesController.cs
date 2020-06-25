@@ -20,6 +20,14 @@ namespace PragimCourses.Controllers
             _context = new ApplicationDbContext();
         }
 
+        public ActionResult Courses(int? page)
+        {
+            var courses = _context.CourseCategories
+                .Where(cc => cc.CategoryId == 1 || cc.CategoryId == 3)
+                .OrderBy(c => c.CategoryId)
+                .Select(cc => cc.Course);
+            return View(courses.ToPagedList(page ?? 1, 12));
+        }
         public ActionResult FreeCourses(int? page)
         {
             var freeCoursesId = _context.Categories

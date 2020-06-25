@@ -1,5 +1,6 @@
 ﻿using PragimCourses.Models;
 using PragimCourses.ViewModels;
+using System.Data.Entity;
 using System.Linq;
 using System.Web.Mvc;
 
@@ -14,7 +15,20 @@ namespace PragimCourses.Controllers
         }
         public ActionResult Index()
         {
-            return View(_context.Feedbacks.ToList());
+            var courses = _context.CourseCategories
+                .Include(cc => cc.Course)
+                .AsNoTracking()
+                .ToList();
+
+            var model = new CoursesFeedbackViewModel()
+            {
+                Feedback = _context.Feedbacks.ToList(),
+                FreeCourses = courses.Where(c => c.CategoryId == 1).Select(c => c.Course).Take(8),
+                DownloadCourses = courses.Where(c => c.CategoryId == 2).Select(c => c.Course).Take(10),
+                ClassroomCourses = courses.Where(c => c.CategoryId == 3).Select(c => c.Course).Take(10)
+            };
+
+            return View(model);
         }
         public ActionResult Support()
         {

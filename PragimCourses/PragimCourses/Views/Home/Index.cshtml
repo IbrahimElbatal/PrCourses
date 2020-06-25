@@ -1,4 +1,4 @@
-﻿@model IEnumerable<PragimCourses.Models.Feedback>
+﻿@model PragimCourses.ViewModels.CoursesFeedbackViewModel
 @{
     ViewBag.Title = "Home";
 }
@@ -22,17 +22,19 @@
                 <p>Come and experience quality learning offered by PRAGIM's best Trainers</p>
                 <div class="free__courses">
                     <ul>
-                        <li>C#</li>
-                        <li>Asp.net</li>
-                        <li>Entityframework</li>
-                        <li>Angular 6</li>
-                        <li>Angular cli</li>
-                        <li>Ado.net</li>
-                        <li>Sql Server</li>
-                        <li>Mvc</li>
+                        @foreach (var course in Model.ClassroomCourses)
+                        {
+                            <li>
+                                @Html.ActionLink(course.Header,"Details","Courses",new{id=course.Id},null)
+                            </li>
+                        }
                     </ul>
                 </div>
-                <button class="btn btn-default">View Courses <span class="glyphicon glyphicon-arrow-right"></span></button>
+
+                <a href="@Url.Action("ClassRoomCourses","Courses")" class="btn btn_customStyle">
+                    View Courses 
+                    <span class="glyphicon glyphicon-arrow-right"></span>
+                </a>
             </div>
         </div>
         <div class="item">
@@ -41,20 +43,19 @@
             <div class="carousel-caption">
                 <h1>Free Online Courses</h1>
                 <p>Browse through kudvenkat's free courses. Just click the button, select the course and start learning!</p>
-
                 <div class="free__courses">
                     <ul>
-                        <li>C#</li>
-                        <li>Asp.net</li>
-                        <li>Entityframework</li>
-                        <li>Angular 6</li>
-                        <li>Angular cli</li>
-                        <li>Ado.net</li>
-                        <li>Sql Server</li>
-                        <li>Mvc</li>
+                        @foreach (var course in Model.FreeCourses)
+                        {
+                            <li>
+                                @Html.ActionLink(course.Header, "Details", "Courses", new {id = course.Id}, null)
+                            </li>
+                        }
                     </ul>
                 </div>
-                <button class="btn btn-default">Learn Free Courses <span class="glyphicon glyphicon-arrow-right"></span></button>
+                <a href="@Url.Action("FreeCourses", "Courses")" class="btn btn_customStyle">
+                    Learn Free Courses <span class="glyphicon glyphicon-arrow-right"></span>
+                </a>
 
             </div>
         </div>
@@ -66,18 +67,17 @@
                 <p>Buy and Download kudvenkat's courses including exclusive slides and videos.</p>
                 <div class="free__courses">
                     <ul>
-                        <li>C#</li>
-                        <li>Asp.net</li>
-                        <li>Entityframework</li>
-                        <li>Angular 6</li>
-                        <li>Angular cli</li>
-                        <li>Ado.net</li>
-                        <li>Sql Server</li>
-                        <li>Mvc</li>
+                        @foreach (var course in Model.DownloadCourses)
+                        {
+                            <li>
+                                @Html.ActionLink(course.Header,"Details","Courses",new{id=course.Id},null)
+                            </li>
+                        }
                     </ul>
                 </div>
-                <button class="btn btn-default">Buy Courses <span class="glyphicon glyphicon-arrow-right"></span></button>
-
+                <a href="@Url.Action("DownloadCourses","Courses")" class="btn btn_customStyle">
+                    Buy Courses <span class="glyphicon glyphicon-arrow-right"></span>
+                </a>
             </div>
 
         </div>
@@ -99,8 +99,9 @@
                         <li>Mvc</li>
                     </ul>
                 </div>
-                <button class="btn btn-default">Check Courses <span class="glyphicon glyphicon-arrow-right"></span></button>
-
+                <a class="btn btn_customStyle">
+                    Check Courses <span class="glyphicon glyphicon-arrow-right"></span>
+                </a>
             </div>
 
         </div>
@@ -119,10 +120,10 @@
 
 <div class="container">
     <div class="new__batch">
-        <h1>Next New Batches</h1>
+        <h1 data-aos="fade-down" data-aos-duration="900">Next New Batches</h1>
         <div class="row">
             <div class="col-sm-6 col-xs-12">
-                <div class="batch__wrap">
+                <div data-aos="fade-right" data-aos-duration="500" class="batch__wrap">
                     <div class="batch__date">
                         <span>February</span>
                         <span>26</span>
@@ -135,7 +136,7 @@
                 </div>
             </div>
             <div class="col-sm-6 col-xs-12">
-                <div class="batch__wrap">
+                <div data-aos="fade-left" data-aos-duration="700" class="batch__wrap">
 
                     <div class="batch__date">
                         <span>March</span>
@@ -156,10 +157,10 @@
 <div class="week__free_classes">
     <div class="container">
         <div class="new__batch">
-            <h1>This Week Free Classes</h1>
+            <h1 data-aos="fade-down" data-aos-duration="900">This Week Free Classes</h1>
             <div class="row">
                 <div class="col-sm-6 col-xs-12">
-                    <div class="batch__wrap">
+                    <div data-aos="fade-right" data-aos-duration="300" class="batch__wrap">
                         <div class="batch__date">
                             <span>February</span>
                             <span>26</span>
@@ -172,7 +173,7 @@
                     </div>
                 </div>
                 <div class="col-sm-6 col-xs-12">
-                    <div class="batch__wrap">
+                    <div data-aos="fade-left" data-aos-duration="500" class="batch__wrap">
 
                         <div class="batch__date">
                             <span>March</span>
@@ -194,23 +195,23 @@
 
 <div class="pragim__information">
     <div class="container">
-        <h1>Why should you choose PRAGIM TECH</h1>
+        <h1 data-aos="fade-down" data-aos-duration="1000">Why should you choose PRAGIM TECH</h1>
         <div class="row">
-            <div class="col-xs-12 col-sm-4">
+            <div data-aos="zoom-in" data-aos-duration="500" class="col-xs-12 col-sm-4">
                 <span class="glyphicon glyphicon-plane"></span>
                 <h2>Superfast Support</h2>
                 <p>
                     PRAGIM is known for placements in major IT companies. Major MNC's visit PRAGIM campus every week for interviews. You can contact our old students for feedback.
                 </p>
             </div>
-            <div class="col-xs-12 col-sm-4">
+            <div data-aos="zoom-in" data-aos-duration="1300" class="col-xs-12 col-sm-4">
                 <span class="fa fa-laptop"></span>
                 <h2>Learn On Any Device</h2>
                 <p>
                     Real world project-based training by working software professionals with over 10 years experience.
                 </p>
             </div>
-            <div class="col-xs-12 col-sm-4">
+            <div data-aos="zoom-in" data-aos-duration="2000" class="col-xs-12 col-sm-4">
                 <span class="glyphicon glyphicon-certificate"></span>
                 <h2>Certification Courses</h2>
                 <p>
@@ -218,14 +219,14 @@
                 </p>
             </div>
         </div>
-        <button class="btn pragim__information-button">Buy Course</button>
+        @Html.ActionLink("Buy Course","DownloadCourses", "Courses", null,new{@class= "btn pragim__information-button",style="width:fit-content" })
 
     </div>
 </div>
 
 <div class="popular__courses">
     <div class="container">
-        <h1>Most Popular Online Courses</h1>
+        <h1 data-aos="fade-down" data-aos-duration="1000">Most Popular Online Courses</h1>
         <div class="btn-group" role="group">
             <button id="btnAll" class="btn active" data-filter="*">All</button>
             <button class="btn" data-filter=".free">Free</button>
@@ -233,138 +234,102 @@
             <button class="btn" data-filter=".online">Online</button>
         </div>
         <div class="grid row">
-            <div class="col-md-4 col-sm-6 col-xs-12 element-item free">
-                <div class="course__wrap">
-                    <div><img src="~/Content/Images/mvc.jpg" /></div>
-                    <p>Asp.Net Mvc</p>
-                    <div class="course__footer">
-                        <div class="star__content">
-                            <span class="glyphicon glyphicon-star"></span>
-                            <span class="glyphicon glyphicon-star"></span>
-                            <span class="glyphicon glyphicon-star"></span>
-                            <span class="glyphicon glyphicon-star"></span>
-                            <span class="glyphicon glyphicon-star"></span>
+            
+            @foreach (var online in Model.ClassroomCourses.Take(3))
+            {
+                <div data-aos="fade-right" data-aos-duration="800" class="col-md-4 col-sm-6 col-xs-12 element-item online">
+                    <div class="course__wrap">
+                        <div><img src="@Url.Content(online.ImagePath)" /></div>
+                        <p>@online.Description</p>
+                        <div class="course__footer">
+                            <div class="star__content">
+                                <span class="glyphicon glyphicon-star"></span>
+                                <span class="glyphicon glyphicon-star"></span>
+                                <span class="glyphicon glyphicon-star"></span>
+                                <span class="glyphicon glyphicon-star"></span>
+                                <span class="glyphicon glyphicon-star"></span>
+                            </div>
+                            <span class="enrolled">165 Enrolled</span>
                         </div>
-                        <span class="enrolled">165 Enrolled</span>
                     </div>
-                </div>
 
-            </div>
-            <div class="col-md-4 col-sm-6 col-xs-12 element-item free">
-                <div class="course__wrap">
-                    <div><img src="~/Content/Images/paython.jpg" /></div>
-                    <p>Python Course</p>
-                    <div class="course__footer">
-                        <div class="star__content">
-                            <span class="glyphicon glyphicon-star"></span>
-                            <span class="glyphicon glyphicon-star"></span>
-                            <span class="glyphicon glyphicon-star"></span>
-                            <span class="glyphicon glyphicon-star"></span>
-                            <span class="glyphicon glyphicon-star"></span>
+                </div>
+            }
+            @foreach (var free in Model.FreeCourses.Take(3))
+            {
+                <div data-aos="fade-left" data-aos-duration="800" class="col-md-4 col-sm-6 col-xs-12 element-item free">
+                    <div class="course__wrap">
+                        <div><img src="@Url.Content(free.ImagePath)" /></div>
+                        <p>@free.Description</p>
+                        <div class="course__footer">
+                            <div class="star__content">
+                                <span class="glyphicon glyphicon-star"></span>
+                                <span class="glyphicon glyphicon-star"></span>
+                                <span class="glyphicon glyphicon-star"></span>
+                                <span class="glyphicon glyphicon-star"></span>
+                                <span class="glyphicon glyphicon-star"></span>
+                            </div>
+                            <span class="enrolled">165 Enrolled</span>
                         </div>
-                        <span class="enrolled">165 Enrolled</span>
                     </div>
-                </div>
 
-            </div>
-            <div class="col-md-4 col-sm-6 col-xs-12 element-item download">
-                <div class="course__wrap">
-                    <div><img src="~/Content/Images/angularjs8-360x270.jpg" /></div>
-                    <p>Angular 8 Course</p>
-                    <div class="course__footer">
-                        <div class="star__content">
-                            <span class="glyphicon glyphicon-star"></span>
-                            <span class="glyphicon glyphicon-star"></span>
-                            <span class="glyphicon glyphicon-star"></span>
-                            <span class="glyphicon glyphicon-star"></span>
-                            <span class="glyphicon glyphicon-star"></span>
+                </div>
+            }
+
+            
+            @foreach (var download in Model.DownloadCourses.Take(3))
+            {
+                <div data-aos="fade-up" data-aos-duration="800" class="col-md-4 col-sm-6 col-xs-12 element-item download">
+                    <div class="course__wrap">
+                        <div><img src="@Url.Content(download.ImagePath)" /></div>
+                        <p>@download.Description</p>
+                        <div class="course__footer">
+                            <div class="star__content">
+                                <span class="glyphicon glyphicon-star"></span>
+                                <span class="glyphicon glyphicon-star"></span>
+                                <span class="glyphicon glyphicon-star"></span>
+                                <span class="glyphicon glyphicon-star"></span>
+                                <span class="glyphicon glyphicon-star"></span>
+                            </div>
+                            <span class="enrolled">165 Enrolled</span>
                         </div>
-                        <span class="enrolled">165 Enrolled</span>
                     </div>
-                </div>
 
-            </div>
-            <div class="col-md-4 col-sm-6 col-xs-12 element-item download">
-                <div class="course__wrap">
-                    <div><img src="~/Content/Images/c.jpg" /></div>
-                    <p>C# Course</p>
-                    <div class="course__footer">
-                        <div class="star__content">
-                            <span class="glyphicon glyphicon-star"></span>
-                            <span class="glyphicon glyphicon-star"></span>
-                            <span class="glyphicon glyphicon-star"></span>
-                            <span class="glyphicon glyphicon-star"></span>
-                            <span class="glyphicon glyphicon-star"></span>
-                        </div>
-                        <span class="enrolled">165 Enrolled</span>
-                    </div>
                 </div>
-
-            </div>
-            <div class="col-md-4 col-sm-6 col-xs-12 element-item online">
-                <div class="course__wrap">
-                    <div><img src="~/Content/Images/ui-dev.jpg" /></div>
-                    <p>UI Design Course</p>
-                    <div class="course__footer">
-                        <div class="star__content">
-                            <span class="glyphicon glyphicon-star"></span>
-                            <span class="glyphicon glyphicon-star"></span>
-                            <span class="glyphicon glyphicon-star"></span>
-                            <span class="glyphicon glyphicon-star"></span>
-                            <span class="glyphicon glyphicon-star"></span>
-                        </div>
-                        <span class="enrolled">165 Enrolled</span>
-                    </div>
-                </div>
-
-            </div>
-            <div class="col-md-4 col-sm-6 col-xs-12 element-item online">
-                <div class="course__wrap">
-                    <div><img src="~/Content/Images/devops-aws.jpg" /></div>
-                    <p>DevOps Course</p>
-                    <div class="course__footer">
-                        <div class="star__content">
-                            <span class="glyphicon glyphicon-star"></span>
-                            <span class="glyphicon glyphicon-star"></span>
-                            <span class="glyphicon glyphicon-star"></span>
-                            <span class="glyphicon glyphicon-star"></span>
-                            <span class="glyphicon glyphicon-star"></span>
-                        </div>
-                        <span class="enrolled">165 Enrolled</span>
-                    </div>
-                </div>
-
-            </div>
+            }
+         
         </div>
     </div>
 </div>
 <div class="container">
-    <button class="btn pragim__information-button">
+    <a href="@Url.Action("Courses","Courses")"
+       class="btn pragim__information-button"
+       style="width: fit-content">
         Browse All Courses
         <span style="font-size: 14px" class="glyphicon glyphicon-arrow-right"></span>
 
-    </button>
+    </a>
 </div>
 
 <div class="pragim__information">
     <div class="container">
-        <h1>Software Development Services</h1>
+        <h1 data-aos="fade-down" data-aos-duration="800">Software Development Services</h1>
         <div class="row">
-            <div class="col-xs-12 col-sm-4">
+            <div data-aos="fade-up" data-aos-duration="800" class="col-xs-12 col-sm-4">
                 <span class="glyphicon glyphicon-plane"></span>
                 <h2>Cost effective software solutions</h2>
                 <p>
                     We help develop, implement and maintain cost effective and high quality software applications and solutions.
                 </p>
             </div>
-            <div class="col-xs-12 col-sm-4">
+            <div data-aos="flip-left" data-aos-duration="1500" class="col-xs-12 col-sm-4">
                 <span class="fa fa-laptop "></span>
                 <h2>Highly skilled and experienced team</h2>
                 <p>
                     Our development team is thoroughly trained, skilled, experienced and love what they do.
                 </p>
             </div>
-            <div class="col-xs-12 col-sm-4">
+            <div data-aos="fade-down" data-aos-duration="1800" class="col-xs-12 col-sm-4">
                 <span class="glyphicon glyphicon-certificate"></span>
                 <h2>Contact us for a free quote</h2>
                 <p>
@@ -372,11 +337,15 @@
                 </p>
             </div>
         </div>
-        <button id="wrap-text" class="btn btn-warning pragim__information-button">Our Development Approach</button>
+        <a href="https://www.youtube.com/watch?v=8HtSGCQqWSI"
+           target="_blank"
+           id="wrap-text"
+           class="btn pragim__information-button"
+           style="width: fit-content">Our Development Approach</a>
 
     </div>
 </div>
 
 
-@{Html.RenderPartial("_testimonial",Model);}
+@{Html.RenderPartial("_testimonial",Model.Feedback);}
 @{Html.RenderPartial("_signup_news");}

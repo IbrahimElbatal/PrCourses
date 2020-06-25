@@ -307,6 +307,7 @@
     <Compile Include="ViewModels\CourseDescriptionViewModel.cs" />
     <Compile Include="ViewModels\CourseDetailsBodyViewModel.cs" />
     <Compile Include="ViewModels\CourseDetailsHeaderViewModel.cs" />
+    <Compile Include="ViewModels\CoursesFeedbackViewModel.cs" />
     <Compile Include="ViewModels\CourseViewModel.cs" />
     <Compile Include="ViewModels\FeedbackViewModel.cs" />
     <Compile Include="ViewModels\RecaptchaResponse.cs" />
@@ -399,6 +400,8 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Content\aos.css" />
+    <Content Include="Scripts\aos.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
@@ -476,6 +479,7 @@
     <Content Include="Views\Shared\_billing.cshtml" />
     <Content Include="Views\Shared\_shipping .cshtml" />
     <Content Include="Views\Courses\Edit.cshtml" />
+    <Content Include="Views\Courses\Courses.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

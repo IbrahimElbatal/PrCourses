@@ -134,13 +134,13 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-4 col-sm-6 col-xs-12">
-                    <h1>About Pragim Technologies</h1>
+                    <h1 data-aos="fade-down" data-aos-duration="800">About Pragim Technologies</h1>
                     <p>
                         PRAGIM is known for placements in major IT companies. Major MNC's visit PRAGIM campus every week for interviews.You can contact our old students who are placed with in 1 week of completing their Training and are getting a salary ranging from Rs. 25,000 to Rs.50,000.Click Here to check out our selected trainees by different MNC's and what they say about training at PRAGIM.
                     </p>
                 </div>
                 <div class="col-md-4 col-sm-6 col-xs-12">
-                    <h1>Recent Courses</h1>
+                    <h1 data-aos="fade-down" data-aos-duration="800">Recent Courses</h1>
                     <ul>
                         <li>
                             <div class="img-course">
@@ -175,7 +175,7 @@
                     </ul>
                 </div>
                 <div class="col-md-4 col-xs-12">
-                    <h1>Quick Contact</h1>
+                    <h1 data-aos="fade-down" data-aos-duration="800">Quick Contact</h1>
                     <input type="text" class="form-control" placeholder="Your Email Address" name="name" value="" />
                     <br />
                     <textarea class="form-control" placeholder="Type Your Messege" rows="5"></textarea>
@@ -197,7 +197,7 @@
     @RenderSection("scripts", required: false)
 <script>
     $(document).ready(function () {
-
+        AOS.init();
         $('.btn-group button#btnAll').trigger('click');
         $('.btn-group').on('click',
             'button',

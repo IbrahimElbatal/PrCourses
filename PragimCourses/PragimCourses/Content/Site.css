@@ -403,7 +403,22 @@ a.left.carousel-control {
             font-size: 15px;
             font-family: Arial
         }
-
+            .free__courses ul li > a {
+                color: inherit !important;
+                border: none;
+                outline: none;
+                padding: 5px;
+            }
+.btn_customStyle {
+    margin-top: 30px;
+    padding: 20px 30px;
+    color: white;
+    border: 1px solid white;
+}
+a.btn_customStyle:hover {
+    background: #0583E4;
+    color: white
+}
 @media(max-width : 600px) {
     .carousel-caption h1 {
         font-size: 35px;
