@@ -1727,6 +1727,17 @@ li.updateQ {
         color: black;
         background: #ddd
     }
+.modal-dialog {
+    width: 550px
+}
         .btn-group button.btn.active:focus {
             outline: none
         }
+.modal-body input[type="text"], .modal-body input[type="password"] {
+    margin-bottom: 10px;
+    max-width: none
+}
+.modal-body label.error {
+    display: inline-block;
+    color: #a94442 !important;
+}

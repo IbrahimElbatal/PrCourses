@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
 
@@ -18,6 +19,9 @@ namespace PragimCourses.ViewModels
         public decimal Price { get; set; }
 
         public string ImagePath { get; set; }
+        public DateTime? StartDate { get; set; }
+        public DateTime? EndDate { get; set; }
+        public string Language { get; set; }
 
         [Required]
         public int CategoryId { get; set; }

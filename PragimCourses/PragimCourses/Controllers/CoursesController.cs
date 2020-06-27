@@ -237,7 +237,9 @@ namespace PragimCourses.Controllers
                 (float)CalculateRating(id) /
                 count);
 
+            var userId = User.Identity.GetUserId();
             ViewBag.Course = course;
+            ViewBag.Enrollment = _context.Enrollments.SingleOrDefault(e => e.UserId == userId && e.CourseId == course.Id);
 
             string categoryName = _context.CourseCategories
                 .Where(cc => cc.CourseId == id)
@@ -259,7 +261,7 @@ namespace PragimCourses.Controllers
                     Rating = (float)CalculateRating(c.Id, 5) / (c.Reviews.Count == 0 ? 1 : c.Reviews.Count)
                 }).ToList();
 
-
+            ViewBag.LoginViewModel = new LoginViewModel();
             return View(result);
         }
 

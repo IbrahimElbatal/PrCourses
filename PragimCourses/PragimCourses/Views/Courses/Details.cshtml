@@ -7,7 +7,7 @@
     var course = ViewBag.Course as Course;
     var relatedCourses = ViewBag.RelatedCourses as IEnumerable<MyCustom>;
     var averageRating = Convert.ToInt32(ViewBag.Rating);
-
+    var enrollment = ViewBag.Enrollment as Enrollment;
 }
 
 <div class="wrapper">
@@ -188,16 +188,35 @@
                 <div class="course__information">
                     <div style="padding: 25px 25px 60px">
                         <div class="price">
-                            <span>Price : <span>Free</span></span>
+                            <span>Price : <span>@(course.Price == 0.00m ?"Free":course.Price.ToString())</span></span>
                         </div>
                         <div class="details">
                             <div class="left">
-                                <button class="btn btn-default" type="submit">
-                                    Enroll Now! <span class="glyphicon glyphicon-arrow-right"></span>
-                                </button>
-                                <div class="heart">
-                                    <span class="glyphicon glyphicon-heart-empty"></span>
+                                <div class="modal fade" tabindex="-1" role="dialog">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h4 class="modal-title">Login to your account</h4>
+                                            </div>
+                                            <div class="modal-body">
+                                                @{Html.RenderPartial("_LoginForm");}
+
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
+                                
+                                <button class="btn btn-default enroll"
+                                        data-enrollment="@(enrollment !=null)"
+                                        data-courseId ="@course.Id"
+                                        data-authonticated="@User.Identity.IsAuthenticated" type="submit">
+                                    @(enrollment!=null?"Start Learning":"Enroll Now!")
+                                   <span class="glyphicon glyphicon-arrow-right"></span>
+                                </button>
+
+                                @* <div class="heart"> *@
+                                @*     <span class="glyphicon glyphicon-heart-empty"></span> *@
+                                @* </div> *@
                             </div>
                             <div class="right">
                                 <div class="star__content">
@@ -219,14 +238,16 @@
                             <div class="col-md-12">
                                 <p>
                                     <span class="fSpan">Enroll Dates : </span>
-                                    <span class="sSpan">Enroll Anytime</span>
+                                    <span class="sSpan enroll-date">
+                                        @(enrollment!=null?enrollment.EnrollmentDate.ToShortDateString(): "Enroll Anytime")
+                                     </span>
                                 </p>
                                 <hr />
                             </div>
                             <div class="col-md-12">
                                 <p>
                                     <span class="fSpan">Course Dates : </span>
-                                    <span class="sSpan">November 30,2019 - No End Date</span>
+                                    <span class="sSpan">@course.StartDate.Value.ToLongDateString() - @(course.EndDate.HasValue?course.EndDate.Value.ToLongDateString(): "No End Date")</span>
                                 </p>
                                 <hr />
                             </div>
@@ -234,6 +255,13 @@
                                 <p>
                                     <span class="fSpan">Enrollment : </span>
                                     <span class="sSpan">Anyone</span>
+                                </p>
+                                <hr />
+                            </div>
+                            <div class="col-md-12">
+                                <p>
+                                    <span class="fSpan">Language : </span>
+                                    <span class="sSpan">@course.Language</span>
                                 </p>
                                 <hr />
                             </div>
@@ -289,8 +317,10 @@
 
 @section scripts
 {
+    @Scripts.Render("~/bundles/jqueryval")
     <script>
         $(document).ready(function () {
+            
             console.log($('.btn-submit').attr('data-id'));
             var rating = 0;
             var name = $('#name');
@@ -307,19 +337,19 @@
                 function () {
                     validateForm();
                     $.ajax({
-                        url: 'http://localhost/PragimCourses/api/Review',
-                        data: JSON.stringify({
-                            Name: name.val(),
-                            Email: email.val(),
-                            Title: title.val(),
-                            Rating: rating,
-                            Content: content.val(),
-                            CourseId: $(this).attr('data-id')
-                        }),
-                        type: 'post',
-                        dataType: 'json',
-                        contentType: 'application/json'
-                    })
+                            url: 'http://localhost/PragimCourses/api/Review',
+                            data: JSON.stringify({
+                                Name: name.val(),
+                                Email: email.val(),
+                                Title: title.val(),
+                                Rating: rating,
+                                Content: content.val(),
+                                CourseId: $(this).attr('data-id')
+                            }),
+                            type: 'post',
+                            dataType: 'json',
+                            contentType: 'application/json'
+                        })
                         .done(function () {
                             console.log('success');
                             emptyForm();
@@ -360,6 +390,71 @@
                 content.val('');
                 $('.p-rating span').removeClass('glyphicon-star').addClass('glyphicon-star-empty');
             }
+
+            $('.enroll').click(function () {
+                if ($(this).attr('data-enrollment') === "True") {
+                    return false;
+                }
+                var button = $(this);
+                var courseId = $(this).attr('data-courseId');
+                var authonticated = $(this).attr('data-authonticated');
+                if (authonticated === "False") {
+                    $('.modal').modal({
+                        show: true,
+                       backdrop:'static'
+                    });
+                  
+                    $.validator.addMethod("email",
+                        function (e) {
+                            var exp = '(^[a-zA-Z0-9_.+-]+@@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)';
+                            return new RegExp(exp,"i").test(e);
+                        }, "please write correct email ex: i@int.com");
+                    $.validator.addMethod("password",
+                        function (e) {
+                            var exp = '(^[A-Z]+[a-zA-Z0-9]+[_.-]+[a-zA-Z0-9]+$)';
+                            return (new RegExp(exp).test(e) && e.length > 6);
+                        }, "password must contains capital, small and special char and not less than 7 characters.");
+
+                    $('.login-form').validate({
+                        submitHandler: function (form) {
+                            var email = $(form).find('#email').val();
+                            var password = $(form).find('#password').val();
+                            var data = {
+                                email: email,
+                                password: password,
+                                courseId : courseId
+                            };
+
+                            $.ajax({
+                                url: '/api/LoginWithEnrollment',
+                                data: data,
+                                type:'post'  
+                            }).done(function() {
+                                location.href = location.href;
+                            }).fail(function(error) {
+                                console.log(error);
+                            });
+
+                            return false;
+                        }
+                    });
+
+                } else {
+                    $.ajax({
+                        url: '/api/enrollment',
+                        data: {
+                            "" : courseId
+                        },
+                        type: 'post'
+                    }).done(function(data) {
+                        button.text('Start Learning');
+                        $('.enroll-date').text(new Date(data).toDateString());
+                    }).fail(function(error) {
+                        console.log(error);
+                    });
+                }
+            });
+            
         });
     </script>
 }

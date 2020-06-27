@@ -217,6 +217,7 @@
     <Compile Include="Configuration\CourseConfiguration.cs" />
     <Compile Include="Configuration\CourseDetailsBodyConfiguration.cs" />
     <Compile Include="Configuration\CourseDetailsHeaderConfiguration.cs" />
+    <Compile Include="Configuration\EnrollmentConfiguration.cs" />
     <Compile Include="Configuration\FeedbackConfiguration.cs" />
     <Compile Include="Configuration\ReviewConfiguration.cs" />
     <Compile Include="Configuration\ShippingInfoConfiguration.cs" />
@@ -226,6 +227,7 @@
     <Compile Include="Controllers\Api\AuthonticateController.cs" />
     <Compile Include="Controllers\Api\CheckoutController.cs" />
     <Compile Include="Controllers\Api\CourseController.cs" />
+    <Compile Include="Controllers\Api\EnrollmentController.cs" />
     <Compile Include="Controllers\Api\ReviewController.cs" />
     <Compile Include="Controllers\Api\Subscriber.cs" />
     <Compile Include="Controllers\CartController.cs" />
@@ -283,6 +285,14 @@
     <Compile Include="Migrations\202005051313095_SeedingData.Designer.cs">
       <DependentUpon>202005051313095_SeedingData.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202006260941357_UpdateCourseData.cs" />
+    <Compile Include="Migrations\202006260941357_UpdateCourseData.Designer.cs">
+      <DependentUpon>202006260941357_UpdateCourseData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202006261439146_addEnrollmentTable.cs" />
+    <Compile Include="Migrations\202006261439146_addEnrollmentTable.Designer.cs">
+      <DependentUpon>202006261439146_addEnrollmentTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
@@ -294,6 +304,7 @@
     <Compile Include="Models\CourseDetailsBody.cs" />
     <Compile Include="Models\CourseDetailsHeader.cs" />
     <Compile Include="Models\CourseType.cs" />
+    <Compile Include="Models\Enrollment.cs" />
     <Compile Include="Models\Feedback.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -310,6 +321,7 @@
     <Compile Include="ViewModels\CoursesFeedbackViewModel.cs" />
     <Compile Include="ViewModels\CourseViewModel.cs" />
     <Compile Include="ViewModels\FeedbackViewModel.cs" />
+    <Compile Include="ViewModels\LoginWithEnrollment.cs" />
     <Compile Include="ViewModels\RecaptchaResponse.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -480,6 +492,7 @@
     <Content Include="Views\Shared\_shipping .cshtml" />
     <Content Include="Views\Courses\Edit.cshtml" />
     <Content Include="Views\Courses\Courses.cshtml" />
+    <Content Include="Views\Shared\_LoginForm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -533,6 +546,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202005051313095_SeedingData.resx">
       <DependentUpon>202005051313095_SeedingData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006260941357_UpdateCourseData.resx">
+      <DependentUpon>202006260941357_UpdateCourseData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006261439146_addEnrollmentTable.resx">
+      <DependentUpon>202006261439146_addEnrollmentTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
