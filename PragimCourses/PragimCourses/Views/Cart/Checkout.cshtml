@@ -192,7 +192,7 @@
                                         </div>
                                     </div>
                                     @Html.ActionLink("Continue Shopping?", "DownloadCourses", "Courses", null, new { @class = "btn btn-custom1", style = "float:left" })
-                                    @Html.ActionLink("Continue", "DownloadCourses", "Courses", null, new { @class = "btn btn-custom", style = "float:right" })
+                                    <a class="btn btn-custom place-order" style = "float:right">Place Order</a>
 
                                 </div>
                             </div>
@@ -355,11 +355,29 @@
                     }).done(function (data) {
                         $('#collapseTwo').removeClass('in');
                         $('#collapseThree').addClass('in');
+                        localStorage.removeItem("data");
+                        localStorage.setItem("data",JSON.stringify(data));
                         fillPayment(data);
                     }).fail(function (err) {
                         console.log(err);
                     });
                 });
+
+
+            $('.place-order').click(function() {
+                $.ajax({
+                    url: '/api/Order',
+                    type: 'post',
+                    data: {
+                        "": JSON.parse(localStorage.getItem("data")) != null ? JSON.parse(localStorage.getItem("data")).user.userName:""
+                    }
+                }).done(function () {
+                    localStorage.removeItem("data");
+                    location.href = location.origin;
+                }).fail(function(error) {
+                    console.log(error);
+                });
+            });
         });
 
         function fillPayment(data) {

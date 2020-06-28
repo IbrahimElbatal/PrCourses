@@ -74,7 +74,6 @@ namespace PragimCourses.Controllers.Api
             }
             _context.SaveChanges();
 
-
             var data = new CheckoutDto()
             {
                 Billing = new BillingInfo()

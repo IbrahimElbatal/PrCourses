@@ -25,7 +25,22 @@ namespace PragimCourses.Controllers
             var courses = _context.CourseCategories
                 .Where(cc => cc.CategoryId == 1 || cc.CategoryId == 3)
                 .OrderBy(c => c.CategoryId)
-                .Select(cc => cc.Course);
+                .Select(cc => cc.Course)
+                .Select(c => new CourseRatingViewModel()
+                {
+
+                    Id = c.Id,
+                    Description = c.Description,
+                    EndDate = c.EndDate,
+                    Header = c.Header,
+                    ImagePath = c.ImagePath,
+                    Language = c.Language,
+                    Price = c.Price,
+                    StartDate = c.StartDate,
+                    Enrollments = c.Enrollments,
+                    Reviews = c.Reviews
+                });
+
             return View(courses.ToPagedList(page ?? 1, 12));
         }
         public ActionResult FreeCourses(int? page)
@@ -33,7 +48,23 @@ namespace PragimCourses.Controllers
             var freeCoursesId = _context.Categories
                 .SingleOrDefault(c => c.Name.ToLower() == "free courses")?.Id;
 
-            var courses = _context.CourseCategories.Include(c => c.Course).Where(c => c.CategoryId == freeCoursesId).ToList();
+            var courses = _context.CourseCategories
+                .Include(c => c.Course.Enrollments)
+                .Where(c => c.CategoryId == freeCoursesId)
+                .Select(c => new CourseRatingViewModel()
+                {
+                    Id = c.Course.Id,
+                    Description = c.Course.Description,
+                    EndDate = c.Course.EndDate,
+                    Header = c.Course.Header,
+                    ImagePath = c.Course.ImagePath,
+                    Language = c.Course.Language,
+                    Price = c.Course.Price,
+                    StartDate = c.Course.StartDate,
+                    Enrollments = c.Course.Enrollments,
+                    Reviews = c.Course.Reviews
+                }).OrderBy(c => c.Id);
+
             return View(courses.ToPagedList(page ?? 1, 9));
         }
 
@@ -42,7 +73,23 @@ namespace PragimCourses.Controllers
             var classCoursesId = _context.Categories
                 .SingleOrDefault(c => c.Name.ToLower() == "Classroom courses")?.Id;
 
-            var courses = _context.CourseCategories.Include(c => c.Course).Where(c => c.CategoryId == classCoursesId).ToList();
+            var courses = _context.CourseCategories
+                .Include(c => c.Course.Enrollments)
+                .Where(c => c.CategoryId == classCoursesId)
+                .Select(c => new CourseRatingViewModel()
+                {
+                    Id = c.Course.Id,
+                    Description = c.Course.Description,
+                    EndDate = c.Course.EndDate,
+                    Header = c.Course.Header,
+                    ImagePath = c.Course.ImagePath,
+                    Language = c.Course.Language,
+                    Price = c.Course.Price,
+                    StartDate = c.Course.StartDate,
+                    Enrollments = c.Course.Enrollments,
+                    Reviews = c.Course.Reviews
+                }).OrderBy(c => c.Id);
+
             return View(courses.ToPagedList(page ?? 1, 9));
         }
         public ActionResult DownloadCourses()
@@ -218,69 +265,65 @@ namespace PragimCourses.Controllers
         {
             var result = _context.CourseDetailsHeaders
                 .Where(cd => cd.CourseId == id)
-                .Include(cd => cd.Course.Reviews)
                 .Include(cd => cd.CourseBodies)
                 .ToList();
 
-            Course course;
-            if (result.Count == 0)
-            {
-                course = _context.Courses.Find(id);
-            }
-            else
-            {
-                course = result.First(c => c.Course.Id == id).Course;
-            }
+            var course = _context.Courses
+                .Where(c => c.Id == id)
+                .Include(c => c.Enrollments)
+                .Include(c => c.Reviews)
+                .SingleOrDefault();
 
-            var count = course.Reviews.Count == 0 ? 1 : course.Reviews.Count;
-            ViewBag.Rating = Math.Floor(
-                (float)CalculateRating(id) /
-                count);
+            if (course == null)
+                return HttpNotFound("The Course You Want Not Found");
+
+            int categoryId = _context.CourseCategories
+                .Where(cc => cc.CourseId == id)
+                .Select(c => c.Category).Single()
+                .Id;
+            var courseWithRating = new CourseRatingViewModel()
+            {
+                CategoryId = categoryId,
+                Id = course.Id,
+                Enrollments = course.Enrollments,
+                Reviews = course.Reviews,
+                Description = course.Description,
+                EndDate = course.EndDate,
+                Header = course.Header,
+                ImagePath = course.ImagePath,
+                Language = course.Language,
+                Price = course.Price,
+                StartDate = course.StartDate
+            };
+            ViewBag.Course = courseWithRating;
 
             var userId = User.Identity.GetUserId();
-            ViewBag.Course = course;
-            ViewBag.Enrollment = _context.Enrollments.SingleOrDefault(e => e.UserId == userId && e.CourseId == course.Id);
-
-            string categoryName = _context.CourseCategories
-                .Where(cc => cc.CourseId == id)
-                .Select(c => c.Category).Single().Name;
-
-            ViewBag.CategoryName = categoryName;
+            ViewBag.Enrollment = _context.Enrollments
+                .SingleOrDefault(e => e.UserId == userId && e.CourseId == course.Id);
 
             var courses = _context.CourseCategories
-                .Where(c => c.Category.Name == categoryName)
-                .Include(c => c.Course)
+                .Where(c => c.Category.Id == categoryId)
                 .Select(c => c.Course)
                 .OrderBy(c => Guid.NewGuid())
-                .Take(3).ToList();
+                .Take(3)
+                .AsNoTracking();
 
             ViewBag.RelatedCourses = courses
-                .Select(c => new MyCustom
+                .Select(c => new CourseRatingViewModel()
                 {
-                    Course = c,
-                    Rating = (float)CalculateRating(c.Id, 5) / (c.Reviews.Count == 0 ? 1 : c.Reviews.Count)
-                }).ToList();
+                    Id = c.Id,
+                    Description = c.Description,
+                    EndDate = c.EndDate,
+                    Header = c.Header,
+                    ImagePath = c.ImagePath,
+                    Language = c.Language,
+                    Price = c.Price,
+                    StartDate = c.StartDate,
+                    Enrollments = c.Enrollments,
+                    Reviews = c.Reviews
+                });
 
-            ViewBag.LoginViewModel = new LoginViewModel();
             return View(result);
         }
-
-        private int CalculateRating(int id, int rate = 5)
-        {
-            var reviews = _context.Reviews.Where(r => r.CourseId == id).ToList();
-
-            if (rate <= 0)
-            {
-                return 0;
-            }
-            return rate * reviews.Count(x => x.Rating == rate) + CalculateRating(id, rate - 1);
-        }
-
-    }
-
-    public class MyCustom
-    {
-        public Course Course { get; set; }
-        public float Rating { get; set; }
     }
 }

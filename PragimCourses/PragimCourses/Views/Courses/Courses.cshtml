@@ -1,5 +1,5 @@
 ﻿@using PagedList.Mvc
-@model PagedList.IPagedList<PragimCourses.Models.Course>
+@model PagedList.IPagedList<PragimCourses.ViewModels.CourseRatingViewModel>
 
 
 @{
@@ -25,13 +25,16 @@
                         <p>@course.Description</p>
                         <div class="course__footer">
                             <div class="star__content">
-                                <span class="glyphicon glyphicon-star"></span>
-                                <span class="glyphicon glyphicon-star"></span>
-                                <span class="glyphicon glyphicon-star"></span>
-                                <span class="glyphicon glyphicon-star"></span>
-                                <span class="glyphicon glyphicon-star"></span>
+                                @for (var i = 0; i < course.Rating; i++)
+                                {
+                                    <span class="glyphicon glyphicon-star"></span>
+                                }
+                                @for (var i = 0; i < 5 - course.Rating; i++)
+                                {
+                                    <span class="glyphicon glyphicon-star-empty"></span>
+                                }
                             </div>
-                            <span class="enrolled">165 Enrolled</span>
+                            <span class="enrolled">@course.Enrollments.Count Enrolled</span>
                         </div>
                     </a>
                 </div>

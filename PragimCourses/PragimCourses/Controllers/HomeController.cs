@@ -1,6 +1,5 @@
 ﻿using PragimCourses.Models;
 using PragimCourses.ViewModels;
-using System.Data.Entity;
 using System.Linq;
 using System.Web.Mvc;
 
@@ -16,16 +15,26 @@ namespace PragimCourses.Controllers
         public ActionResult Index()
         {
             var courses = _context.CourseCategories
-                .Include(cc => cc.Course)
-                .AsNoTracking()
-                .ToList();
-
+                .Select(c => new CourseRatingViewModel()
+                {
+                    CategoryId = c.CategoryId,
+                    Id = c.Course.Id,
+                    Description = c.Course.Description,
+                    EndDate = c.Course.EndDate,
+                    Header = c.Course.Header,
+                    ImagePath = c.Course.ImagePath,
+                    Language = c.Course.Language,
+                    Price = c.Course.Price,
+                    StartDate = c.Course.StartDate,
+                    Enrollments = c.Course.Enrollments,
+                    Reviews = c.Course.Reviews
+                });
             var model = new CoursesFeedbackViewModel()
             {
                 Feedback = _context.Feedbacks.ToList(),
-                FreeCourses = courses.Where(c => c.CategoryId == 1).Select(c => c.Course).Take(8),
-                DownloadCourses = courses.Where(c => c.CategoryId == 2).Select(c => c.Course).Take(10),
-                ClassroomCourses = courses.Where(c => c.CategoryId == 3).Select(c => c.Course).Take(10)
+                FreeCourses = courses.Where(c => c.CategoryId == 1).Take(8),
+                DownloadCourses = courses.Where(c => c.CategoryId == 2).Take(10),
+                ClassroomCourses = courses.Where(c => c.CategoryId == 3).Take(10)
             };
 
             return View(model);

@@ -1,12 +1,10 @@
-﻿@using PragimCourses.Controllers
-@using PragimCourses.Models
+﻿@using PragimCourses.Models
+@using PragimCourses.ViewModels
 @model IEnumerable<PragimCourses.Models.CourseDetailsHeader>
 @{
     ViewBag.Title = "Course Details";
-//    var course = Model?.Take(1).Single();
-    var course = ViewBag.Course as Course;
-    var relatedCourses = ViewBag.RelatedCourses as IEnumerable<MyCustom>;
-    var averageRating = Convert.ToInt32(ViewBag.Rating);
+    var course = ViewBag.Course as CourseRatingViewModel;
+    var relatedCourses = ViewBag.RelatedCourses as IEnumerable<CourseRatingViewModel>;
     var enrollment = ViewBag.Enrollment as Enrollment;
 }
 
@@ -19,7 +17,7 @@
                 </div>
                 <div class="course__image">
                     <div style="overflow: hidden;perspective: 500px">
-                        <img style="width: 100%; max-height: 500px" src="@Url.Content(course.ImagePath)" alt="Alternate Text"/>
+                        <img style="width: 100%; max-height: 500px" src="@Url.Content(course.ImagePath)" alt="Alternate Text" />
 
                     </div>
                     <div class="icons">
@@ -59,13 +57,12 @@
                         <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
                             <div class="panel-body">
                                 <h3>@course.Description</h3>
-                                @{ string categoryName = ViewBag.CategoryName as string; }
 
-                                @if (categoryName.ToLower() == "classroom courses")
+                                @if (course.CategoryId == 3)
                                 {
                                     @Html.Partial("_classRoomCourses")
                                 }
-                                else if (categoryName.ToLower() == "free courses")
+                                else if (course.CategoryId == 1)
                                 {
                                     @Html.Partial("_freeCourses")
                                 }
@@ -85,13 +82,13 @@
                                 <h3>Reviews</h3>
                                 <div class="review">
                                     <span class="span-header">Average Rating</span>
-                                    <span class="span-number">@averageRating</span>
+                                    <span class="span-number">@course.Rating</span>
                                     <p class="p-rating">
-                                        @for (var i = 0; i < averageRating; i++)
+                                        @for (var i = 0; i < course.Rating; i++)
                                         {
                                             <span class="glyphicon glyphicon-star"></span>
                                         }
-                                        @for (var i = 0; i < 5 - averageRating; i++)
+                                        @for (var i = 0; i < 5 - course.Rating; i++)
                                         {
                                             <span class="glyphicon glyphicon-star-empty"></span>
                                         }
@@ -188,7 +185,7 @@
                 <div class="course__information">
                     <div style="padding: 25px 25px 60px">
                         <div class="price">
-                            <span>Price : <span>@(course.Price == 0.00m ?"Free":course.Price.ToString())</span></span>
+                            <span>Price : <span>@(course.Price == 0.00m ? "Free" : course.Price.ToString())</span></span>
                         </div>
                         <div class="details">
                             <div class="left">
@@ -205,13 +202,13 @@
                                         </div>
                                     </div>
                                 </div>
-                                
+
                                 <button class="btn btn-default enroll"
                                         data-enrollment="@(enrollment !=null)"
-                                        data-courseId ="@course.Id"
+                                        data-courseId="@course.Id"
                                         data-authonticated="@User.Identity.IsAuthenticated" type="submit">
-                                    @(enrollment!=null?"Start Learning":"Enroll Now!")
-                                   <span class="glyphicon glyphicon-arrow-right"></span>
+                                    @(enrollment != null ? "Start Learning" : "Enroll Now!")
+                                    <span class="glyphicon glyphicon-arrow-right"></span>
                                 </button>
 
                                 @* <div class="heart"> *@
@@ -220,17 +217,17 @@
                             </div>
                             <div class="right">
                                 <div class="star__content">
-                                    @for (var i = 0; i < averageRating; i++)
+                                    @for (var i = 0; i < course.Rating; i++)
                                     {
                                         <span class="glyphicon glyphicon-star"></span>
                                     }
-                                    @for (var i = 0; i < 5 - averageRating; i++)
+                                    @for (var i = 0; i < 5 - course.Rating; i++)
                                     {
                                         <span class="glyphicon glyphicon-star-empty"></span>
                                     }
 
                                 </div>
-                                <span class="enrollment">126 Enrolled</span>
+                                <span class="enrollment">@course.Enrollments.Count Enrolled</span>
                             </div>
                         </div>
                         <div style="clear: both;margin-bottom: 60px"></div>
@@ -239,15 +236,15 @@
                                 <p>
                                     <span class="fSpan">Enroll Dates : </span>
                                     <span class="sSpan enroll-date">
-                                        @(enrollment!=null?enrollment.EnrollmentDate.ToShortDateString(): "Enroll Anytime")
-                                     </span>
+                                        @(enrollment != null ? enrollment.EnrollmentDate.ToShortDateString() : "Enroll Anytime")
+                                    </span>
                                 </p>
                                 <hr />
                             </div>
                             <div class="col-md-12">
                                 <p>
                                     <span class="fSpan">Course Dates : </span>
-                                    <span class="sSpan">@course.StartDate.Value.ToLongDateString() - @(course.EndDate.HasValue?course.EndDate.Value.ToLongDateString(): "No End Date")</span>
+                                    <span class="sSpan">@course.StartDate.Value.ToLongDateString() - @(course.EndDate.HasValue ? course.EndDate.Value.ToLongDateString() : "No End Date")</span>
                                 </p>
                                 <hr />
                             </div>
@@ -281,24 +278,23 @@
                                 @foreach (var rCourse in relatedCourses)
                                 {
                                     <li class="list-group-item">
-                                        <a style="display: flex" href="@Url.Action("Details","Courses",new{id=rCourse.Course.Id})">
+                                        <a style="display: flex" href="@Url.Action("Details","Courses",new{id=rCourse.Id})">
                                             <div class="img-course">
-                                                <img src="@Url.Content(rCourse.Course.ImagePath)" />
+                                                <img src="@Url.Content(rCourse.ImagePath)" />
                                             </div>
                                             <div class="course__content">
-                                                <h4 style="font-size: 14px;font-weight: 700">@rCourse.Course.Header</h4>
+                                                <h4 style="font-size: 14px;font-weight: 700">@rCourse.Header</h4>
                                                 <p style="display: flex">
-                                                @{
-                                                    var rating = Math.Floor(rCourse.Rating);
-                                                }
-                                                @for (int i = 0; i < rating; i++)
-                                                {
-                                                    <span class="glyphicon glyphicon-star"></span>
-                                                }
-                                                @for (int i = 0; i < 5 - rating; i++)
-                                                {
-                                                    <span class="glyphicon glyphicon-star-empty"></span>
-                                                }
+
+                                                    @for (int i = 0; i < rCourse.Rating; i++)
+                                                    {
+                                                        <span class="glyphicon glyphicon-star"></span>
+                                                    }
+                                                    @for (int i = 0; i < 5 - rCourse.Rating; i++)
+                                                    {
+                                                        <span class="glyphicon glyphicon-star-empty"></span>
+                                                    }
+                                                </p>
                                             </div>
                                         </a>
                                     </li>
@@ -320,8 +316,6 @@
     @Scripts.Render("~/bundles/jqueryval")
     <script>
         $(document).ready(function () {
-            
-            console.log($('.btn-submit').attr('data-id'));
             var rating = 0;
             var name = $('#name');
             var email = $('#email');
@@ -337,19 +331,19 @@
                 function () {
                     validateForm();
                     $.ajax({
-                            url: 'http://localhost/PragimCourses/api/Review',
-                            data: JSON.stringify({
-                                Name: name.val(),
-                                Email: email.val(),
-                                Title: title.val(),
-                                Rating: rating,
-                                Content: content.val(),
-                                CourseId: $(this).attr('data-id')
-                            }),
-                            type: 'post',
-                            dataType: 'json',
-                            contentType: 'application/json'
-                        })
+                        url: '/api/Review',
+                        data: JSON.stringify({
+                            Name: name.val(),
+                            Email: email.val(),
+                            Title: title.val(),
+                            Rating: rating,
+                            Content: content.val(),
+                            CourseId: $(this).attr('data-id')
+                        }),
+                        type: 'post',
+                        dataType: 'json',
+                        contentType: 'application/json'
+                    })
                         .done(function () {
                             console.log('success');
                             emptyForm();
@@ -401,13 +395,13 @@
                 if (authonticated === "False") {
                     $('.modal').modal({
                         show: true,
-                       backdrop:'static'
+                        backdrop: 'static'
                     });
-                  
+
                     $.validator.addMethod("email",
                         function (e) {
                             var exp = '(^[a-zA-Z0-9_.+-]+@@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)';
-                            return new RegExp(exp,"i").test(e);
+                            return new RegExp(exp, "i").test(e);
                         }, "please write correct email ex: i@int.com");
                     $.validator.addMethod("password",
                         function (e) {
@@ -422,16 +416,16 @@
                             var data = {
                                 email: email,
                                 password: password,
-                                courseId : courseId
+                                courseId: courseId
                             };
 
                             $.ajax({
                                 url: '/api/LoginWithEnrollment',
                                 data: data,
-                                type:'post'  
-                            }).done(function() {
+                                type: 'post'
+                            }).done(function () {
                                 location.href = location.href;
-                            }).fail(function(error) {
+                            }).fail(function (error) {
                                 console.log(error);
                             });
 
@@ -443,18 +437,18 @@
                     $.ajax({
                         url: '/api/enrollment',
                         data: {
-                            "" : courseId
+                            "": courseId
                         },
                         type: 'post'
-                    }).done(function(data) {
+                    }).done(function (data) {
                         button.text('Start Learning');
                         $('.enroll-date').text(new Date(data).toDateString());
-                    }).fail(function(error) {
+                    }).fail(function (error) {
                         console.log(error);
                     });
                 }
             });
-            
+
         });
     </script>
 }

@@ -243,13 +243,16 @@
                         <p>@online.Description</p>
                         <div class="course__footer">
                             <div class="star__content">
-                                <span class="glyphicon glyphicon-star"></span>
-                                <span class="glyphicon glyphicon-star"></span>
-                                <span class="glyphicon glyphicon-star"></span>
-                                <span class="glyphicon glyphicon-star"></span>
-                                <span class="glyphicon glyphicon-star"></span>
+                                @for (var i = 0; i < online.Rating; i++)
+                                {
+                                    <span class="glyphicon glyphicon-star"></span>
+                                }
+                                @for (var i = 0; i < 5 - online.Rating; i++)
+                                {
+                                    <span class="glyphicon glyphicon-star-empty"></span>
+                                }
                             </div>
-                            <span class="enrolled">165 Enrolled</span>
+                            <span class="enrolled">@online.Reviews.Count Enrolled</span>
                         </div>
                     </div>
 
@@ -263,13 +266,16 @@
                         <p>@free.Description</p>
                         <div class="course__footer">
                             <div class="star__content">
-                                <span class="glyphicon glyphicon-star"></span>
-                                <span class="glyphicon glyphicon-star"></span>
-                                <span class="glyphicon glyphicon-star"></span>
-                                <span class="glyphicon glyphicon-star"></span>
-                                <span class="glyphicon glyphicon-star"></span>
+                                @for (var i = 0; i < free.Rating; i++)
+                                {
+                                    <span class="glyphicon glyphicon-star"></span>
+                                }
+                                @for (var i = 0; i < 5 - free.Rating; i++)
+                                {
+                                    <span class="glyphicon glyphicon-star-empty"></span>
+                                }
                             </div>
-                            <span class="enrolled">165 Enrolled</span>
+                            <span class="enrolled">@free.Reviews.Count Enrolled</span>
                         </div>
                     </div>
 
@@ -284,14 +290,8 @@
                         <div><img src="@Url.Content(download.ImagePath)" /></div>
                         <p>@download.Description</p>
                         <div class="course__footer">
-                            <div class="star__content">
-                                <span class="glyphicon glyphicon-star"></span>
-                                <span class="glyphicon glyphicon-star"></span>
-                                <span class="glyphicon glyphicon-star"></span>
-                                <span class="glyphicon glyphicon-star"></span>
-                                <span class="glyphicon glyphicon-star"></span>
-                            </div>
-                            <span class="enrolled">165 Enrolled</span>
+                            
+                            @Html.ActionLink("Buy Now","AddToCart","Cart",new{id=download.Id},new{@class="btn pragim__information-button",style="margin:0"})
                         </div>
                     </div>
 

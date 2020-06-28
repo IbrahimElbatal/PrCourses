@@ -25,6 +25,7 @@ namespace PragimCourses.Models
         public DbSet<BillingInfo> BillingInfos { get; set; }
         public DbSet<ShippingInfo> ShippingInfos { get; set; }
         public DbSet<Enrollment> Enrollments { get; set; }
+        public DbSet<Order> Orders { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -40,6 +41,7 @@ namespace PragimCourses.Models
             modelBuilder.Configurations.Add(new BillingInfoConfiguration());
             modelBuilder.Configurations.Add(new ShippingInfoConfiguration());
             modelBuilder.Configurations.Add(new EnrollmentConfiguration());
+            modelBuilder.Configurations.Add(new OrderConfiguration());
 
             modelBuilder.Entity<ApplicationUser>()
                 .HasRequired(u => u.BillingInfo)

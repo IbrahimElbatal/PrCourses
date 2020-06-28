@@ -1,5 +1,5 @@
 ﻿@using PagedList.Mvc
-@model PagedList.IPagedList<PragimCourses.Models.CourseCategory>
+@model PagedList.IPagedList<PragimCourses.ViewModels.CourseRatingViewModel>
 @{
     ViewBag.Title = "ClassRoom Courses";
 }
@@ -16,18 +16,21 @@
         {
             <div class="col-md-4 col-sm-6 col-xs-12">
                 <div class="course__wrap">
-                    <a href="@Url.Action("Details","Courses",new{id=course.Course.Id})">
-                        <div><img src="@Url.Content(course.Course.ImagePath)" /></div>
-                        <p>@course.Course.Description</p>
+                    <a href="@Url.Action("Details","Courses",new{id=course.Id})">
+                        <div><img src="@Url.Content(course.ImagePath)" /></div>
+                        <p>@course.Description</p>
                         <div class="course__footer">
                             <div class="star__content">
-                                <span class="glyphicon glyphicon-star"></span>
-                                <span class="glyphicon glyphicon-star"></span>
-                                <span class="glyphicon glyphicon-star"></span>
-                                <span class="glyphicon glyphicon-star"></span>
-                                <span class="glyphicon glyphicon-star"></span>
+                                @for (var i = 0; i < course.Rating; i++)
+                                {
+                                    <span class="glyphicon glyphicon-star"></span>
+                                }
+                                @for (var i = 0; i < 5 - course.Rating; i++)
+                                {
+                                    <span class="glyphicon glyphicon-star-empty"></span>
+                                }
                             </div>
-                            <span class="enrolled">165 Enrolled</span>
+                            <span class="enrolled">@course.Enrollments.Count Enrolled</span>
                         </div>
                     </a>
                 </div>
